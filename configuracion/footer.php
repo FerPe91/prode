@@ -10,7 +10,11 @@
     
 </body>
 <footer class="row d-flex justify-content-center">
-
+    <ul>
+        <li>
+            
+        </li>
+    </ul>
 
 
 
