@@ -16,6 +16,7 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../CSS/styleHome.css">
     <link rel="stylesheet" href="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.min.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>

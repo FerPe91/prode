@@ -1,0 +1,39 @@
+.home{
+    background-image: url(../img/Home.png);
+    background-position:center;
+    background-size:70px;
+    background-repeat: no-repeat;
+    color: wheat;
+}
+.tabla{
+    background-image: url(../img/imgTabla.jpg);
+    background-position:center;
+    background-size:contain;
+    color: wheat;
+
+}
+.saldo{
+    background-image: url(../img/saldoHome.jpg);
+    background-position:center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    color: rgb(154, 152, 149);
+
+}
+
+.misDatos{
+    background-image: url(../img/misdatos.png);
+    background-position:center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    color:white;
+
+}
+.salir{
+    background-image: url(../img/salir.png);
+    background-position:center;
+    background-size:200px;
+    background-repeat: no-repeat;
+    color: wheat;
+}
+
