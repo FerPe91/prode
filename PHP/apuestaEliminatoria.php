@@ -49,7 +49,7 @@ $saldoNuevo = $SaldoUsuario["saldo"] - 500;
 
 $actualizarSaldo = "UPDATE registro SET saldo = '$saldoNuevo' WHERE usuario = '$UsuarioI'";
  mysqli_query($conexion, $actualizarSaldo);
-
+ $_SESSION['nombre'] = "HOME";
   echo '
   <script type="text/javascript">
       $(document).ready(function(){
@@ -114,7 +114,7 @@ if (isset($_POST["apostar3y4"])){
   
   $actualizarSaldo = "UPDATE registro SET saldo = '$saldoNuevo' WHERE usuario = '$UsuarioI'";
    mysqli_query($conexion, $actualizarSaldo);
-  
+   $_SESSION['nombre'] = "HOME";
     echo '
     <script type="text/javascript">
         $(document).ready(function(){
@@ -130,5 +130,6 @@ if (isset($_POST["apostar3y4"])){
   </script>';
   };
   
-}?>
+}
+?>
 
