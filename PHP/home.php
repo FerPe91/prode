@@ -27,15 +27,24 @@
                     Pronósticos
                     <p class="dropdown-toggle p-0 m-0"></p>
                 </a>
-                <div class="collapse bg-transparent" id="collapseExample">
-                    <div class="card card-body p-0 mt-1 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href='apuestaEliminatoriaHTML.php'">Eliminatorias</button>
+                <div class="col-12 collapse bg-transparent" id="collapseExample">
+                    <div class="card card-body p-0  m-0 bg-transparent">
+                        <div class="d-flex flex-row">
+                            <img src="../img/eliminatorias.png" class="col-2" alt="">                          
+                            <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href='apuestaEliminatoriaHTML.php'">Eliminatorias</button>
+                        </div>
                     </div>
-                    <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href=''">Copa America</button>
+                    <div class="card card-body p-0 m-0 bg-transparent">
+                        <div class="d-flex flex-row">
+                            <img src="../img/copaAme.png" class="col-2" alt="">
+                            <button type="button" class=" btn btn-primary text-start bg-transparent text-dark" onclick="location.href=''">Copa America</button>
+                        </div>
                     </div>
-                    <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href=''">Champions League</button>
+                    <div class="card card-body p-0 m-0 bg-transparent">
+                        <div class="d-flex flex-row">
+                            <img src="../img/cl.png" class="col-2" alt="">
+                            <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href=''">Champions Lg.</button>
+                        </div>
                     </div>
                 </div>
 
