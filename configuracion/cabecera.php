@@ -48,7 +48,7 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
                 <a class="nav-link" href=> </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="\apuestasDeportivas\index.html">Cerrar Sesión</a>
+                <a class="nav-link" href="\prode\indexHTML.php">Cerrar Sesión</a>
             </li>
     </ul>
         
