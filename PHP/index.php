@@ -6,6 +6,7 @@ if (isset($_POST["accion"])){
   
   $Usuario = $_POST['usuario'];
   $Clave = $_POST['clave'];
+ 
 
 $verificar_cuenta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario' AND clave = '$Clave'");
 
@@ -45,7 +46,7 @@ if(mysqli_num_rows($verificar_cuenta) == 0){
   
   session_start();
   $_SESSION["usuario"] = htmlentities($_POST['usuario']); //tomo el dato del usuario para usarlo en otra pagina (cabecera)
- 
+  $_SESSION['nombre'] = "HOME";
   header("location: PHP/home.php");
 }  
 

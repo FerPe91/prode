@@ -1,4 +1,12 @@
-<?php include("../configuracion/cabecera.php");?>
+<?php include("../configuracion/cabecera.php");
+require ('../configuracion/conexion.php');
+
+///////////////////// averigua por sentencia cuantos usuarios realizaron apuesta con el campo fecha ////////////////
+$apostadores1y2= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE fecha ='fecha1y2'");
+$apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE fecha ='fecha3y4'");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +14,13 @@
     <title>pagina prueba</title>
 </head>
 <body>
-<h1 style= "font-family: Bungee Shade, cursive;
-    font-size: 250%; margin-top:2%; margin-left:2%; margin-button:2%">
-            Eliminatorias Sudamericanas
-        </h1>
+
+
+        <?php  ///////////////////////////////fecha 1 y 2 /////////////////////////////////////////////?>
 
 <div class="container text-center">
   <div class="row g-2">
-    <div class="col-6">
+    <div class="col-5">
       <div class="p-3">
       <form method="POST">
     <div>
@@ -77,12 +84,11 @@
         
     </div>
 
-      </div>
-    </div>
-    <div class="col-6">
+</div>
+</div>
+
+    <div class="col-5">
       <div class="p-3">
-        
-        
         <div class="p-3 mb-2 bg-success text-white">Fecha 2</div>        
 
         <table class="table table-success table-striped">
@@ -141,24 +147,37 @@
         
     </div>
 </div> 
+
+
+<div class="col-2">
+      <div class="p-3">
+      <div class="card text-bg-primary mb-3" style="width: 200px">
+        <div class="card-header">Informacion</div>
+        <div class="card-body">
+            <p class="card-text">Valor apuesta: $500<br><br>Fecha limite: 15/3<br><hr size="2px" color="black"/> Apostadores: <?php echo mysqli_num_rows($apostadores1y2)?> <br><br>Premio: $ <?php echo (mysqli_num_rows($apostadores1y2)*350)?></p>
+        </div>
+        </div>
+      </div>
+</div>
+
     <div class="d-grid gap-2">
-    <button type="submit" class="btn btn-outline-success" name= "apostar1y2" id= "apostar1y2">Apostar fecha 1 y 2</button>
+    <button type="submit" class="btn btn-outline-success" name= "apostar1y2" id= "apostar1y2">Apostar Fecha 1 y 2</button>
     </div>
 </form>
 
-
 <hr size="8px" color="black" />
 
+<?php  ///////////////////////////////fecha 3 y 4 /////////////////////////////////////////////?>
 
 <div class="container text-center">
   <div class="row g-2">
-    <div class="col-6">
+    <div class="col-5">
       <div class="p-3">
       <form method="POST">
     <div>
     
     <div class="p-3 mb-2 bg-success text-white" >Fecha 3</div>        
-    <input type="hidden" value= "fecha3y4" name="fecha3y4" id="fecha3y4" >
+    <input type="hidden" class="form-control" value= "fecha3y4" name="fecha3y4" id="fecha3y4" >
         
     <table class="table table-success table-striped">
         
@@ -216,13 +235,12 @@
         
     </div>
 
-      </div>
-    </div>
-    <div class="col-6">
+</div>
+</div>
+
+    <div class="col-5">
       <div class="p-3">
-        
-        
-        <div class="p-3 mb-2 bg-success text-white">Fecha 4</div>        
+        <div class="p-3 mb-2 bg-success text-white">Fecha 2</div>        
 
         <table class="table table-success table-striped">
             <thead>
@@ -280,6 +298,19 @@
         
     </div>
 </div> 
+
+
+<div class="col-2">
+      <div class="p-3">
+      <div class="card text-bg-primary mb-3" style="width: 200px">
+        <div class="card-header">Informacion</div>
+        <div class="card-body">
+            <p class="card-text">Valor apuesta: $500<br><br>Fecha limite: 12/10<br><hr size="2px" color="black"/> Apostadores: <?php echo mysqli_num_rows($apostadores3y4)?> <br><br>Premio: $ <?php echo (mysqli_num_rows($apostadores3y4)*350)?></p>
+        </div>
+        </div>
+      </div>
+</div>
+
     <div class="d-grid gap-2">
     <button type="submit" class="btn btn-outline-success" name= "apostar3y4" id= "apostar3y4" >Apostar Fecha 3 y 4</button>
     </div>
@@ -292,3 +323,5 @@
     </body>
    
     </html>
+
+    

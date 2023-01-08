@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body class="row d-flex justify-content-center";">
-    <h2 class="row d-flex justify-content-center"> HOME </h2>  
+<body>
     
     
-    <div class="col-12 row container-fluid d-flex justify-content-center" style="height:400px">
+    
+    <div class="col-12 row container-fluid d-flex justify-content-center" style="height:400px; margin-top:20px">
 
         <div data-aos="fade-right" class="home col-1 h-100 d-inline-block bg-secondary">
             <h3 class="col-2 mt-5">inicio</h3>
@@ -27,24 +27,15 @@
                     Pronósticos
                     <p class="dropdown-toggle p-0 m-0"></p>
                 </a>
-                <div class="col-12 collapse bg-transparent" id="collapseExample">
-                    <div class="card card-body p-0  m-0 bg-transparent">
-                        <div class="d-flex flex-row">
-                            <img src="../img/eliminatorias.png" class="col-2" alt="">                          
-                            <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href='apuestaEliminatoriaHTML.php'">Eliminatorias</button>
-                        </div>
+                <div class="collapse bg-transparent" id="collapseExample">
+                    <div class="card card-body p-0 mt-1 mb-1 bg-transparent">
+                        <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href='apuestaEliminatoriaHTML.php'">Eliminatorias</button>
                     </div>
-                    <div class="card card-body p-0 m-0 bg-transparent">
-                        <div class="d-flex flex-row">
-                            <img src="../img/copaAme.png" class="col-2" alt="">
-                            <button type="button" class=" btn btn-primary text-start bg-transparent text-dark" onclick="location.href=''">Copa America</button>
-                        </div>
+                    <div class="card card-body p-0 mb-1 bg-transparent">
+                        <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href=''">Copa America</button>
                     </div>
-                    <div class="card card-body p-0 m-0 bg-transparent">
-                        <div class="d-flex flex-row">
-                            <img src="../img/cl.png" class="col-2" alt="">
-                            <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href=''">Champions Lg.</button>
-                        </div>
+                    <div class="card card-body p-0 mb-1 bg-transparent">
+                        <button type="button" class="btn btn-primary bg-transparent text-dark" onclick="location.href=''">Champions League</button>
                     </div>
                 </div>
 
@@ -146,3 +137,5 @@
 </body>
     
 </html>
+
+ 

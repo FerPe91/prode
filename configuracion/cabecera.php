@@ -4,6 +4,7 @@ require ('conexion.php');
 
 session_start();
 $UsuarioI = $_SESSION["usuario"];
+$Nombre = $_SESSION['nombre']; 
 
 $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
 $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario guardo toda la consulta, cuando lo imprima pondre entre corchetes que campo quiero mostrar
@@ -28,16 +29,21 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top d-flex justify-content-between" style="background-color:  #e3f2fdc2;">
+<nav class="navbar navbar-expand-lg sticky-top d-flex justify-content-between" style="background-color: #e3f2fdc2;">
     <a class="navbar-brand" href="#">
         <img src="https://1.bp.blogspot.com/-s-PWMumERn8/XsRRBilg2eI/AAAAAAABa8I/pQT1CnbA-sgfOvQvhxAeGx2n8RW3y3HLgCK4BGAsYHg/d/LPF.png" alt="Bootstrap" width="70" height="64">PRODE NACIONAL
     </a>
+    <h1 class="navbar-brand" style= "font-family: sans-serif;
+    font-size: 280%">
+    <?php echo $Nombre ?>
+</h1>
     <ul class="navbar-nav">
             <div class="col- mr-4">
                 <span style="color:#00FFFF;">
                     <i class="fa-solid fa-user fa-1xl"></i>
                 </span>
             </div>
+            
             <li>
                 <div class="row">
                     <a style="color:#00FFFF; font-weight: bold;">Usuario: <?php echo $UsuarioI ?></a>
@@ -49,11 +55,12 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
                 <a class="nav-link" href=> </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="\prode\indexHTML.php">Cerrar Sesión</a>
+                <a class="nav-link" href="\prode\indexHTML.php" style= "font-weight: bold">Cerrar Sesión</a>
+            </li>
+            <li class="nav-item active">
+                <a type= "button" class="nav-link" onClick="history.go(-1)" onclick= "<?php $_SESSION['nombre'] = "HOME"?> " style= "font-weight: bold">Atras</a>
             </li>
     </ul>
-        
-
   </nav>
 
          
