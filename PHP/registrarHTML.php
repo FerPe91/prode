@@ -69,7 +69,7 @@
       <div class="input-group input-group d-flex justify-content-end mb-6">
         <div class="col-12 input-group-text d-flex justify-content-between" id="inputGroup-sizing-default" class="form-check">
           <button type="button" class="btn btn-primary" onclick="location.href='../indexHTML.php'">VOLVER</button>
-          <button type="submit" class="btn btn-success" >CONFIRMAR</button>
+          <button type="submit" class="btn btn-success" name="accion" >CONFIRMAR</button>
         </div>
       </div>
       

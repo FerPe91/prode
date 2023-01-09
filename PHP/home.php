@@ -43,7 +43,7 @@
 
         <div class="col-6 row container h-100 p-0 m-0">
             
-            <div data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info">
+            <div type= "button" onclick="location.href='posiciones.php' " onclick= "<?php $_SESSION['nombre'] = "POSICIONES"?> " data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info">
                 <h3>TABLA</h3>
             </div>
 

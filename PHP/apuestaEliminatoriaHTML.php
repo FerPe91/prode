@@ -27,7 +27,7 @@ $apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WH
     
     <div class="p-3 mb-2 bg-success text-white" >Fecha 1</div>        
     <input type="hidden" class="form-control" value= "fecha1y2" name="fecha1y2" id="fecha1y2" >
-        
+    <input type="hidden" class="form-control" value= 0 name="puntaje" id="puntaje" >   
     <table class="table table-success table-striped">
         
         <thead>
@@ -178,7 +178,7 @@ $apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WH
     
     <div class="p-3 mb-2 bg-success text-white" >Fecha 3</div>        
     <input type="hidden" class="form-control" value= "fecha3y4" name="fecha3y4" id="fecha3y4" >
-        
+    <input type="hidden" class="form-control" value= 0 name="puntaje" id="puntaje" >   
     <table class="table table-success table-striped">
         
         <thead>
