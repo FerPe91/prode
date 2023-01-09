@@ -24,8 +24,8 @@ $P7 = $_POST['p7'];
 $P8 = $_POST['p8'];
 $P9 = $_POST['p9'];
 $P10 = $_POST['p10'];
-
-$insertar = "INSERT INTO apuesta_eliminatorias VALUES ('$UsuarioI', '$Fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10' )";
+$Puntaje = $_POST['puntaje'];
+$insertar = "INSERT INTO apuesta_eliminatorias VALUES ('$UsuarioI', '$Fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '$Puntaje' )";
 
 
 if($SaldoUsuario["saldo"]<500){
@@ -89,9 +89,9 @@ if (isset($_POST["apostar3y4"])){
   $P8 = $_POST['p8'];
   $P9 = $_POST['p9'];
   $P10 = $_POST['p10'];
-  
-  $insertar = "INSERT INTO apuesta_eliminatorias VALUES ('$UsuarioI', '$Fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10' )";
-  
+  $Puntaje = $_POST['puntaje'];
+  $insertar = "INSERT INTO apuesta_eliminatorias VALUES ('$UsuarioI', '$Fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '$Puntaje' )";
+
   
   if($SaldoUsuario["saldo"]<500){
     echo '
@@ -131,5 +131,5 @@ if (isset($_POST["apostar3y4"])){
   };
   
 }
-?>
 
+?>
