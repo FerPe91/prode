@@ -4,7 +4,7 @@ require ('conexion.php');
 
 session_start();
 $UsuarioI = $_SESSION["usuario"];
-$Nombre = $_SESSION['nombre']; 
+$Nombre = $_SESSION["nombre"]; 
 
 $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
 $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario guardo toda la consulta, cuando lo imprima pondre entre corchetes que campo quiero mostrar
