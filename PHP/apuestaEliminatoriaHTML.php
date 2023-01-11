@@ -1,9 +1,22 @@
 <?php include("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
 
+
 ///////////////////// averigua por sentencia cuantos usuarios realizaron apuesta con el campo fecha ////////////////
-$apostadores1y2= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE fecha ='fecha1y2'");
-$apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE fecha ='fecha3y4'");
+function saberCantApostadores($fecha){
+    require ('../configuracion/conexion.php');
+    $cantApostadores= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE fecha ='$fecha'");
+    $cantidad=mysqli_num_rows($cantApostadores);
+
+    return $cantidad;
+}
+////// definir valor de la apuesta  pasar por parametro las fechas //////////
+$ValorApuesta= 500;
+
+$_SESSION["valorApuesta"] = $ValorApuesta;
+$Cantidad1y2=saberCantApostadores("fecha1y2");
+$Cantidad3y4=saberCantApostadores("fecha3y4");
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ?>
 
@@ -26,8 +39,7 @@ $apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WH
     <div>
     
     <div class="p-3 mb-2 bg-success text-white" >Fecha 1</div>        
-    <input type="hidden" class="form-control" value= "fecha1y2" name="fecha1y2" id="fecha1y2" >
-    <input type="hidden" class="form-control" value= 0 name="puntaje" id="puntaje" >   
+   
     <table class="table table-success table-striped">
         
         <thead>
@@ -154,7 +166,7 @@ $apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WH
       <div class="card text-bg-primary mb-3" style="width: 200px">
         <div class="card-header">Informacion</div>
         <div class="card-body">
-            <p class="card-text">Valor apuesta: $500<br><br>Fecha limite: 15/3<br><hr size="2px" color="black"/> Apostadores: <?php echo mysqli_num_rows($apostadores1y2)?> <br><br>Premio: $ <?php echo (mysqli_num_rows($apostadores1y2)*350)?></p>
+            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br><br>Fecha limite: 15/3<br><hr size="2px" color="black"/> Apostadores: <?php echo $Cantidad1y2 ?> <br><br>Premio: $ <?php echo $Cantidad1y2*350?></p>
         </div>
         </div>
       </div>
@@ -177,8 +189,7 @@ $apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WH
     <div>
     
     <div class="p-3 mb-2 bg-success text-white" >Fecha 3</div>        
-    <input type="hidden" class="form-control" value= "fecha3y4" name="fecha3y4" id="fecha3y4" >
-    <input type="hidden" class="form-control" value= 0 name="puntaje" id="puntaje" >   
+  
     <table class="table table-success table-striped">
         
         <thead>
@@ -305,7 +316,7 @@ $apostadores3y4= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WH
       <div class="card text-bg-primary mb-3" style="width: 200px">
         <div class="card-header">Informacion</div>
         <div class="card-body">
-            <p class="card-text">Valor apuesta: $500<br><br>Fecha limite: 12/10<br><hr size="2px" color="black"/> Apostadores: <?php echo mysqli_num_rows($apostadores3y4)?> <br><br>Premio: $ <?php echo (mysqli_num_rows($apostadores3y4)*350)?></p>
+            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br><br>Fecha limite: 12/10<br><hr size="2px" color="black"/> Apostadores: <?php echo $Cantidad3y4 ?> <br><br>Premio: $ <?php echo $Cantidad3y4*350?></p>
         </div>
         </div>
       </div>

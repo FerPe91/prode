@@ -71,14 +71,7 @@
           <button type="button" class="btn btn-primary" onclick="location.href='../indexHTML.php'">VOLVER</button>
           <button type="submit" class="btn btn-success" name="accion" >CONFIRMAR</button>
         </div>
-      </div>
-      
-      
-      <div>
-        <input type="hidden" class="form-control" value= "0" name="saldo" id="saldo" >
-      </div>
-
-      
+      </div>      
     </form>
 
     <?php include("registrar.php");?>

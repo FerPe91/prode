@@ -44,9 +44,10 @@ if(mysqli_num_rows($verificar_cuenta) == 0){
   
   }
   
+  $_SESSION["nombre"] = "HOME";
+  
   session_start();
   $_SESSION["usuario"] = htmlentities($_POST['usuario']); //tomo el dato del usuario para usarlo en otra pagina (cabecera)
-  $_SESSION["nombre"] = "HOME";
   header("location: PHP/home.php");
 }  
 

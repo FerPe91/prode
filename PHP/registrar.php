@@ -13,9 +13,9 @@ $Telefono = $_POST['telefono'];
 $Usuario = $_POST['usuario'];
 $Contraseña = $_POST['contraseña'];
 $Rcontraseña = $_POST['Rcontraseña'];
-$Saldo = $_POST['saldo'];
 
-$insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña', '$Saldo' )";
+
+$insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña', '0' )";
 
 
 
