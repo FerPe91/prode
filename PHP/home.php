@@ -1,4 +1,6 @@
-<?php include("../configuracion/cabecera.php");?>
+<?php 
+include("../configuracion/cabecera.php");
+ ?>
 
 
 <!DOCTYPE html>
@@ -25,7 +27,7 @@
             <div >
                 <div class="collapse bg-transparent" id="collapseExample">
                     <div class="card card-body p-0 mt-1 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaEliminatoriaHTML.php' " onclick= "<?php $_SESSION["nombre"] = "ELIMINATORIAS"?> ">Eliminatorias</button>
+                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaEliminatoria.php'" >Eliminatorias</button>
                     </div>
                     <div class="card card-body p-0 mb-1 bg-transparent">
                         <button type="button" class="btn btn-outline-dark"  onclick="location.href=''">Copa America</button>
@@ -43,7 +45,7 @@
 
         <div class="col-6 row container h-100 p-0 m-0">
             
-            <div type= "button" onclick="location.href='posiciones.php' " onclick= "<?php $_SESSION["nombre"] = "POSICIONES"?>" data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info">
+            <div type= "button" name= "posiciones" id= "posiciones" onclick="location.href='posicionesEliminatoria.php' " data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info">
                 <h3>TABLA</h3>
             </div>
 

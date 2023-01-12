@@ -32,25 +32,58 @@
                     <label class="form-label">Password</label>
                     <input type="password" class="form-control" name="clave" id="clave" required>
                 </div>
-                <button type="submit" class="btn btn-primary" name="accion">Entrar</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='PHP/registrarHTML.php'">Registrar</button>
-            </form>
-            <?php include("PHP/index.php");?> ;        
+                <button type="submit" class="btn btn-primary" name="accion" >Entrar</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='PHP/registrar.php'">Registrar</button>
+            </form>     
         </div>
 
         <footer>
             
-            
-
+    
         </footer>
 
     </div>
 
-
-
-
-
-
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </html>
+
+<?php
+require ('configuracion/conexion.php');
+
+if (isset($_POST["accion"])){ 
+  
+  $Usuario = $_POST['usuario'];
+  $Clave = $_POST['clave'];
+ 
+
+$verificar_cuenta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario' AND clave = '$Clave'");
+
+if(mysqli_num_rows($verificar_cuenta) == 0){
+    echo '
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Usuario y/o clave incorrecta",
+        showConfirmButton: false,
+        timer: 1500
+        });
+      });
+    setTimeout( function() { window.location.href = "index.php"; }, 1500 );
+    </script>
+  ';   
+ exit;
+
+}else{
+ 
+  session_start();
+  $_SESSION["usuario"] = htmlentities($_POST['usuario']); //tomo el dato del usuario para usarlo en otra pagina (cabecera)
+  header("location: PHP/home.php");
+  }  
+  
+}  
+?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

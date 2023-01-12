@@ -4,7 +4,7 @@ require ('conexion.php');
 
 session_start();
 $UsuarioI = $_SESSION["usuario"];
-$Nombre = $_SESSION["nombre"]; 
+
 
 $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
 $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario guardo toda la consulta, cuando lo imprima pondre entre corchetes que campo quiero mostrar
@@ -37,7 +37,7 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
     </a>
     <h1 class="navbar-brand" style= "font-family: sans-serif;
     font-size: 280%">
-    <?php echo $Nombre ?>
+    
 </h1>
     <ul class="navbar-nav">
             <div class="col- mr-4">
@@ -60,7 +60,7 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
                 <a class="nav-link" href="\prode\indexHTML.php" style= "font-weight: bold">Cerrar Sesión</a>
             </li>
             <li class="nav-item active">
-                <a type= "button" class="nav-link" onClick="history.go(-1)" onclick= "<?php $_SESSION['nombre'] = "HOME"?> " style= "font-weight: bold">Atras</a>
+                <a type= "button" class="nav-link" onClick="history.go(-1)" style= "font-weight: bold">Atras</a>
             </li>
     </ul>
   </nav>

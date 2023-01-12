@@ -1,9 +1,6 @@
-<?php include("../configuracion/cabecera.php");
-require ('../configuracion/conexion.php');
-$_SESSION["nombre"] = "POSICIONES"; 
-?>
-
 <?php
+include("../configuracion/cabecera.php");
+require ('../configuracion/conexion.php');
 
 
 function cargarApostadores($fechas, $Apostadores){
