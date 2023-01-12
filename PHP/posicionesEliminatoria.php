@@ -1,7 +1,6 @@
-<?php include("../configuracion/cabecera.php");
-require ('../configuracion/conexion.php');?>
-
 <?php
+include("../configuracion/cabecera.php");
+require ('../configuracion/conexion.php');
 
 
 function cargarApostadores($fechas, $Apostadores){
@@ -108,7 +107,7 @@ $Puntajes5=cargarPuntajes("fecha7y8", $Puntajes5, $Apostadores5); */
             </div>
         </div>
 
-        <div class="col-4">
+        <!-- <div class="col-4">
             <div class="p-3">
             <table id="table_id" class="display">
                 <h4> Fecha 5 y 6</h4>
@@ -192,7 +191,7 @@ $Puntajes5=cargarPuntajes("fecha7y8", $Puntajes5, $Apostadores5); */
             </tbody>
             </table> 
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
