@@ -57,10 +57,10 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
                 <a class="nav-link" href=> </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="\prode\indexHTML.php" style= "font-weight: bold">Cerrar Sesión</a>
+                <a class="nav-link" href="\prode\index.php" style= "font-weight: bold">Cerrar Sesión</a>
             </li>
             <li class="nav-item active">
-                <a type= "button" class="nav-link" onClick="history.go(-1)" style= "font-weight: bold">Atras</a>
+                <a type= "button" class="nav-link" onclick="location.href='home.php'" style= "font-weight: bold">HOME</a>
             </li>
     </ul>
   </nav>
