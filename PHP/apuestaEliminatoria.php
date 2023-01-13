@@ -10,7 +10,9 @@ $NombreDeFecha = "fecha1y2";
 /////////////////////////////////////////////////////////
 
 $CantidadApostadores=saberCantApostadores($NombreDeFecha);
+$Premio=$CantidadApostadores*$ValorApuesta*70/100;
 ?>
+   
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,7 +158,7 @@ $CantidadApostadores=saberCantApostadores($NombreDeFecha);
       <div class="card text-bg-primary mb-3" style="width: 200px">
         <div class="card-header">Informacion</div>
         <div class="card-body">
-            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br><br>Fecha limite: 15/3<br><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?> <br><br>Premio: $ <?php echo ($CantidadApostadores*$ValorApuesta*70/100)?></p>
+            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br><br>Fecha limite: 15/3<br><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?> <br><br>Premio: $ <?php echo $Premio?></p>
         </div>
         </div>
       </div>
@@ -170,7 +172,7 @@ $CantidadApostadores=saberCantApostadores($NombreDeFecha);
 <hr size="8px" color="black" />
 
 <div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Anda por todo</h4>
+  <h4 class="alert-heading">Jugatela en el torneo</h4>
   <p>
     ¡¡Participa por el premio mayor!! al finalizar las eliminatorias quien haya sumado mas puntos en todas las fechas se lleva el premio mas grande.<br>Valor de la apuesta $ 2000   
   </p>
