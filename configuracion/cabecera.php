@@ -17,17 +17,25 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../CSS/styleHome.css">
-    <link rel="stylesheet" href="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+
+    <link rel="stylesheet" href="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.min.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>
-    <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="C:\wamp\www\apuestasDeportivas\js\jquery-3.5.1.js"></script>
+    <script src="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>
+    <script src="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.all.js"></script>
+ 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="C:\wamp\www\prode\js\jquery-3.5.1.js"></script>
+    <script src="js\popper.min.js"></script>
+    <script src="js\bootstrap.min.js"></script>
+    <script src="C:\wamp\www\prode\js\bootstrap-collapse.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
   
+
 </head>
 <body>
 
@@ -57,10 +65,10 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
                 <a class="nav-link" href=> </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="\prode\indexHTML.php" style= "font-weight: bold">Cerrar Sesión</a>
+                <a class="nav-link" href="\prode\index.php" style= "font-weight: bold">Cerrar Sesión</a>
             </li>
             <li class="nav-item active">
-                <a type= "button" class="nav-link" onClick="history.go(-1)" style= "font-weight: bold">Atras</a>
+                <a type= "button" class="nav-link" onclick="location.href='home.php'" style= "font-weight: bold">HOME</a>
             </li>
     </ul>
   </nav>

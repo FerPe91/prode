@@ -1,215 +1,212 @@
 <?php
 include("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
+require ('../funciones/funciones.php');
 
 
-function cargarApostadores($fechas, $Apostadores){
-    require ('../configuracion/conexion.php');
-    $Usuarios = mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias WHERE fecha = '$fechas'");
-    while($totalUsuario = mysqli_fetch_array($Usuarios)){
-        array_push($Apostadores, $totalUsuario["usuario"]);
-    };
-    return $Apostadores;
-}
-
-function cargarPuntajes ($fechas, $Puntajes, $Apostadores){
-    require ('../configuracion/conexion.php');
-    for($i=0; $i<count($Apostadores); $i++) {
-        
-        $partido1=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p1 = resultado_eliminatorias.p1 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos = mysqli_num_rows($partido1);
-        $partido2=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p2 = resultado_eliminatorias.p2 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido2);
-        $partido3=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p3 = resultado_eliminatorias.p3 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido3);
-        $partido4=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p4 = resultado_eliminatorias.p4 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido4);
-        $partido5=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p5 = resultado_eliminatorias.p5 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido5);
-        $partido6=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p6 = resultado_eliminatorias.p6 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido6);
-        $partido7=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p7 = resultado_eliminatorias.p7 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido7);
-        $partido8=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p8 = resultado_eliminatorias.p8 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido8);
-        $partido9=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p9 = resultado_eliminatorias.p9 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido9);
-        $partido10=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$Apostadores[$i]' and apuesta_eliminatorias.p10 = resultado_eliminatorias.p10 and apuesta_eliminatorias.fecha = '$fechas'");
-        $SumaPuntos += mysqli_num_rows($partido10);
-    
-        array_push($Puntajes, $SumaPuntos*5);
-    };
-    return $Puntajes;
-};
-
-$Apostadores1 = [];
-$Apostadores2 = [];
+$Apostadores1= [];
 $Puntajes1 = [];
+$Apostadores2= [];
 $Puntajes2 = [];
+$ApostadoresTotal= [];
+$PuntajesTotal = [];
 
-////faltan definir mas////////////////
+
+
 $Apostadores1=cargarApostadores("fecha1y2", $Apostadores1);
-$Puntajes1=cargarPuntajes("fecha1y2", $Puntajes1, $Apostadores1);
+$Puntajes1=cargarPuntajesPorFecha("fecha1y2", $Puntajes1, $Apostadores1);
 $Apostadores2=cargarApostadores("fecha3y4", $Apostadores2);
-$Puntajes2=cargarPuntajes("fecha3y4", $Puntajes2, $Apostadores2);
-/* $Apostadores3=cargarApostadores("fecha5y6", $Apostadores3);
-$Puntajes4=cargarPuntajes("fecha5y6", $Puntajes4, $Apostadores4);
-$Apostadores5=cargarApostadores("fecha7y8", $Apostadores5);
-$Puntajes5=cargarPuntajes("fecha7y8", $Puntajes5, $Apostadores5); */
+$Puntajes2=cargarPuntajesPorFecha("fecha3y4", $Puntajes2, $Apostadores2);
 
-
-
+$ApostadoresTotal=cargarApostadores("todo", $ApostadoresTotal);
+$PuntajesTotal=cargarPuntajesTotal ($PuntajesTotal, $ApostadoresTotal);
 
 ?>
 
-<div class="container text-center">
-  <div class="row g-2">
-        <div class="col-4">
-            <div class="p-3">
-            <table id="table_id" class="display">
-                <h4> Fecha 1 y 2 </h4>
-            <thead>
-                <tr>
-                <th>Usuario</th>
-                <th>Puntaje</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php for($i=0; $i<count($Apostadores1); $i++) {?>
-                <tr class="table-info">
-                        <td><?php echo $Apostadores1[$i]; ?></td>
-                        <td><?php echo  $Puntajes1[$i]; ?></td>   
-                </tr>
-                <?php  }   ?>            
-            </tbody>
-        </table> 
-        </div>
-    </div>      
-        <div class="col-4">
-            <div class="p-3">
-            <table id="table_id1" class="display">
-                <h4> Fecha 3 y 4</h4>
-            <thead>
-                <tr>
-                <th>Usuario</th>
-                <th>Puntaje</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php for($i=0; $i<count($Apostadores2); $i++) {?>
-                <tr class="table-info">
-                        <td><?php echo $Apostadores2[$i]; ?></td>
-                        <td><?php echo  $Puntajes2[$i]; ?></td>   
-                </tr>
-                <?php  }   ?>            
-            </tbody>
-            </table> 
+<div class="container px-4 text-center">
+  <div class="row gx-5">
+    <div class="col">
+    <div class="p-3">
+    <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                   Fecha 1 y 2
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <table id="table_id" class="display">
+                                    <thead>
+                                        <tr>
+                                        <th>Usuario</th>
+                                        <th>Puntaje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php for($i=0; $i<count($Apostadores1); $i++) {?>
+                                        <tr class="table-info">
+                                                <td><?php echo $Apostadores1[$i]; ?></td>
+                                                <td><?php echo  $Puntajes1[$i]; ?></td>   
+                                        </tr>
+                                        <?php  }   ?>            
+                                    </tbody>
+                            </table> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Fecha 3 y 4
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                   Fecha 5 y 6
+                </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="f4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                Fecha 7 y 8
+                </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="f4" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="f5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                   Fecha 9 y 10
+                </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="f5" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="f6">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                Fecha 11 y 12
+                </button>
+                </h2>
+                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="f6" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="f7">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                   Fecha 13 y 14
+                </button>
+                </h2>
+                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="f7" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="f8">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                Fecha 15 y 16
+                </button>
+                </h2>
+                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="f8" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="f9">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                   Fecha 17 y 18
+                </button>
+                </h2>
+                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="f9" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>La fecha aun no ha comenzado</strong> 
+                </div>
+                </div>
             </div>
         </div>
-
-        <!-- <div class="col-4">
-            <div class="p-3">
-            <table id="table_id" class="display">
-                <h4> Fecha 5 y 6</h4>
-            <thead>
-                <tr>
-                <th>Usuario</th>
-                <th>Puntaje</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php for($i=0; $i<count($Apostadores2); $i++) {?>
-                <tr class="table-info">
-                        <td><?php echo $Apostadores2[$i]; ?></td>
-                        <td><?php echo  $Puntajes2[$i]; ?></td>   
-                </tr>
-                <?php  }   ?>            
-            </tbody>
-        </table> 
         </div>
-    </div>      
-        <div class="col-4">
-            <div class="p-3">
-            <table id="table_id1" class="display">
-                <h4> Fecha 3 y 4</h4>
-            <thead>
-                <tr>
-                <th>Usuario</th>
-                <th>Puntaje</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php for($i=0; $i<count($Apostadores2); $i++) {?>
-                <tr class="table-info">
-                        <td><?php echo $Apostadores2[$i]; ?></td>
-                        <td><?php echo  $Puntajes2[$i]; ?></td>   
-                </tr>
-                <?php  }   ?>            
-            </tbody>
-            </table> 
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="p-3">
-            <table id="table_id" class="display">
-                <h4> Fecha 1 y 2</h4>
-            <thead>
-                <tr>
-                <th>Usuario</th>
-                <th>Puntaje</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php for($i=0; $i<count($Apostadores1); $i++) {?>
-                <tr class="table-info">
-                        <td><?php echo $Apostadores1[$i]; ?></td>
-                        <td><?php echo  $Puntajes1[$i]; ?></td>   
-                </tr>
-                <?php  }   ?>            
-            </tbody>
-        </table> 
-        </div>
-    </div>      
-        <div class="col-4">
-            <div class="p-3">
-            <table id="table_id1" class="display">
-                <h4> Fecha 3 y 4</h4>
-            <thead>
-                <tr>
-                <th>Usuario</th>
-                <th>Puntaje</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php for($i=0; $i<count($Apostadores2); $i++) {?>
-                <tr class="table-info">
-                        <td><?php echo $Apostadores2[$i]; ?></td>
-                        <td><?php echo  $Puntajes2[$i]; ?></td>   
-                </tr>
-                <?php  }   ?>            
-            </tbody>
-            </table> 
-            </div>
-        </div> -->
+    
     </div>
+            <div class="col">
+            <div class="p-3">
+            <div class="card text-bg-info mb-3" style="max-width: 30rem;">
+                <div class="card-header"><h2>Tabla general</h2></div>
+                <div class="card-body">
+                    <table id="table_id2" class="display">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Usuario</th>
+                                                    <th>Puntaje</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
+                                                    <tr class="table-info">
+                                                            <td><?php echo $ApostadoresTotal[$i]; ?></td>
+                                                            <td><?php echo  $PuntajesTotal[$i]; ?></td>   
+                                                    </tr>
+                                                    <?php  }   ?>            
+                                                </tbody>
+                </table>
+                </div>
+                </div>      
+            </div>
+            </div>
+    </div>
+  </div>
 </div>
 
+          
 
 
 
 <script>
 $(document).ready( function () {
-    $('#table_id, #table_id1' ).DataTable({
-        "pageLength": 10,
-        
+    $('#table_id, #table_id2' ).DataTable({
+        "pageLength": 8,
         "searching": false,
             "lengthChange": false,
             "info": false,
             "pagingType": "full",
             "order": [1, 'desc'],
-    })    
-} );
+            
+    }) 
+} ); 
+
+
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
+
 
 
