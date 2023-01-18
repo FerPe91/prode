@@ -69,8 +69,14 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
         $P4 = $_POST['p4'];
         $P5 = $_POST['p5'];
         $P6 = $_POST['p6'];
+        $P7 = $_POST['p7'];
+        $P8 = $_POST['p8'];
+        $P9 = $_POST['p9'];
+        $P10 = $_POST['p10'];
+        $P11 = $_POST['p11'];
+        $P12 = $_POST['p12'];
         
-         $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '0' )";
+        $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '$P11', '$P12', '0' )";
       }
      
         mysqli_query($conexion, $insertar); //si el saldo es suficiente carga la apuesta
@@ -158,6 +164,19 @@ function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $Arra
         $SumaPuntos += mysqli_num_rows($partido5);
         $partido6=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p6 = $tabla2.p6 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido6);
+        $partido7=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p7 = $tabla2.p7 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido7);
+        $partido8=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p8 = $tabla2.p8 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido8);
+        $partido9=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p9 = $tabla2.p9 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido9);
+        $partido10=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p10 = $tabla2.p10 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido10);
+        $partido11=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p9 = $tabla2.p9 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido11);
+        $partido12=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p10 = $tabla2.p10 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido12);
+
 
         array_push($ArrayPuntajes, $SumaPuntos*5);
       $actualizarPuntaje = "UPDATE $tabla1 SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";

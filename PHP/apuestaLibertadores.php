@@ -50,8 +50,13 @@ $_SESSION['premioGH'] = $PremioGH;
 <head>
 
     <title>pagina prueba</title>
+    <link rel="stylesheet" href="../CSS/styleText.css">
 </head>
-<body style= "background-image: url('../img/fondoLiber.png'); background-size: cover">  
+<body style= "background-image: url('../img/fondoLiber.png'); background-size: cover">
+<div class="title">
+ <h1>Copa Libertadores - Fase de grupo</h1>
+</div>
+
 <div class="container text-center">
   <div class="row g-2">
     <div class="col-5">
@@ -59,9 +64,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo A</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo A</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -121,9 +126,57 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGA" id= "apostarGA">Apostar Grupo A</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGA" id= "apostarGA">Apostar Grupo A</button>
         </div>
     </form>
     </div>
@@ -135,9 +188,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo B</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo B</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -149,7 +202,7 @@ $_SESSION['premioGH'] = $PremioGH;
             </tr>
         </thead>
     
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -197,9 +250,57 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGB" id= "apostarGB">Apostar Grupo B</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGB" id= "apostarGB">Apostar Grupo B</button>
         </div>
     </form>
     </div>
@@ -211,10 +312,11 @@ $_SESSION['premioGH'] = $PremioGH;
         <div class="card-header">Informacion</div>
         <div class="card-body">
             <p class="card-text">
-                Valor de la apuesta por cada grupo: $ <?php  echo $ValorApuesta?><hr size="2px" color="black"/>
+                Cada grupo es una apuesta independiente.<br><br>
+                Valor de la apuesta por grupo: $ <?php  echo $ValorApuesta?><hr size="2px" color="black"/>
                 Todas las apuesta finalizan en: <div id="reloj"></div><hr size="2px" color="black"/>
                 Grupo A<br>Apostadores: <?php  echo $CantidadApostadoresGA?><br>Premio: $<?php  echo $PremioGA?><hr size="2px" color="black"/>
-                Grupo B<br>Apostadores: <?php  echo $CantidadApostadoresGB?><br>Premio: $<?php  echo $PremioGB?><hr size="2px" color="black"/>Grupo A<br>Apostadores: <?php  echo $CantidadApostadoresGA?><br>Premio: $<?php  echo $PremioGA?><hr size="2px" color="black"/>
+                Grupo B<br>Apostadores: <?php  echo $CantidadApostadoresGB?><br>Premio: $<?php  echo $PremioGB?><hr size="2px" color="black"/>
                 Grupo C<br>Apostadores: <?php  echo $CantidadApostadoresGC?><br>Premio: $<?php  echo $PremioGC?><hr size="2px" color="black"/>
                 Grupo D<br>Apostadores: <?php  echo $CantidadApostadoresGD?><br>Premio: $<?php  echo $PremioGD?><hr size="2px" color="black"/>
                 Grupo E<br>Apostadores: <?php  echo $CantidadApostadoresGE?><br>Premio: $<?php  echo $PremioGE?><hr size="2px" color="black"/>
@@ -232,9 +334,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo C</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo C</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -245,8 +347,7 @@ $_SESSION['premioGH'] = $PremioGH;
                 <th>Equipo</th>
             </tr>
         </thead>
-    
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -294,10 +395,58 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGC" id= "apostarGC">Apostar Grupo C</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGC" id= "apostarGC">Apostar Grupo C</button>
         </div>
     </form>
     </div>
@@ -309,9 +458,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo D</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo D</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -323,7 +472,7 @@ $_SESSION['premioGH'] = $PremioGH;
             </tr>
         </thead>
     
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -371,9 +520,57 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGD" id= "apostarGD">Apostar Grupo D</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGD" id= "apostarGD">Apostar Grupo D</button>
         </div>
     </form>
     </div>
@@ -385,9 +582,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo E</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo E</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -399,7 +596,7 @@ $_SESSION['premioGH'] = $PremioGH;
             </tr>
         </thead>
     
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -447,9 +644,57 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGE" id= "apostarGE">Apostar Grupo E</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGE" id= "apostarGE">Apostar Grupo E</button>
         </div>
     </form>
     </div>
@@ -461,9 +706,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo F</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo F</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -475,7 +720,7 @@ $_SESSION['premioGH'] = $PremioGH;
             </tr>
         </thead>
     
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -523,9 +768,57 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGF" id= "apostarGF">Apostar Grupo F</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGF" id= "apostarGF">Apostar Grupo F</button>
         </div>
     </form>
     </div>
@@ -537,9 +830,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo G</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo G</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -550,8 +843,7 @@ $_SESSION['premioGH'] = $PremioGH;
                 <th>Equipo</th>
             </tr>
         </thead>
-    
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -599,9 +891,57 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGG" id= "apostarGG">Apostar Grupo G</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGG" id= "apostarGG">Apostar Grupo G</button>
         </div>
     </form>
     </div>
@@ -613,9 +953,9 @@ $_SESSION['premioGH'] = $PremioGH;
       <form method="POST">
         <div>
         
-        <div class="p-3 mb-2 bg-success text-white" >Grupo H</div>        
+        <div class="p-3 mb-2 bg-secondary text-white" >Grupo H</div>        
     
-        <table class="table table-success table-striped">
+        <table class="table table-secondary table-striped">
         
         <thead>
             <tr>
@@ -627,7 +967,7 @@ $_SESSION['premioGH'] = $PremioGH;
             </tr>
         </thead>
     
-            <tr>
+        <tr>
                 
                 <td>ARG</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
@@ -675,9 +1015,58 @@ $_SESSION['premioGH'] = $PremioGH;
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
                 <td>BRA</td>
             </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p7" id="p7"required></td>
+                <td><input type="radio" value="E" name="p7" id="p7"required></td>
+                <td><input type="radio" value="V" name="p7" id="p7"required></td>
+                <td>BRA</td>
+            </tr>
+            <tr>
+                
+                <td>URU</td>
+                <td><input type="radio" value="L" name="p8"id="p8"required></td>
+                <td><input type="radio" value="E" name="p8"id="p8"required></td>
+                <td><input type="radio" value="V" name="p8" id="p8"required></td>
+                <td>ECU</td>
+            </tr>
+            <tr>
+                
+                <td>COL</td>
+                <td><input type="radio" value="L" name="p9" id="p9"required></td>
+                <td><input type="radio" value="E" name="p9" id="p9"required></td>
+                <td><input type="radio" value="V" name="p9" id="p9"required></td>
+                <td>CHI</td>
+            </tr>
+            <tr>
+                
+                <td>PER</td>
+                <td><input type="radio" value="L" name="p10" id="p10"required></td>
+                <td><input type="radio" value="E" name="p10" id="p10"required></td>
+                <td><input type="radio" value="V" name="p10" id="p10"required></td>
+                <td>BOL</td>
+            </tr>
+            <tr>
+                
+                <td>VEN</td>
+                <td><input type="radio" value="L" name="p11" id="p11"required></td>
+                <td><input type="radio" value="E" name="p11" id="p11"required></td>
+                <td><input type="radio" value="V" name="p11" id="p11"required></td>
+                <td>PAR</td>
+            </tr>
+            <tr>
+                
+                <td>ARG</td>
+                <td><input type="radio" value="L" name="p12" id="p12"required></td>
+                <td><input type="radio" value="E" name="p12" id="p12"required></td>
+                <td><input type="radio" value="V" name="p12" id="p12"required></td>
+                <td>BRA</td>
+            </tr>
+            
         </table>
         <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-outline-success" name= "apostarGH" id= "apostarGH">Apostar Grupo H</button>
+        <button type="submit" class="btn btn-outline-secondary" name= "apostarGH" id= "apostarGH">Apostar Grupo H</button>
         </div>
     </form>
     </div>
