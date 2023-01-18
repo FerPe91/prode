@@ -1,12 +1,11 @@
 <?php 
 
 
-function cargarApuesta($fecha, $Valor){
+function cargarApuesta($tabla, $fecha, $Valor, $direccion){
     require ('../configuracion/conexion.php');
-    
     $UsuarioI = $_SESSION["usuario"];
     
-    $cantApuestas= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE usuario ='$UsuarioI' and fecha = '$fecha'");
+    $cantApuestas= mysqli_query($conexion, "SELECT * FROM $tabla WHERE usuario ='$UsuarioI' and fecha = '$fecha'");
     
     if(mysqli_num_rows($cantApuestas)>0){
         echo '
@@ -19,8 +18,8 @@ function cargarApuesta($fecha, $Valor){
     showConfirmButton: false,
     timer: 2000
   });
-});
-setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 2000 );
+  });
+  setTimeout( function() { window.location.href = $direccion; }, 2000 );
         </script>';
  
 
@@ -40,7 +39,7 @@ setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 20
         timer: 1500
       });
       });
-      setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 1500 );
+      setTimeout( function() { window.location.href = $direccion; }, 1500 );
       </script>';
     
       }else{
@@ -48,19 +47,32 @@ setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 20
       $saldoNuevo = $DatosUsuario["saldo"] - $Valor;
       $actualizarSaldo = "UPDATE registro SET saldo = '$saldoNuevo' WHERE usuario = '$UsuarioI'";
       mysqli_query($conexion, $actualizarSaldo);
-            
-      $P1 = $_POST['p1'];
-      $P2 = $_POST['p2'];
-      $P3 = $_POST['p3'];
-      $P4 = $_POST['p4'];
-      $P5 = $_POST['p5'];
-      $P6 = $_POST['p6'];
-      $P7 = $_POST['p7'];
-      $P8 = $_POST['p8'];
-      $P9 = $_POST['p9'];
-      $P10 = $_POST['p10'];
       
-       $insertar = "INSERT INTO apuesta_eliminatorias VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '0' )";
+      if($tabla == "apuesta_eliminatorias"){
+        $P1 = $_POST['p1'];
+        $P2 = $_POST['p2'];
+        $P3 = $_POST['p3'];
+        $P4 = $_POST['p4'];
+        $P5 = $_POST['p5'];
+        $P6 = $_POST['p6'];
+        $P7 = $_POST['p7'];
+        $P8 = $_POST['p8'];
+        $P9 = $_POST['p9'];
+        $P10 = $_POST['p10'];
+        
+         $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '0' )";
+      
+      }elseif($tabla == "apuesta_libertadores"){
+        $P1 = $_POST['p1'];
+        $P2 = $_POST['p2'];
+        $P3 = $_POST['p3'];
+        $P4 = $_POST['p4'];
+        $P5 = $_POST['p5'];
+        $P6 = $_POST['p6'];
+        
+         $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '0' )";
+      }
+     
         mysqli_query($conexion, $insertar); //si el saldo es suficiente carga la apuesta
         
         echo '
@@ -74,7 +86,7 @@ setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 20
         timer: 1500
       });
       });
-      setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 1500 );
+      setTimeout( function() { window.location.href = $direccion; }, 1500 );
       </script>';
      
       };
@@ -82,64 +94,89 @@ setTimeout( function() { window.location.href = "apuestaEliminatoria.php"; }, 20
 };
 
     
-  function saberCantApostadores($fecha){
+  function saberCantApostadores($tabla, $fecha){
     require ('../configuracion/conexion.php');
-    $cantApostadores= mysqli_query($conexion, "SELECT * FROM apuesta_eliminatorias WHERE fecha ='$fecha'");
+    $cantApostadores= mysqli_query($conexion, "SELECT * FROM $tabla WHERE fecha ='$fecha'");
     $cantidad=mysqli_num_rows($cantApostadores);
 
     return $cantidad;
 }
 
-  function cargarApostadores($fechas, $ArrayApostadores){
+  function cargarApostadores($tabla, $fechas, $ArrayApostadores){
     require ('../configuracion/conexion.php');
-    $Usuarios = mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias WHERE fecha = '$fechas'");
+    $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla WHERE fecha = '$fechas'");
     while($totalUsuario = mysqli_fetch_array($Usuarios)){
         array_push($ArrayApostadores, $totalUsuario["usuario"]);
     };
     return $ArrayApostadores;
 }
 
-function cargarPuntajesPorFecha ($fechas, $ArrayPuntajes, $ArrayApostadores){
+function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $ArrayApostadores){
     require ('../configuracion/conexion.php');
-    for($i=0; $i<count($ArrayApostadores); $i++) {
+
+    if($tabla1 == "apuesta_eliminatorias"){
+      for($i=0; $i<count($ArrayApostadores); $i++) {
         
-        $partido1=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p1 = resultado_eliminatorias.p1 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido1=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p1 = $tabla2.p1 and $tabla1.fecha = '$fechas'");
         $SumaPuntos = mysqli_num_rows($partido1);
-        $partido2=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p2 = resultado_eliminatorias.p2 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido2=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p2 = $tabla2.p2 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido2);
-        $partido3=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p3 = resultado_eliminatorias.p3 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido3=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p3 = $tabla2.p3 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido3);
-        $partido4=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p4 = resultado_eliminatorias.p4 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido4=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p4 = $tabla2.p4 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido4);
-        $partido5=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p5 = resultado_eliminatorias.p5 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido5=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p5 = $tabla2.p5 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido5);
-        $partido6=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p6 = resultado_eliminatorias.p6 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido6=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p6 = $tabla2.p6 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido6);
-        $partido7=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p7 = resultado_eliminatorias.p7 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido7=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p7 = $tabla2.p7 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido7);
-        $partido8=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p8 = resultado_eliminatorias.p8 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido8=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p8 = $tabla2.p8 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido8);
-        $partido9=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p9 = resultado_eliminatorias.p9 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido9=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p9 = $tabla2.p9 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido9);
-        $partido10=mysqli_query($conexion,"SELECT * FROM apuesta_eliminatorias inner join resultado_eliminatorias on apuesta_eliminatorias.fecha = resultado_eliminatorias.fecha where apuesta_eliminatorias.usuario = '$ArrayApostadores[$i]' and apuesta_eliminatorias.p10 = resultado_eliminatorias.p10 and apuesta_eliminatorias.fecha = '$fechas'");
+        $partido10=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p10 = $tabla2.p10 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido10);
     
       array_push($ArrayPuntajes, $SumaPuntos*5);
-      $actualizarPuntaje = "UPDATE apuesta_eliminatorias SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
+      $actualizarPuntaje = "UPDATE $tabla1 SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
       mysqli_query($conexion, $actualizarPuntaje);
     };
+
+    }elseif($tabla1 == "apuesta_libertadores"){
+      for($i=0; $i<count($ArrayApostadores); $i++) {
+        
+        $partido1=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p1 = $tabla2.p1 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos = mysqli_num_rows($partido1);
+        $partido2=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p2 = $tabla2.p2 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido2);
+        $partido3=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p3 = $tabla2.p3 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido3);
+        $partido4=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p4 = $tabla2.p4 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido4);
+        $partido5=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p5 = $tabla2.p5 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido5);
+        $partido6=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p6 = $tabla2.p6 and $tabla1.fecha = '$fechas'");
+        $SumaPuntos += mysqli_num_rows($partido6);
+
+        array_push($ArrayPuntajes, $SumaPuntos*5);
+      $actualizarPuntaje = "UPDATE $tabla1 SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
+      mysqli_query($conexion, $actualizarPuntaje);
+    };
+  };
+     
     return $ArrayPuntajes;
 };
 
-function cargarPuntajesTotal ($ArrayPuntajes, $ArrayApostadores){
+function cargarPuntajesTotal ($tabla, $ArrayPuntajes, $ArrayApostadores){
   require ('../configuracion/conexion.php');
   for($i=0; $i<count($ArrayApostadores); $i++) {
       
-      $PuntajesTotal=mysqli_query($conexion,"SELECT SUM(puntaje) as Total FROM apuesta_eliminatorias WHERE usuario = '$ArrayApostadores[$i]' and fecha != 'todo'");
+      $PuntajesTotal=mysqli_query($conexion,"SELECT SUM(puntaje) as Total FROM $tabla WHERE usuario = '$ArrayApostadores[$i]' and fecha != 'todo'");
       $Resultados = mysqli_fetch_assoc($PuntajesTotal);
       $Tt=$Resultados["Total"];
       array_push($ArrayPuntajes, $Resultados["Total"]*5);
-      $actualizarPuntaje = "UPDATE apuesta_eliminatorias SET puntaje = '$Tt'  WHERE usuario = '$ArrayApostadores[$i]' And fecha='todo'";
+      $actualizarPuntaje = "UPDATE $tabla SET puntaje = '$Tt'  WHERE usuario = '$ArrayApostadores[$i]' And fecha='todo'";
       mysqli_query($conexion, $actualizarPuntaje);
   };
   return $ArrayPuntajes;

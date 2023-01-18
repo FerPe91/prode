@@ -12,9 +12,9 @@ $NombreDeFecha = "fecha1y2";
 //El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
 /////////////////////////////////////////////////////////
 
-$CantidadApostadores=saberCantApostadores($NombreDeFecha);
+$CantidadApostadores=saberCantApostadores("apuesta_eliminatorias",$NombreDeFecha);
 $Premio=$CantidadApostadores*$ValorApuesta*70/100;
-$CantidadApostadoresTotal=saberCantApostadores("todo");
+$CantidadApostadoresTotal=saberCantApostadores("apuesta_eliminatorias","todo");
 $PremioTotal=$CantidadApostadoresTotal*2000*70/100;
 $_SESSION['premio'] = $Premio;
 $_SESSION['premioTotal'] = $PremioTotal;
@@ -183,7 +183,7 @@ $_SESSION['premioTotal'] = $PremioTotal;
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Jugatela en el torneo</h4>
   <p>
-    ¡¡Participa por el premio mayor!! al finalizar las eliminatorias quien haya sumado mas puntos en todas las fechas se lleva el premio mas grande.<br>Valor de la apuesta $ 2000   
+    ¡¡Participa por el premio mayor!! al finalizar las eliminatorias quien haya sumado mas puntos en todas las fechas se lleva el premio mas grande.<br>Valor de la apuesta $ 2000 (por unica vez)  
   </p>
   <hr>
   <form method="POST">
@@ -196,14 +196,14 @@ $_SESSION['premioTotal'] = $PremioTotal;
 
     <?php  
   if (isset($_POST["apostar"])){ 
-  cargarApuesta($NombreDeFecha, $ValorApuesta);
+  cargarApuesta("apuesta_eliminatorias", $NombreDeFecha, $ValorApuesta, "apuestaEliminatoria.php");
 }
   if (isset($_POST["apostarTodo"])){ 
-    cargarApuesta("todo","2000");
+    cargarApuesta("apuesta_eliminatorias","todo","2000", "apuestaEliminatoria.php");
 }?>
 
 
 
 
 <script src="../js\simplyCountdown.min.js"></script>
-<script src="../js\cuentaRegresiva.js"></script>
+<script src="../js\cuentaRegresivaEliminatorias.js"></script>
