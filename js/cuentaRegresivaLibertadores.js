@@ -1,7 +1,7 @@
 simplyCountdown('#reloj', {
     year: 2023, // required
-    month: 3, // required
-    day: 17, // required
+    month: 1, // required
+    day: 28, // required
     hours: 18, // Default is 0 [0-23] integer
     minutes: 58, // Default is 0 [0-59] integer
     seconds: 0, // Default is 0 [0-59] integer

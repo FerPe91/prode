@@ -13,13 +13,14 @@ $PuntajesTotal = [];
 
 
 
-$Apostadores1=cargarApostadores("fecha1y2", $Apostadores1);
-$Puntajes1=cargarPuntajesPorFecha("fecha1y2", $Puntajes1, $Apostadores1);
-$Apostadores2=cargarApostadores("fecha3y4", $Apostadores2);
-$Puntajes2=cargarPuntajesPorFecha("fecha3y4", $Puntajes2, $Apostadores2);
+$Apostadores1=cargarApostadores("apuesta_eliminatorias", "fecha1y2", $Apostadores1);
+$Puntajes1=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha1y2", $Puntajes1, $Apostadores1);
 
-$ApostadoresTotal=cargarApostadores("todo", $ApostadoresTotal);
-$PuntajesTotal=cargarPuntajesTotal ($PuntajesTotal, $ApostadoresTotal);
+$Apostadores2=cargarApostadores("apuesta_eliminatorias", "fecha3y4", $Apostadores2);
+$Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha3y4", $Puntajes2, $Apostadores2);
+
+$ApostadoresTotal=cargarApostadores("apuesta_eliminatorias", "todo", $ApostadoresTotal);
+$PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $ApostadoresTotal);
 
 ?>
 <body style= "background-image: url('../img/fondo.png'); background-size: cover">

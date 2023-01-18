@@ -17,9 +17,21 @@ if(isset($_POST["cargarSaldo"])){ //para usar submit llamamos al $_POST
     $saldoIngresado=$_POST['saldo']; //guardo lo del input con el name="saldo"
     $saldoU = $saldoU + $saldoIngresado;
     $cargarSaldo="UPDATE registro SET saldo='$saldoU' where usuario = '$usuarioI'";
-
-
     mysqli_query($conexion, $cargarSaldo);
+
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){
+    Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Su saldo fue cargado",
+    showConfirmButton: false,
+    timer: 1500
+  });
+  });
+  setTimeout( function() { window.location.href = "home.php"; }, 1500 );
+  </script>';
 
 };
 
@@ -48,6 +60,11 @@ if(isset($_POST["cargarSaldo"])){ //para usar submit llamamos al $_POST
         <div data-aos="fade-right" class="home col-1 h-100 d-inline-block bg-secondary">
             <h3 class="col-2 mt-5">inicio</h3>
         </div>
+
+
+
+
+        
         
         <div data-aos="flip-left" class="col-2 h-100 d-inline-block p-4 bg-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
             <h3 class="col-12">HACER MI APUESTA ▼</h3>
@@ -58,7 +75,7 @@ if(isset($_POST["cargarSaldo"])){ //para usar submit llamamos al $_POST
                         <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaEliminatoria.php'" >Eliminatorias</button>
                     </div>
                     <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href=''">Copa America</button>
+                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaLibertadores.php'">Copa Libertadores</button>
                     </div>
                     <div class="card card-body p-0 mb-1 bg-transparent">
                         <button type="button" class="btn btn-outline-dark"  onclick="location.href=''">Champions League</button>
@@ -166,11 +183,11 @@ if(isset($_POST["cargarSaldo"])){ //para usar submit llamamos al $_POST
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="POST">
                             <h4><?php echo $saldoU ?></h4>
                             <div class="mb-3">
                                 <label for="saldo" class="form-label">CANTIDAD</label>
-                                <input type="number" class="form-control" id="saldo" aria-describedby="emailHelp" placeholder="ej: 500">
+                                <input type="number" class="form-control" name="saldo" id="saldo" aria-describedby="emailHelp" placeholder="ej: 500">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">INGRESA TU CLAVE</label>
@@ -179,7 +196,7 @@ if(isset($_POST["cargarSaldo"])){ //para usar submit llamamos al $_POST
                             
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Añadir</button>
+                                <button type="submit" name="cargarSaldo" id="cargarSaldo" class="btn btn-primary">Añadir</button>
                             </div>
                         </form>
                     </div>
