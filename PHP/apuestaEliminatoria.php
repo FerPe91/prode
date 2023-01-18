@@ -7,20 +7,29 @@ require ('../funciones/funciones.php');
 /////definir valor de la apuesta y nombre de la misma////
 $ValorApuesta= 500;
 $NombreDeFecha = "fecha1y2";
+
+///IMPORTANTE///
+//El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
 /////////////////////////////////////////////////////////
 
 $CantidadApostadores=saberCantApostadores($NombreDeFecha);
 $Premio=$CantidadApostadores*$ValorApuesta*70/100;
+$CantidadApostadoresTotal=saberCantApostadores("todo");
+$PremioTotal=$CantidadApostadoresTotal*2000*70/100;
+$_SESSION['premio'] = $Premio;
+$_SESSION['premioTotal'] = $PremioTotal;
+
 ?>
-   
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <title>pagina prueba</title>
 </head>
-<body>
+
+<body style= "background-image: url('../img/fondo.png'); background-size: cover">  
 
 
 <div class="container text-center">
@@ -158,7 +167,7 @@ $Premio=$CantidadApostadores*$ValorApuesta*70/100;
       <div class="card text-bg-primary mb-3" style="width: 200px">
         <div class="card-header">Informacion</div>
         <div class="card-body">
-            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br><br>Fecha limite: 15/3<br><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?> <br><br>Premio: $ <?php echo $Premio?></p>
+            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $Premio?></p>
         </div>
         </div>
       </div>
@@ -192,3 +201,9 @@ $Premio=$CantidadApostadores*$ValorApuesta*70/100;
   if (isset($_POST["apostarTodo"])){ 
     cargarApuesta("todo","2000");
 }?>
+
+
+
+
+<script src="../js\simplyCountdown.min.js"></script>
+<script src="../js\cuentaRegresiva.js"></script>

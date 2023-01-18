@@ -125,7 +125,7 @@ function cargarPuntajesPorFecha ($fechas, $ArrayPuntajes, $ArrayApostadores){
         $SumaPuntos += mysqli_num_rows($partido10);
     
       array_push($ArrayPuntajes, $SumaPuntos*5);
-      $actualizarPuntaje = "UPDATE apuesta_eliminatorias SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]'";
+      $actualizarPuntaje = "UPDATE apuesta_eliminatorias SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
       mysqli_query($conexion, $actualizarPuntaje);
     };
     return $ArrayPuntajes;
@@ -137,7 +137,10 @@ function cargarPuntajesTotal ($ArrayPuntajes, $ArrayApostadores){
       
       $PuntajesTotal=mysqli_query($conexion,"SELECT SUM(puntaje) as Total FROM apuesta_eliminatorias WHERE usuario = '$ArrayApostadores[$i]' and fecha != 'todo'");
       $Resultados = mysqli_fetch_assoc($PuntajesTotal);
+      $Tt=$Resultados["Total"];
       array_push($ArrayPuntajes, $Resultados["Total"]*5);
+      $actualizarPuntaje = "UPDATE apuesta_eliminatorias SET puntaje = '$Tt'  WHERE usuario = '$ArrayApostadores[$i]' And fecha='todo'";
+      mysqli_query($conexion, $actualizarPuntaje);
   };
   return $ArrayPuntajes;
 };
