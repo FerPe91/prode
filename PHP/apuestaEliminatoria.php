@@ -27,10 +27,11 @@ $_SESSION['premioTotal'] = $PremioTotal;
 <head>
 
     <title>pagina prueba</title>
+    <link rel="stylesheet" href="../CSS/styleTextEliminatorias.css">
 </head>
 
 <body style= "background-image: url('../img/fondo.png'); background-size: cover">  
-
+<h1 data-shadow='Eliminatorias'>Eliminatorias</h1>
 
 <div class="container text-center">
   <div class="row g-2">
@@ -157,7 +158,10 @@ $_SESSION['premioTotal'] = $PremioTotal;
                     <td>PAR</td>
                 </tr>
         </table>
-        
+        <div class="d-grid gap-2">
+    <button type="submit" class="btn btn-outline-success" name= "apostar" id= "apostar">Apostar Fecha 1 y 2</button>
+    </div>
+</form>
     </div>
 </div> 
 
@@ -173,12 +177,7 @@ $_SESSION['premioTotal'] = $PremioTotal;
       </div>
 </div>
 
-    <div class="d-grid gap-2">
-    <button type="submit" class="btn btn-outline-success" name= "apostar" id= "apostar">Apostar Fecha 1 y 2</button>
-    </div>
-</form>
 
-<hr size="8px" color="black" />
 
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Jugatela en el torneo</h4>
@@ -190,9 +189,10 @@ $_SESSION['premioTotal'] = $PremioTotal;
   <button type="submit" class="btn btn-outline-success" name= "apostarTodo" id= "apostarTodo">Voy por todo</button>
   </form>
 </div>
+  
 
-    </body>
-    </html>
+  </body>
+  </html>
 
     <?php  
   if (isset($_POST["apostar"])){ 

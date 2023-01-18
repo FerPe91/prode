@@ -43,6 +43,7 @@ $PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $Ap
                 <table id="table_id" class="display" >
                                     <thead>
                                         <tr>
+                                      
                                         <th>Usuario</th>
                                         <th>Puntaje</th>
                                         </tr>
@@ -50,6 +51,7 @@ $PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $Ap
                                     <tbody>
                                     <?php for($i=0; $i<count($Apostadores1); $i++) {?>
                                         <tr class="table-info">
+                      
                                                 <td><?php echo $Apostadores1[$i]; ?></td>
                                                 <td><?php echo  $Puntajes1[$i]; ?></td>   
                                         </tr>
@@ -168,6 +170,7 @@ $PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $Ap
                     <table id="table_id2" class="display">
                                                 <thead>
                                                     <tr>
+                                  
                                                     <th>Usuario</th>
                                                     <th>Puntaje</th>
                                                     </tr>
@@ -175,6 +178,7 @@ $PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $Ap
                                                 <tbody>
                                                 <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
                                                     <tr class="table-info">
+                                       
                                                             <td><?php echo $ApostadoresTotal[$i]; ?></td>
                                                             <td><?php echo  $PuntajesTotal[$i]; ?></td>   
                                                     </tr>
@@ -195,13 +199,16 @@ $PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $Ap
 <script>
 $(document).ready( function () {
     $('#table_id, #table_id2' ).DataTable({
+       
         "pageLength": 8,
         "searching": false,
             "lengthChange": false,
             "info": false,
             "pagingType": "full",
+  
+         
             "order": [1, 'desc'],
-            
+          
             
     }) 
 } );
