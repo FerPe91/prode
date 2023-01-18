@@ -1,19 +1,47 @@
 <?php 
 include("../configuracion/cabecera.php");
- ?>
+require('../configuracion/conexion.php');
 
+$usuarioI= $_SESSION["usuario"]; //guardo en la variable el usuario que ingreso
+$consultaUsuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario = '$usuarioI'");//preparo los datos
+$datosUsuario = mysqli_fetch_array($consultaUsuario);//paso los datos a un "arreglo"
+
+$saldoU = $datosUsuario["saldo"]; //del arreglo utilizo el campo saldo
+$nombreU =  $datosUsuario["nombre"]; //del arreglo utilizo el campo nombre
+$nombreU=strtoupper($nombreU); //pasar a mayuscula
+
+$time = time();
+
+
+if(isset($_POST["cargarSaldo"])){ //para usar submit llamamos al $_POST
+    $saldoIngresado=$_POST['saldo']; //guardo lo del input con el name="saldo"
+    $saldoU = $saldoU + $saldoIngresado;
+    $cargarSaldo="UPDATE registro SET saldo='$saldoU' where usuario = '$usuarioI'";
+
+
+    mysqli_query($conexion, $cargarSaldo);
+
+};
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
     <title>Home</title>
+    <link rel="stylesheet" href="../CSS/styleHome.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-    
-    
+    <div class="col-3 container-fluid">
+        <div class=" container-fluid d-flex justify-content-between pb-1 mx-1 rounded-bottom-1 text-warning bg-primary ">
+            <h6>Hoy: <?php echo date("d-m-Y");?></h6>
+            <h6>Hora: <?php echo date(("H:i"));?></h6>
+        </div>
+    </div>
     
     <div class="col-12 row container-fluid d-flex justify-content-center" style="height:400px; margin-top:20px">
 
@@ -44,20 +72,20 @@ include("../configuracion/cabecera.php");
 
 
         <div class="col-6 row container h-100 p-0 m-0">
-            
-            <div type= "button" name= "posiciones" id= "posiciones" onclick="location.href='posicionesEliminatoria.php' " data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info">
-                <h3>TABLA</h3>
-            </div>
-
             <div data-aos="zoom-in" class="col-12 row container h-50 p-0 m-0 bg-warning">
                 <div class="misDatos col-12 w-50 container h-100 bg-secondary">
-                    <h3>MIS DATOS</h3>
+                    <h3>MIS APUESTAS</h3>
                 </div>
                     <!-- Button trigger modal -->
                 <div type="button" class="saldo col-12 w-50 container h-100 bd-highlight bg-light border-0 rounded-0 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <h3>SALDO</h3>
                 </div>
             </div>
+            
+            <div type= "button" name= "posiciones" id= "posiciones" onclick="location.href='posicionesEliminatoria.php' " data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info">
+                <h3>TABLA</h3>
+            </div>
+
         </div>
 
         <div data-aos="zoom-in-down" class="salir col-2 h-100 p-0 m-0 border-0 d-inline-block bg-secondary">
@@ -139,6 +167,7 @@ include("../configuracion/cabecera.php");
                     </div>
                     <div class="modal-body">
                         <form>
+                            <h4><?php echo $saldoU ?></h4>
                             <div class="mb-3">
                                 <label for="saldo" class="form-label">CANTIDAD</label>
                                 <input type="number" class="form-control" id="saldo" aria-describedby="emailHelp" placeholder="ej: 500">
@@ -150,7 +179,7 @@ include("../configuracion/cabecera.php");
                             
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Añadir</button>
                             </div>
                         </form>
                     </div>
