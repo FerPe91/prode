@@ -12,7 +12,6 @@ $ApostadoresTotal= [];
 $PuntajesTotal = [];
 
 
-
 $Apostadores1=cargarApostadores("apuesta_eliminatorias", "fecha1y2", $Apostadores1);
 $Puntajes1=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha1y2", $Puntajes1, $Apostadores1);
 
@@ -22,7 +21,19 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
 $ApostadoresTotal=cargarApostadores("apuesta_eliminatorias", "todo", $ApostadoresTotal);
 $PuntajesTotal=cargarPuntajesTotal ("apuesta_eliminatorias", $PuntajesTotal, $ApostadoresTotal);
 
+
+
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../CSS/styleTextEliminatorias.css">
+</head>
+
+<body style= "background-image: url('../img/fondo.png'); background-size: cover">  
+<h1 data-shadow='Eliminatorias'>Eliminatorias</h1>
+
 <body style= "background-image: url('../img/fondo.png'); background-size: cover">
 
 
@@ -212,11 +223,8 @@ $(document).ready( function () {
             
     }) 
 } );
-
-
-
-
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
