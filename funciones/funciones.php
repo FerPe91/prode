@@ -172,9 +172,9 @@ function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $Arra
         $SumaPuntos += mysqli_num_rows($partido9);
         $partido10=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p10 = $tabla2.p10 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido10);
-        $partido11=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p9 = $tabla2.p9 and $tabla1.fecha = '$fechas'");
+        $partido11=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p11 = $tabla2.p11 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido11);
-        $partido12=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p10 = $tabla2.p10 and $tabla1.fecha = '$fechas'");
+        $partido12=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p12 = $tabla2.p12 and $tabla1.fecha = '$fechas'");
         $SumaPuntos += mysqli_num_rows($partido12);
 
 
@@ -200,3 +200,37 @@ function cargarPuntajesTotal ($tabla, $ArrayPuntajes, $ArrayApostadores){
   };
   return $ArrayPuntajes;
 };
+
+function editarSaldo ($saldoU, $cuenta){
+  require ('../configuracion/conexion.php');
+  $UsuarioI = $_SESSION["usuario"];
+  $Saldo = $_POST['saldo'];
+  $Contraseña = $_POST['contraseña'];
+  
+  if($cuenta=="suma"){
+    $saldoU+=$Saldo;
+  }elseif($cuenta=="resta"){
+    $saldoU-=$Saldo; }
+  
+  if($saldoU<0){
+      echo '
+      <script type="text/javascript">
+          $(document).ready(function(){
+      Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Saldo insuficiente",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    });
+    </script>';
+    }else{
+      $cargarSaldo="UPDATE registro SET saldo='$saldoU' where usuario = '$UsuarioI'";
+      mysqli_query($conexion, $cargarSaldo);
+      echo '
+      <script type="text/javascript">
+      setTimeout( function() { window.location.href = "home.php"; }, 0 );
+      </script>';
+    }
+}
