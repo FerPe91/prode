@@ -21,15 +21,22 @@ $time = time();
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body>
+<body style= "background-image: url('../img/fondoHome.png'); background-size: cover">  
 
 
-    <div class="col-3 container-fluid">
-        <div class=" container-fluid d-flex justify-content-between pb-1 mx-1 rounded-bottom-1 text-warning bg-primary ">
-            <h6>Hoy: <?php echo date("d-m-Y");?></h6>
-            <h6>Hora: <?php echo date(("H:i"));?></h6>
-        </div>
+    <div class="col-4 container-fluid">
+    <div class="word">
+	<span>H</span>
+	<span>O</span>
+	<span>M</span>
+	<span>E</span>
     </div>
+    </div>
+
+    <!-- <div class=" container-fluid d-flex justify-content-between pb-1 mx-1 rounded-bottom-1 text-warning ">
+            <h6><?php echo date("d-m-Y");?></h6>
+            <h6><?php echo date(("H:i"));?></h6>
+    </div> -->
     
     <div class="col-12 row container-fluid d-flex justify-content-center" style="height:400px; margin-top:20px">
 
@@ -62,7 +69,7 @@ $time = time();
                         <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaLibertadores.php'">Copa Libertadores</button>
                     </div>
                     <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href=''">Liga Argentina</button>
+                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaTorneoArg.php'">Liga Argentina</button>
                     </div>
                 </div>
             </div>
@@ -103,7 +110,7 @@ $time = time();
                     </div>
                     <div class="col-4">
                     <div class="card bg-transparent" style="width: 12rem;">
-                        <img src="../img/ligaArg.png" class="card-img-top" type="button" onclick="location.href='posicionesEliminatoria.php'">   
+                        <img src="../img/ligaArg.png" class="card-img-top" type="button" onclick="location.href='posicionesTorneoArg.php'">   
                     </div>
                     </div>
                 </div>
@@ -180,7 +187,7 @@ $time = time();
             </div>
         </div>
     </div>
-
+    
     <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -234,3 +241,22 @@ if(isset($_POST["retirarSaldo"])){
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
+
+
+<script>
+    const spans = document.querySelectorAll('.word span');
+
+spans.forEach((span, idx) => {
+	span.addEventListener('click', (e) => {
+		e.target.classList.add('active');
+	});
+	span.addEventListener('animationend', (e) => {
+		e.target.classList.remove('active');
+	});
+	
+	// Initial animation
+	setTimeout(() => {
+		span.classList.add('active');
+	}, 750 * (idx+1))
+});
+</script>    
