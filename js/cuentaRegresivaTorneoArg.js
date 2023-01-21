@@ -17,14 +17,9 @@ implyCountdown('#reloj', {
     // in case of inline set to false
     enableUtc: false, //Use UTC or not - default : false
     onEnd: function() { 
-        apostarGA.disabled = true;
-        apostarGB.disabled = true; 
-        apostarGC.disabled = true; 
-        apostarGD.disabled = true; 
-        apostarGE.disabled = true; 
-        apostarGF.disabled = true; 
-        apostarGG.disabled = true; 
-        apostarGH.disabled = true;
+        apostarArg.disabled = true;
+        todoArg.disabled = true; 
+        
         
         return; }, //Callback on countdown end, put your own function here
     refresh: 1000, // default refresh every 1s

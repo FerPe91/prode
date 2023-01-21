@@ -26,7 +26,7 @@ $PuntajesTotal=cargarPuntajesTotal("apuesta_torneoarg", $PuntajesTotal, $Apostad
 </head>
 
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
-<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
+<div id="titulo"><span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span></div>
 
 
 <div class="container px-4 text-center" >

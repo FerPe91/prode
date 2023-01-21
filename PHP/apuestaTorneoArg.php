@@ -30,8 +30,7 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
 </head>
 
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
-<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
-
+<div id="titulo"><span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span></div>
 
 <div class="container text-center">
   <div class="row g-2">
@@ -204,7 +203,7 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
 <div class="row g-2">
     <div class="col-10">
     <div class="d-grid gap-2 col-6 mx-auto">
-        <button type="submit" class="btn btn-danger" name= "apostar" id= "apostar">Apostar</button>
+        <button type="submit" class="btn btn-danger" name= "apostarArg" id= "apostarArg">Apostar</button>
     </div>
     </div>
     </form>
@@ -234,7 +233,7 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
                             <div class="modal-footer">
                             <form method="POST">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" name="todo" id="todo" class="btn btn-primary">Voy por todo</button>
+                                <button type="submit" name="todoArg" id="todoArg" class="btn btn-primary">Voy por todo</button>
                             </div>
                         </form>
                     </div>
@@ -245,17 +244,24 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
 
 
     <?php  
-  if (isset($_POST["apostar"])){ 
+  if (isset($_POST["apostarArg"])){ 
     cargarApuesta("apuesta_torneoarg", $Fecha, $ValorApuesta, "apuestaTorneoArg.php");
+    $CantidadApostadoresArg=saberCantApostadores("apuesta_torneoarg",$Fecha);
+    $PremioArg=$CantidadApostadoresArg*$ValorApuesta*70/100;
+    $_SESSION['premioArg'] = $PremioArg;
   }
-  if (isset($_POST["todo"])){ 
+  if (isset($_POST["todoArg"])){ 
     cargarApuesta("apuesta_torneoarg","todo","2000", "apuestaTorneoArg.php");
+    $CantidadApostadoresTotalArg=saberCantApostadores("apuesta_torneoarg","todo");
+    $PremioTotalArg=$CantidadApostadoresTotalArg*2000*70/100;
+    $_SESSION['premioTotalArg'] = $PremioTotalArg;
 }?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="../js\simplyCountdown.min.js"></script>
-    <script src="../js\cuentaRegresivaTorneoArg.js"></script>
+
+    <script src="../js/simplyCountdown.min.js"></script>
+    <script src="../js/cuentaRegresivaTorneoArg.js"></script>
 
 
    

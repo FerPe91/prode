@@ -5,9 +5,7 @@
 body {
   background: black;
   overflow: hidden;
-  
   text-align: center;
-  color: transparent;
   backface-visibility: hidden;
 }
 
@@ -15,9 +13,11 @@ span {
   display: inline-block;
   text-shadow: 0 0 0 rgb(22, 22, 22);
   animation: smoky 8s 8s both;
-  font-size:60px;
 }
 
+#titulo{
+  font-size:60px;
+}
 span:nth-child(even){
   animation-name: smoky-mirror;
 }

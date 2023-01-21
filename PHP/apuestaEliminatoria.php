@@ -187,6 +187,9 @@ $_SESSION['premio'] = $Premio;
     <?php  
   if (isset($_POST["apostar"])){ 
   cargarApuesta("apuesta_eliminatorias", $NombreDeFecha, $ValorApuesta, "apuestaEliminatoria.php");
+  $CantidadApostadores=saberCantApostadores("apuesta_eliminatorias",$NombreDeFecha);
+  $Premio=$CantidadApostadores*$ValorApuesta*70/100;
+  $_SESSION['premio'] = $Premio;
 }?>
 
 

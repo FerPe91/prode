@@ -1084,30 +1084,57 @@ $_SESSION['premioGH'] = $PremioGH;
     <?php  
   if (isset($_POST["apostarGA"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoA", $ValorApuesta, "apuestaLibertadores.php");
+    $CantidadApostadoresGA=saberCantApostadores("apuesta_libertadores","GrupoA");
+    $PremioGA=$CantidadApostadoresGA*$ValorApuesta*70/100;
+    $_SESSION['premioGA'] = $PremioGA;
   }
   if (isset($_POST["apostarGB"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoB", $ValorApuesta, "apuestaLibertadores.php");
+    $CantidadApostadoresGB=saberCantApostadores("apuesta_libertadores","GrupoB");
+    $PremioGB=$CantidadApostadoresGB*$ValorApuesta*70/100;
+    $_SESSION['premioGB'] = $PremioGB;;
   }
   if (isset($_POST["apostarGC"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoC", $ValorApuesta, "apuestaLibertadores.php");
-  }
+    $CantidadApostadoresGC=saberCantApostadores("apuesta_libertadores","GrupoC");
+    $PremioGC=$CantidadApostadoresGC*$ValorApuesta*70/100;
+    $_SESSION['premioGC'] = $PremioGC;
+}
   if (isset($_POST["apostarGD"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoD", $ValorApuesta, "apuestaLibertadores.php");
+    $CantidadApostadoresGD=saberCantApostadores("apuesta_libertadores","GrupoD");
+    $PremioGD=$CantidadApostadoresGD*$ValorApuesta*70/100;
+    $_SESSION['premioGD'] = $PremioGD;
   }
   if (isset($_POST["apostarGE"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoE", $ValorApuesta, "apuestaLibertadores.php");
+    $CantidadApostadoresGE=saberCantApostadores("apuesta_libertadores","GrupoE");
+    $PremioGE=$CantidadApostadoresGE*$ValorApuesta*70/100;
+    $_SESSION['premioGE'] = $PremioGE;
   }
   if (isset($_POST["apostarGF"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoF", $ValorApuesta, "apuestaLibertadores.php");
+    $CantidadApostadoresGF=saberCantApostadores("apuesta_libertadores","GrupoF");
+    $PremioGF=$CantidadApostadoresGF*$ValorApuesta*70/100;
+    $_SESSION['premioGF'] = $PremioGF;
   }
   if (isset($_POST["apostarGG"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoG", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoG", $ValorApuesta, "apuestaLibertadores.php");    
+    $CantidadApostadoresGG=saberCantApostadores("apuesta_libertadores","GrupoG");
+    $PremioGG=$CantidadApostadoresGG*$ValorApuesta*70/100;
+    $_SESSION['premioGG'] = $PremioGG;
   }
   if (isset($_POST["apostarGH"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoH", $ValorApuesta, "apuestaLibertadores.php");
+    $CantidadApostadoresGH=saberCantApostadores("apuesta_libertadores","GrupoH");
+    $PremioGH=$CantidadApostadoresGH*$ValorApuesta*70/100;
+    $_SESSION['premioGH'] = $PremioGH;
+  
   }
-   
    ?>
+
+
+
 
 
 
