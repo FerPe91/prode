@@ -110,6 +110,7 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
         timer: 1500
       });
       });
+
       setTimeout( function() { window.location.href = $direccion; }, 1500 );
       </script>';
      
@@ -238,7 +239,7 @@ function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $Arra
     $actualizarPuntaje = "UPDATE $tabla1 SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
     mysqli_query($conexion, $actualizarPuntaje);
   };
-};
+  };
    
      
     return $ArrayPuntajes;
@@ -290,4 +291,9 @@ function editarSaldo ($saldoU, $cuenta){
       setTimeout( function() { window.location.href = "home.php"; }, 0 );
       </script>';
     }
+};
+
+function premios ($tabla, $fecha, $valorApuesta){
+  $CantidadApostadores=saberCantApostadores($tabla,$fecha);
+  return $CantidadApostadores*$valorApuesta*70/100;
 }

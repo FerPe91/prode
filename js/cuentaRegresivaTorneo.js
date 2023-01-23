@@ -1,4 +1,4 @@
-implyCountdown('#reloj', {
+simplyCountdown('#reloj', {
     year: 2023, // required
     month: 1, // required
     day: 28, // required

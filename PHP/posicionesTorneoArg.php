@@ -22,12 +22,16 @@ $PuntajesTotal=cargarPuntajesTotal("apuesta_torneoarg", $PuntajesTotal, $Apostad
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="../CSS/styleTextTorneoArg.css">
+<link rel="stylesheet" href="../CSS/styleTextTorneoArgen.css">
 </head>
 
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
-<div id="titulo"><span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span></div>
 
+<div class="col-10 container-fluid">
+    <div class="word">
+	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
+    </div>
+    </div>
 
 <div class="container px-4 text-center" >
   <div class="row gx-5" >
@@ -222,3 +226,20 @@ $(document).ready( function () {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
 
 
+<script>
+    const spans = document.querySelectorAll('.word span');
+
+spans.forEach((span, idx) => {
+	span.addEventListener('click', (e) => {
+		e.target.classList.add('active');
+	});
+	span.addEventListener('animationend', (e) => {
+		e.target.classList.remove('active');
+	});
+	
+	// Initial animation
+	setTimeout(() => {
+		span.classList.add('active');
+	}, 750 * (idx+1))
+});
+</script>    

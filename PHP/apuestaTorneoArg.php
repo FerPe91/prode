@@ -4,20 +4,12 @@ include("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
-/////definir valor de la apuesta////
-$ValorApuesta= 500;
-$Fecha = "fecha1";
 
-///IMPORTANTE///
-//El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
-/////////////////////////////////////////////////////////
-$CantidadApostadoresArg=saberCantApostadores("apuesta_torneoarg",$Fecha);
-$PremioArg=$CantidadApostadoresArg*$ValorApuesta*70/100;
-$_SESSION['premioArg'] = $PremioArg;
+$ValorApuesta= $_SESSION['valorApuestaArgentina'];
+$NombreDeFecha = $_SESSION['nombreFechaArgentina'];
+$CantidadApostadoresArg= $_SESSION['premioArg']/($ValorApuesta*70/100);
 
-$CantidadApostadoresTotalArg=saberCantApostadores("apuesta_torneoarg","todo");
-$PremioTotalArg=$CantidadApostadoresTotalArg*2000*70/100;
-$_SESSION['premioTotalArg'] = $PremioTotalArg;
+$CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
 
 ?>
 
@@ -26,11 +18,16 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="../CSS/styleTextTorneoArg.css">
+<link rel="stylesheet" href="../CSS/styleTextTorneoArgen.css">
 </head>
 
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
-<div id="titulo"><span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span></div>
+
+<div class="col-10 container-fluid">
+    <div class="word">
+	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
+    </div>
+    </div>
 
 <div class="container text-center">
   <div class="row g-2">
@@ -192,7 +189,7 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
       <div class="card text-bg-primary mb-3" style="width: 200px">
         <div class="card-header">Informacion</div>
         <div class="card-body">
-            <p class="card-text">Valor apuesta: $ <?php echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadoresArg ?><br>Premio: $ <?php echo $PremioArg?></p>
+            <p class="card-text">Valor apuesta: $ <?php echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadoresArg ?><br>Premio: $ <?php echo $_SESSION['premioArg']?></p>
         </div>
         </div>
       </div>
@@ -208,7 +205,7 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
     </div>
     </form>
     <div class="col-2">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 200px; margin-left:25px" class="btn btn-warning btn-lg">Voy por todo el torneo</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 200px; margin-left:25px; margin-top:-10px" class="btn btn-warning btn-lg">Voy por todo el torneo</button>
     </div>
     </div> 
 </div>
@@ -245,23 +242,35 @@ $_SESSION['premioTotalArg'] = $PremioTotalArg;
 
     <?php  
   if (isset($_POST["apostarArg"])){ 
-    cargarApuesta("apuesta_torneoarg", $Fecha, $ValorApuesta, "apuestaTorneoArg.php");
-    $CantidadApostadoresArg=saberCantApostadores("apuesta_torneoarg",$Fecha);
-    $PremioArg=$CantidadApostadoresArg*$ValorApuesta*70/100;
-    $_SESSION['premioArg'] = $PremioArg;
+    cargarApuesta("apuesta_torneoarg", $NombreDeFecha, $ValorApuesta, "apuestaTorneoArg.php");
+   
   }
   if (isset($_POST["todoArg"])){ 
     cargarApuesta("apuesta_torneoarg","todo","2000", "apuestaTorneoArg.php");
-    $CantidadApostadoresTotalArg=saberCantApostadores("apuesta_torneoarg","todo");
-    $PremioTotalArg=$CantidadApostadoresTotalArg*2000*70/100;
-    $_SESSION['premioTotalArg'] = $PremioTotalArg;
+
 }?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script src="../js/simplyCountdown.min.js"></script>
-    <script src="../js/cuentaRegresivaTorneoArg.js"></script>
+    <script src="../js\simplyCountdown.min.js"></script>
+    <script src="../js\cuentaRegresivaTorneo.js"></script>
 
 
-   
+    <script>
+    const spans = document.querySelectorAll('.word span');
+
+spans.forEach((span, idx) => {
+	span.addEventListener('click', (e) => {
+		e.target.classList.add('active');
+	});
+	span.addEventListener('animationend', (e) => {
+		e.target.classList.remove('active');
+	});
+	
+	// Initial animation
+	setTimeout(() => {
+		span.classList.add('active');
+	}, 750 * (idx+1))
+});
+</script>    

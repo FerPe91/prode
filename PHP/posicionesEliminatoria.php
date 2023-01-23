@@ -46,7 +46,7 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body" style="background-color:Cornsilk">
-                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premio'])?></h3> </div>
+                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioEliminatoria'])?></h3> </div>
                 <table id="table_id" class="display" >
                                     <thead>
                                         <tr>

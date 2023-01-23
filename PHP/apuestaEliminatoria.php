@@ -4,17 +4,9 @@ include("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
-/////definir valor de la apuesta y nombre de la misma////
-$ValorApuesta= 500;
-$NombreDeFecha = "fecha1y2";
-
-///IMPORTANTE///
-//El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
-/////////////////////////////////////////////////////////
-
-$CantidadApostadores=saberCantApostadores("apuesta_eliminatorias",$NombreDeFecha);
-$Premio=$CantidadApostadores*$ValorApuesta*70/100;
-$_SESSION['premio'] = $Premio;
+$ValorApuesta= $_SESSION['valorApuestaEliminatoria'];
+$NombreDeFecha= $_SESSION['nombreFechaEliminatoria'];
+$CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 ?>
 
 
@@ -161,7 +153,7 @@ $_SESSION['premio'] = $Premio;
           <div class="card text-bg-primary mb-3" style="width: 200px">
             <div class="card-header">Informacion</div>
             <div class="card-body">
-                <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $Premio?></p>
+                <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $_SESSION['premioEliminatoria']?></p>
             </div>
           </div>
           </div>
@@ -186,10 +178,9 @@ $_SESSION['premio'] = $Premio;
 
     <?php  
   if (isset($_POST["apostar"])){ 
+  
   cargarApuesta("apuesta_eliminatorias", $NombreDeFecha, $ValorApuesta, "apuestaEliminatoria.php");
-  $CantidadApostadores=saberCantApostadores("apuesta_eliminatorias",$NombreDeFecha);
-  $Premio=$CantidadApostadores*$ValorApuesta*70/100;
-  $_SESSION['premio'] = $Premio;
+  
 }?>
 
 
