@@ -6,32 +6,32 @@ require ('../funciones/funciones.php');
 
 $Apostadores1= [];
 $Puntajes1 = [];
-$Apostadores2= [];
-$Puntajes2 = [];
+$ApostadoresTotal= [];
+$PuntajesTotal = [];
 
 
 
-$Apostadores1=cargarApostadores("apuesta_eliminatorias", "fecha1y2", $Apostadores1);
-$Puntajes1=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha1y2", $Puntajes1, $Apostadores1);
+$Apostadores1=cargarApostadores("apuesta_torneoarg", "fecha1", $Apostadores1);
+$Puntajes1=cargarPuntajesPorFecha("apuesta_torneoarg", "resultados_torneoarg", "fecha1", $Puntajes1, $Apostadores1);
 
-$Apostadores2=cargarApostadores("apuesta_eliminatorias", "fecha3y4", $Apostadores2);
-$Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha3y4", $Puntajes2, $Apostadores2);
-
-
-
+$ApostadoresTotal=cargarApostadores("apuesta_torneoarg", "todo", $ApostadoresTotal);
+$PuntajesTotal=cargarPuntajesTotal("apuesta_torneoarg", $PuntajesTotal, $ApostadoresTotal);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../CSS/styleTextEliminatorias.css">
+
+<link rel="stylesheet" href="../CSS/styleTextTorneoArgen.css">
 </head>
 
-<body style= "background-image: url('../img/fondo.png'); background-size: cover">  
-<h1 data-shadow='Eliminatorias'>Eliminatorias</h1>
+<body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
 
-<body style= "background-image: url('../img/fondo.png'); background-size: cover">
-
+<div class="col-10 container-fluid">
+    <div class="word">
+	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
+    </div>
+    </div>
 
 <div class="container px-4 text-center" >
   <div class="row gx-5" >
@@ -41,12 +41,12 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
             <div class="accordion-item" >
                 <h2 class="accordion-header" id="headingOne" >
                 <button class="accordion-button collapsed" style="background-color:#FFE4B5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                   Fecha 1 y 2 
+                   Fecha 1 
                 </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body" style="background-color:Cornsilk">
-                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioEliminatoria'])?></h3> </div>
+                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioArg'])?></h3> </div>
                 <table id="table_id" class="display" >
                                     <thead>
                                         <tr>
@@ -64,11 +64,11 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
                                         </tr>
                                         <?php  }   ?>            
                                     </tbody>
-                            </table> 
+                </table> 
                 </div>
                 </div>
-            </div>
-            <div class="accordion-item">
+                </div>
+            <!-- <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Fecha 3 y 4
@@ -164,21 +164,47 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
                 </div>
                 </div>
             </div>
+        </div> -->
         </div>
-        </div>
-    
     </div>
            
     </div>
-  </div>
+    <div class="col-6">
+            <div class="p-3">
+            <div class="card text-bg mb-3" style="max-width: 30rem;background-color:MistyRose; color: black">
+                <div><h2>Tabla Torneo</h2></div>
+                <div class="card-body">
+                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioTotalArg'])?></h3> </div>
+                    <table id="table_id2" class="display">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Usuario</th>
+                                                    <th>Puntaje</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
+                                                    <tr class="table-info">
+                                       
+                                                            <td><?php echo $ApostadoresTotal[$i]; ?></td>
+                                                            <td><?php echo  $PuntajesTotal[$i]; ?></td>   
+                                                    </tr>
+                                                    <?php  }   ?>            
+                                                </tbody>
+                    </table>
+                </div>
+                </div>      
+            </div>
+            </div> 
+    </div>
 </div>
-
+</div>
 </body>        
 
 
 <script>
 $(document).ready( function () {
-    $('#table_id' ).DataTable({
+    $('#table_id, #table_id2' ).DataTable({
        
         "pageLength": 8,
         "searching": false,
@@ -200,3 +226,20 @@ $(document).ready( function () {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
 
 
+<script>
+    const spans = document.querySelectorAll('.word span');
+
+spans.forEach((span, idx) => {
+	span.addEventListener('click', (e) => {
+		e.target.classList.add('active');
+	});
+	span.addEventListener('animationend', (e) => {
+		e.target.classList.remove('active');
+	});
+	
+	// Initial animation
+	setTimeout(() => {
+		span.classList.add('active');
+	}, 750 * (idx+1))
+});
+</script>    

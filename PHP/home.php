@@ -3,6 +3,59 @@ include("../configuracion/cabecera.php");
 require('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
+//desde aqui cambiamos los parametros de fechas y valor de apuesta
+//El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
+
+//////////////ELIMINATORIAS/////////////////
+$NombreFechaEliminatoria = "fecha1y2";
+$ValorApuestaEliminatoria = 500;
+///////////////////////////////////
+$PremioEliminatoria = premios ("apuesta_eliminatorias", $NombreFechaEliminatoria, $ValorApuestaEliminatoria);
+$_SESSION['nombreFechaEliminatoria'] = $NombreFechaEliminatoria;
+$_SESSION['valorApuestaEliminatoria'] =$ValorApuestaEliminatoria;
+$_SESSION['premioEliminatoria'] = $PremioEliminatoria;
+
+//////////////TORNEO ARGENTINO///////////////////////
+$NombreFechaArgentina = "fecha1";
+$ValorApuestaArgentina = 500;
+///////////////////////////////
+$PremioArg = premios ("apuesta_torneoarg", $NombreFechaArgentina, $ValorApuestaArgentina);
+$_SESSION['nombreFechaArgentina'] = $NombreFechaArgentina;
+$_SESSION['valorApuestaArgentina'] =$ValorApuestaArgentina;
+$_SESSION['premioArg'] = $PremioArg;
+
+$PremioArgTotal = premios ("apuesta_torneoarg", "todo", 2000);
+$_SESSION['premioTotalArg'] = $PremioArgTotal;
+
+////////////LIBERTADORES//////////////////////////
+$ValorApuestaLibertadores = 500;
+////////////////////////////////////////////
+$_SESSION['valorApuestaLibertadores'] =$ValorApuestaLibertadores;
+$PremioLibGA = premios ("apuesta_libertadores","GrupoA", $ValorApuestaLibertadores);
+$_SESSION['premioGA'] = $PremioLibGA;
+
+$PremioLibGB = premios ("apuesta_libertadores","GrupoB", $ValorApuestaLibertadores);
+$_SESSION['premioGB'] = $PremioLibGB;
+
+$PremioLibGC = premios ("apuesta_libertadores","GrupoC", $ValorApuestaLibertadores);
+$_SESSION['premioGC'] = $PremioLibGC;
+
+$PremioLibGD = premios ("apuesta_libertadores","GrupoD", $ValorApuestaLibertadores);
+$_SESSION['premioGD'] = $PremioLibGD;
+
+$PremioLibGE = premios ("apuesta_libertadores","GrupoE", $ValorApuestaLibertadores);
+$_SESSION['premioGE'] = $PremioLibGE;
+
+$PremioLibGF = premios ("apuesta_libertadores","GrupoF", $ValorApuestaLibertadores);
+$_SESSION['premioGF'] = $PremioLibGF;
+
+$PremioLibGG = premios ("apuesta_libertadores","GrupoG", $ValorApuestaLibertadores);
+$_SESSION['premioGG'] = $PremioLibGG;
+
+$PremioLibGH = premios ("apuesta_libertadores","GrupoH", $ValorApuestaLibertadores);
+$_SESSION['premioGH'] = $PremioLibGH;
+
+
 $usuarioI= $_SESSION["usuario"]; //guardo en la variable el usuario que ingreso
 $consultaUsuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario = '$usuarioI'");//preparo los datos
 $datosUsuario = mysqli_fetch_array($consultaUsuario);//paso los datos a un "arreglo"
@@ -10,6 +63,7 @@ $saldoU = $datosUsuario["saldo"]; //del arreglo utilizo el campo saldo
 $nombreU = $datosUsuario["nombre"];
 
 $time = time();
+
 ?>
 
 <!DOCTYPE html>
@@ -17,19 +71,24 @@ $time = time();
 <head>
 
     <title>Home</title>
-    <link rel="stylesheet" href="../CSS/styleHome.css">
+    <link rel="stylesheet" href="../CSS/StyleHome.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body>
+<body style= "background-image: url('../img/fondoHome.png'); background-size: cover">  
 
-
-    <div class="col-3 container-fluid">
-        <div class=" container-fluid d-flex justify-content-between pb-1 mx-1 rounded-bottom-1 text-warning bg-primary ">
-            <h6>Hoy: <?php echo date("d-m-Y");?></h6>
-            <h6>Hora: <?php echo date(("H:i"));?></h6>
-        </div>
+    <div id="titulo">
+	<span>H</span>
+	<span>O</span>
+	<span>M</span>
+	<span>E</span>
     </div>
+    
+
+    <!-- <div class=" container-fluid d-flex justify-content-between pb-1 mx-1 rounded-bottom-1 text-warning ">
+            <h6><?php echo date("d-m-Y");?></h6>
+            <h6><?php echo date(("H:i"));?></h6>
+    </div> -->
     
     <div class="col-12 row container-fluid d-flex justify-content-center" style="height:400px; margin-top:20px">
 
@@ -62,7 +121,7 @@ $time = time();
                         <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaLibertadores.php'">Copa Libertadores</button>
                     </div>
                     <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href=''">Liga Argentina</button>
+                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaTorneoArg.php'">Liga Argentina</button>
                     </div>
                 </div>
             </div>
@@ -86,7 +145,7 @@ $time = time();
             </div>
             
             <div type= "button" data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info" data-bs-toggle="collapse" href="#desplega" role="button" aria-expanded="false" aria-controls="desplega">
-                <h3>TABLAS</h3>
+                <h3>TABLAS ▼</h3>
 
                 <div >
                 <div class="collapse bg-transparent" id="desplega">
@@ -103,7 +162,7 @@ $time = time();
                     </div>
                     <div class="col-4">
                     <div class="card bg-transparent" style="width: 12rem;">
-                        <img src="../img/ligaArg.png" class="card-img-top" type="button" onclick="location.href='posicionesEliminatoria.php'">   
+                        <img src="../img/ligaArg.png" class="card-img-top" type="button" onclick="location.href='posicionesTorneoArg.php'">   
                     </div>
                     </div>
                 </div>
@@ -180,7 +239,7 @@ $time = time();
             </div>
         </div>
     </div>
-
+    
     <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -234,3 +293,5 @@ if(isset($_POST["retirarSaldo"])){
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
+
+

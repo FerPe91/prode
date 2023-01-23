@@ -77,6 +77,24 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
         $P12 = $_POST['p12'];
         
         $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '$P11', '$P12', '0' )";
+      
+      }elseif($tabla == "apuesta_torneoarg"){
+        $P1 = $_POST['p1'];
+        $P2 = $_POST['p2'];
+        $P3 = $_POST['p3'];
+        $P4 = $_POST['p4'];
+        $P5 = $_POST['p5'];
+        $P6 = $_POST['p6'];
+        $P7 = $_POST['p7'];
+        $P8 = $_POST['p8'];
+        $P9 = $_POST['p9'];
+        $P10 = $_POST['p10'];
+        $P11 = $_POST['p11'];
+        $P12 = $_POST['p12'];
+        $P13 = $_POST['p13'];
+        $P14 = $_POST['p14'];
+        
+        $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$fecha', '$P1', '$P2', '$P3', '$P4', '$P5', '$P6', '$P7', '$P8', '$P9', '$P10', '$P11', '$P12', '$P13', '$P14', '0' )";
       }
      
         mysqli_query($conexion, $insertar); //si el saldo es suficiente carga la apuesta
@@ -92,6 +110,7 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
         timer: 1500
       });
       });
+
       setTimeout( function() { window.location.href = $direccion; }, 1500 );
       </script>';
      
@@ -182,7 +201,46 @@ function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $Arra
       $actualizarPuntaje = "UPDATE $tabla1 SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
       mysqli_query($conexion, $actualizarPuntaje);
     };
+
+  }elseif($tabla1 == "apuesta_torneoarg"){
+    for($i=0; $i<count($ArrayApostadores); $i++) {
+      
+      $partido1=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p1 = $tabla2.p1 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos = mysqli_num_rows($partido1);
+      $partido2=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p2 = $tabla2.p2 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido2);
+      $partido3=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p3 = $tabla2.p3 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido3);
+      $partido4=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p4 = $tabla2.p4 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido4);
+      $partido5=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p5 = $tabla2.p5 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido5);
+      $partido6=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p6 = $tabla2.p6 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido6);
+      $partido7=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p7 = $tabla2.p7 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido7);
+      $partido8=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p8 = $tabla2.p8 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido8);
+      $partido9=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p9 = $tabla2.p9 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido9);
+      $partido10=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p10 = $tabla2.p10 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido10);
+      $partido11=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p11 = $tabla2.p11 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido11);
+      $partido12=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p12 = $tabla2.p12 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido12);
+      $partido13=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p13 = $tabla2.p13 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido13);
+      $partido14=mysqli_query($conexion,"SELECT * FROM $tabla1 inner join $tabla2 on $tabla1.fecha = $tabla2.fecha where $tabla1.usuario = '$ArrayApostadores[$i]' and $tabla1.p14 = $tabla2.p14 and $tabla1.fecha = '$fechas'");
+      $SumaPuntos += mysqli_num_rows($partido14);
+
+
+      array_push($ArrayPuntajes, $SumaPuntos*5);
+    $actualizarPuntaje = "UPDATE $tabla1 SET puntaje = '$SumaPuntos' WHERE usuario = '$ArrayApostadores[$i]' And fecha='$fechas'";
+    mysqli_query($conexion, $actualizarPuntaje);
   };
+  };
+   
      
     return $ArrayPuntajes;
 };
@@ -233,4 +291,9 @@ function editarSaldo ($saldoU, $cuenta){
       setTimeout( function() { window.location.href = "home.php"; }, 0 );
       </script>';
     }
+};
+
+function premios ($tabla, $fecha, $valorApuesta){
+  $CantidadApostadores=saberCantApostadores($tabla,$fecha);
+  return $CantidadApostadores*$valorApuesta*70/100;
 }

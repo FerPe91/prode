@@ -4,21 +4,9 @@ include("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
-/////definir valor de la apuesta y nombre de la misma////
-$ValorApuesta= 500;
-$NombreDeFecha = "fecha1y2";
-
-///IMPORTANTE///
-//El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
-/////////////////////////////////////////////////////////
-
-$CantidadApostadores=saberCantApostadores("apuesta_eliminatorias",$NombreDeFecha);
-$Premio=$CantidadApostadores*$ValorApuesta*70/100;
-$CantidadApostadoresTotal=saberCantApostadores("apuesta_eliminatorias","todo");
-$PremioTotal=$CantidadApostadoresTotal*2000*70/100;
-$_SESSION['premio'] = $Premio;
-$_SESSION['premioTotal'] = $PremioTotal;
-
+$ValorApuesta= $_SESSION['valorApuestaEliminatoria'];
+$NombreDeFecha= $_SESSION['nombreFechaEliminatoria'];
+$CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 ?>
 
 
@@ -158,48 +146,41 @@ $_SESSION['premioTotal'] = $PremioTotal;
                     <td>PAR</td>
                 </tr>
         </table>
-        <div class="d-grid gap-2">
-    <button type="submit" class="btn btn-outline-success" name= "apostar" id= "apostar">Apostar Fecha 1 y 2</button>
-    </div>
-</form>
-    </div>
+        </div>
+        </div> 
+        <div class="col-2">
+          <div class="p-3">
+          <div class="card text-bg-primary mb-3" style="width: 200px">
+            <div class="card-header">Informacion</div>
+            <div class="card-body">
+                <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $_SESSION['premioEliminatoria']?></p>
+            </div>
+          </div>
+          </div>
+        </div>
+  </div>
 </div> 
 
-
-<div class="col-2">
-      <div class="p-3">
-      <div class="card text-bg-primary mb-3" style="width: 200px">
-        <div class="card-header">Informacion</div>
-        <div class="card-body">
-            <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $Premio?></p>
-        </div>
-        </div>
-      </div>
+<div class="container text-center">
+<div class="row g-2">
+    <div class="col-10">
+    <div class="d-grid gap-2 col-6 mx-auto">
+    <button type="submit" class="btn btn-outline-success" name= "apostar" id= "apostar">Apostar Fecha 1 y 2</button>
+    </div>
+    </div>
+    </form>
 </div>
+</div> 
 
-
-
-<div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">Jugatela en el torneo</h4>
-  <p>
-    ¡¡Participa por el premio mayor!! al finalizar las eliminatorias quien haya sumado mas puntos en todas las fechas se lleva el premio mas grande.<br>Valor de la apuesta $ 2000 (por unica vez)  
-  </p>
-  <hr>
-  <form method="POST">
-  <button type="submit" class="btn btn-outline-success" name= "apostarTodo" id= "apostarTodo">Voy por todo</button>
-  </form>
-</div>
-  
 
   </body>
   </html>
 
     <?php  
   if (isset($_POST["apostar"])){ 
+  
   cargarApuesta("apuesta_eliminatorias", $NombreDeFecha, $ValorApuesta, "apuestaEliminatoria.php");
-}
-  if (isset($_POST["apostarTodo"])){ 
-    cargarApuesta("apuesta_eliminatorias","todo","2000", "apuestaEliminatoria.php");
+  
 }?>
 
 

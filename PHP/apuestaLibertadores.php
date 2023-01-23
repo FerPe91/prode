@@ -4,46 +4,18 @@ include("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
-/////definir valor de la apuesta////
-$ValorApuesta= 500;
 
+$ValorApuesta= $_SESSION['valorApuestaLibertadores'];
+$CantidadApostadoresGA= $_SESSION['premioGA']/($ValorApuesta*70/100);
+$CantidadApostadoresGB= $_SESSION['premioGB']/($ValorApuesta*70/100);
+$CantidadApostadoresGC= $_SESSION['premioGC']/($ValorApuesta*70/100);
+$CantidadApostadoresGD= $_SESSION['premioGD']/($ValorApuesta*70/100);
+$CantidadApostadoresGE= $_SESSION['premioGE']/($ValorApuesta*70/100);
+$CantidadApostadoresGF= $_SESSION['premioGF']/($ValorApuesta*70/100);
+$CantidadApostadoresGG= $_SESSION['premioGG']/($ValorApuesta*70/100);
+$CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 
-///IMPORTANTE///
-//El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS
-/////////////////////////////////////////////////////////
-$CantidadApostadoresGA=saberCantApostadores("apuesta_libertadores","GrupoA");
-$PremioGA=$CantidadApostadoresGA*$ValorApuesta*70/100;
-$_SESSION['premioGA'] = $PremioGA;
-
-$CantidadApostadoresGB=saberCantApostadores("apuesta_libertadores","GrupoB");
-$PremioGB=$CantidadApostadoresGB*$ValorApuesta*70/100;
-$_SESSION['premioGB'] = $PremioGB;
-
-$CantidadApostadoresGC=saberCantApostadores("apuesta_libertadores","GrupoC");
-$PremioGC=$CantidadApostadoresGC*$ValorApuesta*70/100;
-$_SESSION['premioGC'] = $PremioGC;
-
-$CantidadApostadoresGD=saberCantApostadores("apuesta_libertadores","GrupoD");
-$PremioGD=$CantidadApostadoresGD*$ValorApuesta*70/100;
-$_SESSION['premioGD'] = $PremioGD;
-
-$CantidadApostadoresGE=saberCantApostadores("apuesta_libertadores","GrupoE");
-$PremioGE=$CantidadApostadoresGE*$ValorApuesta*70/100;
-$_SESSION['premioGE'] = $PremioGE;
-
-$CantidadApostadoresGF=saberCantApostadores("apuesta_libertadores","GrupoF");
-$PremioGF=$CantidadApostadoresGF*$ValorApuesta*70/100;
-$_SESSION['premioGF'] = $PremioGF;
-
-$CantidadApostadoresGG=saberCantApostadores("apuesta_libertadores","GrupoG");
-$PremioGG=$CantidadApostadoresGG*$ValorApuesta*70/100;
-$_SESSION['premioGG'] = $PremioGG;
-
-$CantidadApostadoresGH=saberCantApostadores("apuesta_libertadores","GrupoH");
-$PremioGH=$CantidadApostadoresGH*$ValorApuesta*70/100;
-$_SESSION['premioGH'] = $PremioGH;
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -315,14 +287,14 @@ $_SESSION['premioGH'] = $PremioGH;
                 Cada grupo es una apuesta independiente.<br><br>
                 Valor de la apuesta por grupo: $ <?php  echo $ValorApuesta?><hr size="2px" color="black"/>
                 Todas las apuesta finalizan en: <div id="reloj"></div><hr size="2px" color="black"/>
-                Grupo A<br>Apostadores: <?php  echo $CantidadApostadoresGA?><br>Premio: $<?php  echo $PremioGA?><hr size="2px" color="black"/>
-                Grupo B<br>Apostadores: <?php  echo $CantidadApostadoresGB?><br>Premio: $<?php  echo $PremioGB?><hr size="2px" color="black"/>
-                Grupo C<br>Apostadores: <?php  echo $CantidadApostadoresGC?><br>Premio: $<?php  echo $PremioGC?><hr size="2px" color="black"/>
-                Grupo D<br>Apostadores: <?php  echo $CantidadApostadoresGD?><br>Premio: $<?php  echo $PremioGD?><hr size="2px" color="black"/>
-                Grupo E<br>Apostadores: <?php  echo $CantidadApostadoresGE?><br>Premio: $<?php  echo $PremioGE?><hr size="2px" color="black"/>
-                Grupo F<br>Apostadores: <?php  echo $CantidadApostadoresGF?><br>Premio: $<?php  echo $PremioGF?><hr size="2px" color="black"/>
-                Grupo G<br>Apostadores: <?php  echo $CantidadApostadoresGG?><br>Premio: $<?php  echo $PremioGG?><hr size="2px" color="black"/>
-                Grupo H<br>Apostadores: <?php  echo $CantidadApostadoresGH?><br>Premio: $<?php  echo $PremioGH?><hr size="2px" color="black"/>
+                Grupo A<br>Apostadores: <?php  echo $CantidadApostadoresGA?><br>Premio: $<?php  echo $_SESSION['premioGA']?><hr size="2px" color="black"/>
+                Grupo B<br>Apostadores: <?php  echo $CantidadApostadoresGB?><br>Premio: $<?php  echo $_SESSION['premioGB']?><hr size="2px" color="black"/>
+                Grupo C<br>Apostadores: <?php  echo $CantidadApostadoresGC?><br>Premio: $<?php  echo $_SESSION['premioGC']?><hr size="2px" color="black"/>
+                Grupo D<br>Apostadores: <?php  echo $CantidadApostadoresGD?><br>Premio: $<?php  echo $_SESSION['premioGD']?><hr size="2px" color="black"/>
+                Grupo E<br>Apostadores: <?php  echo $CantidadApostadoresGE?><br>Premio: $<?php  echo $_SESSION['premioGE']?><hr size="2px" color="black"/>
+                Grupo F<br>Apostadores: <?php  echo $CantidadApostadoresGF?><br>Premio: $<?php  echo $_SESSION['premioGF']?><hr size="2px" color="black"/>
+                Grupo G<br>Apostadores: <?php  echo $CantidadApostadoresGG?><br>Premio: $<?php  echo $_SESSION['premioGG']?><hr size="2px" color="black"/>
+                Grupo H<br>Apostadores: <?php  echo $CantidadApostadoresGH?><br>Premio: $<?php  echo $_SESSION['premioGH']?><hr size="2px" color="black"/>
             </p>
         </div>
         </div>
@@ -1084,33 +1056,37 @@ $_SESSION['premioGH'] = $PremioGH;
     <?php  
   if (isset($_POST["apostarGA"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoA", $ValorApuesta, "apuestaLibertadores.php");
+
   }
   if (isset($_POST["apostarGB"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoB", $ValorApuesta, "apuestaLibertadores.php");
+ 
   }
   if (isset($_POST["apostarGC"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoC", $ValorApuesta, "apuestaLibertadores.php");
-  }
+
+}
   if (isset($_POST["apostarGD"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoD", $ValorApuesta, "apuestaLibertadores.php");
+   
   }
   if (isset($_POST["apostarGE"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoE", $ValorApuesta, "apuestaLibertadores.php");
+
   }
   if (isset($_POST["apostarGF"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoF", $ValorApuesta, "apuestaLibertadores.php");
+
   }
   if (isset($_POST["apostarGG"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoG", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoG", $ValorApuesta, "apuestaLibertadores.php");    
+
   }
   if (isset($_POST["apostarGH"])){ 
     cargarApuesta("apuesta_libertadores", "GrupoH", $ValorApuesta, "apuestaLibertadores.php");
+ 
   }
-   
    ?>
-
-
-
 
 <script src="../js\simplyCountdown.min.js"></script>
 <script src="../js\cuentaRegresivaLibertadores.js"></script>

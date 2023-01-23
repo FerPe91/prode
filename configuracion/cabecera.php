@@ -2,6 +2,7 @@
 <?php 
 require ('conexion.php');
 
+
 session_start();
 $UsuarioI = $_SESSION["usuario"];
 
