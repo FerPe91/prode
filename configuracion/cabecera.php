@@ -18,7 +18,8 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     
 
 
     <link rel="stylesheet" href="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.min.css">
@@ -49,31 +50,24 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
     
 </h1>
     <ul class="navbar-nav">
-            <div class="col- mr-4">
-                <span style="color:#00FFFF;">
-                    <i class="fa-solid fa-user fa-1xl"></i>
-                </span>
-            </div>
             
             <li>
                 <div class="row">
-                    <a style="color:#00FFFF; font-weight: bold;">Usuario: <?php echo $UsuarioI ?></a>
+                    <a style="color:black; font-weight: bold;">Usuario: <?php echo $UsuarioI ?></a>
                 </div>    
                 <div class="row">
-                    <a style="color:#00FFFF;font-weight: bold;">Saldo: $ <?php echo $SaldoUsuario["saldo"]?></a>
+                    <a style="color:black;font-weight: bold;">Saldo: $ <?php echo $SaldoUsuario["saldo"]?></a>
+            </li>
+        
+            <li class="nav-item">
+            <img src="../img/Homee.png"  type= "button" class="nav-link" onclick="location.href='home.php'" style="height: 45px; width:45px; font-weight: bold" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom"></img>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=> </a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="\prode\index.php" style= "font-weight: bold">Cerrar Sesión</a>
-            </li>
-            <li class="nav-item active">
-                <a type= "button" class="nav-link" onclick="location.href='home.php'" style= "font-weight: bold">HOME</a>
+            <img src="../img/cerrar.png"  type= "button" class="nav-link" onclick="location.href='../index.php'" style="height: 45px; width:45px; font-weight: bold"></img>
             </li>
     </ul>
   </nav>
-
+>
          
     </body>
 

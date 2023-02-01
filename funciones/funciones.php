@@ -297,3 +297,47 @@ function premios ($tabla, $fecha, $valorApuesta){
   $CantidadApostadores=saberCantApostadores($tabla,$fecha);
   return $CantidadApostadores*$valorApuesta*70/100;
 }
+
+function enviarMensaje ($tabla, $id, $direccion){
+  require ('../configuracion/conexion.php');
+  $UsuarioI = $_SESSION["usuario"];
+  $EnviarMensaje = $_POST[$id];
+  date_default_timezone_set('America/Buenos_Aires');
+  $fechaActual=date("d/m  H:i");
+  $insertar = "INSERT INTO $tabla VALUES ('$UsuarioI', '$EnviarMensaje', '$fechaActual')";
+  mysqli_query($conexion, $insertar);
+  echo '
+  <script type="text/javascript"> 
+    function reload(){
+        window.location=document.location.href;
+    }
+    setTimeout(reload,1);
+</script>';
+}
+
+function UsuarioMensaje($tabla, $ArrayUsuarioMensaje){
+  require ('../configuracion/conexion.php');
+  $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla");
+  while($totalUsuario = mysqli_fetch_array($Usuarios)){
+      array_push($ArrayUsuarioMensaje, $totalUsuario["usuario"]);
+  };
+  return $ArrayUsuarioMensaje;
+}
+
+function Mensaje($tabla, $ArrayMensaje){
+  require ('../configuracion/conexion.php');
+  $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla");
+  while($totalUsuario = mysqli_fetch_array($Usuarios)){
+      array_push($ArrayMensaje, $totalUsuario["mensaje"]);
+  };
+  return $ArrayMensaje;
+}
+
+function FechaMensaje($tabla, $ArrayFechaMensaje){
+  require ('../configuracion/conexion.php');
+  $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla");
+  while($totalUsuario = mysqli_fetch_array($Usuarios)){
+      array_push($ArrayFechaMensaje, $totalUsuario["fecha"]);
+  };
+  return $ArrayFechaMensaje;
+}

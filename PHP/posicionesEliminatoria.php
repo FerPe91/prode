@@ -1,5 +1,5 @@
 <?php
-include("../configuracion/cabecera.php");
+include ("../configuracion/cabecera.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
@@ -9,22 +9,27 @@ $Puntajes1 = [];
 $Apostadores2= [];
 $Puntajes2 = [];
 
-
-
 $Apostadores1=cargarApostadores("apuesta_eliminatorias", "fecha1y2", $Apostadores1);
 $Puntajes1=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha1y2", $Puntajes1, $Apostadores1);
 
 $Apostadores2=cargarApostadores("apuesta_eliminatorias", "fecha3y4", $Apostadores2);
 $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha3y4", $Puntajes2, $Apostadores2);
 
-
-
+//////////CHAT/////////////////
+$UsuarioMensaje= [];
+$Mensaje = [];
+$FechaMensaje = [];
+$UsuarioMensaje=UsuarioMensaje("chat_eliminatorias", $UsuarioMensaje);
+$Mensaje=Mensaje("chat_eliminatorias", $Mensaje);
+$FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
+/////////////////////////
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../CSS/styleTextEliminatorias.css">
+
 </head>
 
 <body style= "background-image: url('../img/fondo.png'); background-size: cover">  
@@ -64,7 +69,7 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
                                         </tr>
                                         <?php  }   ?>            
                                     </tbody>
-                            </table> 
+                </table> 
                 </div>
                 </div>
             </div>
@@ -166,15 +171,64 @@ $Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminator
             </div>
         </div>
         </div>
-    
+    </div>   
+
+
+    <div class="col-6">
+    <div class="p-3">
+
+    <div class="card" style="border-radius: 15px;">
+          <div
+            class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <i class="fas fa-angle-left"></i>
+            <p class="mb-0 fw-bold">CHAT  </p>
+            <i class="fas fa-times"></i>
+          </div>
+          <table id="table_id2" class="display" >
+                                    <tbody>
+                                    <?php for($i=count($UsuarioMensaje)-1; $i>=0; $i--) {?>
+                                        <tr>
+                                                <td><?php echo $FechaMensaje[$i]; ?> hs</td>
+                                                <td><?php echo $UsuarioMensaje[$i];?> : <?php echo $Mensaje[$i];?></td>
+                                        </tr>
+                                        <?php  }   ?>            
+                                    </tbody>
+                </table>         
+    </div>               
     </div>
-           
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Escribir un mensaje</button>
     </div>
   </div>
 </div>
-
 </body>        
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                        <div class="mb-3">
+                <label fclass="form-label">el mensaje no debe superar los 150 caracteres.</label>
+                        </div>
+                            <div class="mb-3">
+                            <input class="form-control" placeholder="escriba aqui" required id="MensajeEliminatorias" name="MensajeEliminatorias" rows="4"></input> 
+                            </div>
+                        
+                            <button type="submit" style="margin:10px" name="cargarMensajeEliminatoria" id="cargarMensajeEliminatoria" class="btn btn-primary">Enviar</button>
+
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
 
 <script>
 $(document).ready( function () {
@@ -185,18 +239,37 @@ $(document).ready( function () {
             "lengthChange": false,
             "info": false,
             "pagingType": "full",
-  
-         
             "order": [1, 'desc'],
-          
-            
+                    
+    }) 
+} );
+
+</script>
+
+<script>
+$(document).ready( function () {
+    $('#table_id2' ).DataTable({
+        "pageLength": 5,
+        "searching": false,
+        "lengthChange": false,
+        "info": false,
+        "order": false,
+        columnDefs: [
+    {targets: 1,
+    className: 'dt-body-left',
+    } ]
+   
     }) 
 } );
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
 
 
+<?php if (isset($_POST["cargarMensajeEliminatoria"])){
+
+enviarMensaje ("chat_eliminatorias", "MensajeEliminatorias", "posicionesEliminatoria.php"); 
+
+} ?> 
