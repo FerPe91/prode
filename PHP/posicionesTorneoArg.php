@@ -17,6 +17,15 @@ $Puntajes1=cargarPuntajesPorFecha("apuesta_torneoarg", "resultados_torneoarg", "
 $ApostadoresTotal=cargarApostadores("apuesta_torneoarg", "todo", $ApostadoresTotal);
 $PuntajesTotal=cargarPuntajesTotal("apuesta_torneoarg", $PuntajesTotal, $ApostadoresTotal);
 
+//////////CHAT/////////////////
+$UsuarioMensaje= [];
+$Mensaje = [];
+$FechaMensaje = [];
+$UsuarioMensaje=UsuarioMensaje("chat_torneoarg", $UsuarioMensaje);
+$Mensaje=Mensaje("chat_torneoarg", $Mensaje);
+$FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
+/////////////////////////
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +77,36 @@ $PuntajesTotal=cargarPuntajesTotal("apuesta_torneoarg", $PuntajesTotal, $Apostad
                 </div>
                 </div>
                 </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Tabla Torneo
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body"style="background-color:Cornsilk">
+                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioTotalArg'])?></h3> </div>
+                    <table id="table_id2" class="display">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Usuario</th>
+                                                    <th>Puntaje</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
+                                                    <tr class="table-info">
+                                       
+                                                            <td><?php echo $ApostadoresTotal[$i]; ?></td>
+                                                            <td><?php echo  $PuntajesTotal[$i]; ?></td>   
+                                                    </tr>
+                                                    <?php  }   ?>            
+                                                </tbody>
+                    </table>
+                    
+                </div>
+                </div>
+            </div>
             <!-- <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -170,37 +209,60 @@ $PuntajesTotal=cargarPuntajesTotal("apuesta_torneoarg", $PuntajesTotal, $Apostad
            
     </div>
     <div class="col-6">
-            <div class="p-3">
-            <div class="card text-bg mb-3" style="max-width: 30rem;background-color:MistyRose; color: black">
-                <div><h2>Tabla Torneo</h2></div>
-                <div class="card-body">
-                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioTotalArg'])?></h3> </div>
-                    <table id="table_id2" class="display">
-                                                <thead>
-                                                    <tr>
-                                                    <th>Usuario</th>
-                                                    <th>Puntaje</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
-                                                    <tr class="table-info">
-                                       
-                                                            <td><?php echo $ApostadoresTotal[$i]; ?></td>
-                                                            <td><?php echo  $PuntajesTotal[$i]; ?></td>   
-                                                    </tr>
-                                                    <?php  }   ?>            
-                                                </tbody>
-                    </table>
-                </div>
-                </div>      
-            </div>
-            </div> 
+    <div class="p-3">
+
+    <div class="card" style="border-radius: 15px;">
+          <div
+            class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <i class="fas fa-angle-left"></i>
+            <p class="mb-0 fw-bold">CHAT  </p>
+            <i class="fas fa-times"></i>
+          </div>
+          <table id="table_id3" class="display" >
+                                    <tbody>
+                                    <?php for($i=count($UsuarioMensaje)-1; $i>=0; $i--) {?>
+                                        <tr>
+                                                <td><?php echo $FechaMensaje[$i]; ?> hs</td>
+                                                <td><?php echo $UsuarioMensaje[$i];?> : <?php echo $Mensaje[$i];?></td>
+                                        </tr>
+                                        <?php  }   ?>            
+                                    </tbody>
+                </table>         
+    </div>               
     </div>
-</div>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Escribir un mensaje</button>
+    </div>
+  </div>
 </div>
 </body>        
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                        <div class="mb-3">
+                <label fclass="form-label">el mensaje no debe superar los 150 caracteres.</label>
+                        </div>
+                            <div class="mb-3">
+                            <input class="form-control" placeholder="escriba aqui" required id="MensajeTorneoArg" name="MensajeTorneoArg" rows="4"></input> 
+                            </div>
+                        
+                            <button type="submit" style="margin:10px" name="cargarMensajeTorneoArg" id="cargarMensajeTorneoArg" class="btn btn-primary">Enviar</button>
+
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
 
 <script>
 $(document).ready( function () {
@@ -211,35 +273,37 @@ $(document).ready( function () {
             "lengthChange": false,
             "info": false,
             "pagingType": "full",
-  
-         
             "order": [1, 'desc'],
-          
-            
+                    
+    }) 
+} );
+
+</script>
+
+<script>
+$(document).ready( function () {
+    $('#table_id3' ).DataTable({
+        "pageLength": 5,
+        "searching": false,
+        "lengthChange": false,
+        "info": false,
+        "order": false,
+        columnDefs: [
+    {targets: 1,
+    className: 'dt-body-left',
+    } ]
+   
     }) 
 } );
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
 
 
-<script>
-    const spans = document.querySelectorAll('.word span');
+<?php if (isset($_POST["cargarMensajeTorneoArg"])){
 
-spans.forEach((span, idx) => {
-	span.addEventListener('click', (e) => {
-		e.target.classList.add('active');
-	});
-	span.addEventListener('animationend', (e) => {
-		e.target.classList.remove('active');
-	});
-	
-	// Initial animation
-	setTimeout(() => {
-		span.classList.add('active');
-	}, 750 * (idx+1))
-});
-</script>    
+enviarMensaje ("chat_torneoarg", "MensajeTorneoArg", "posicionesTorneoArg.php"); 
+
+} ?> 
