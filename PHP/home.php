@@ -59,8 +59,13 @@ $_SESSION['premioGH'] = $PremioLibGH;
 $usuarioI= $_SESSION["usuario"]; //guardo en la variable el usuario que ingreso
 $consultaUsuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario = '$usuarioI'");//preparo los datos
 $datosUsuario = mysqli_fetch_array($consultaUsuario);//paso los datos a un "arreglo"
-$saldoU = $datosUsuario["saldo"]; //del arreglo utilizo el campo saldo
+$apellidoU = $datosUsuario["apellido"]; 
 $nombreU = $datosUsuario["nombre"];
+$dniU = $datosUsuario["dni"]; 
+$telefonoU = $datosUsuario["telefono"];
+$claveU = $datosUsuario["clave"]; 
+$saldoU = $datosUsuario["saldo"]; 
+
 
 $time = time();
 
@@ -95,23 +100,25 @@ $time = time();
         <div data-aos="fade-right" class="col-1 h-100 d-inline-block bg-secondary" >    
         <img src="../img/atras.png"   style="margin-top:160px; margin-left: 5px"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></img>
 
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Bienvenido <?php echo $nombreU ?> </h5>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background-color: #FC1111; color:white">
+            <div class="offcanvas-header" >
+                <h3 class="offcanvas-title" id="offcanvasScrollingLabel">Bienvenido <?php echo $nombreU ?> </h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <p>Como realizar una apuesta:</p><br>
-                <p>Como cargar y retirar saldo:</p><br>
-                <p>Como ver los resultados:</p><br>
-                <p>Contacto:</p><br>
+                <a tabindex="0" style="display: flex; justify-content: center; align-items: center;  font-size: 20px; height: 85px" class="btn btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="En HACER MI APUESTA vas a poder selecionar en cual competencia quieres jugar. Para que tu apuesta sea aceptada debes completar todos los partidos, realizarla antes del tiempo establecido y contar con el saldo suficiente. Ningun jugador puede hacer mas de un pronostico en una misma apuesta.">Empezar a jugar</a>
+                <a tabindex="0" style="display: flex; justify-content: center; align-items: center;  font-size: 20px; height: 85px" class="btn btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="En SALDO podras ingresar o retirar tu dinero. Para realizar la operacion debes completar el monton (minimo $500) y tu contraseña. Tanto la carga como el retiro de saldo puede demorarse hasta 24 hs.">Cargar y retirar saldo</a>
+                <a tabindex="0" style="display: flex; justify-content: center; align-items: center;  font-size: 20px; height: 85px" class="btn btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="El premio acumulado dependenda de la cantidad de jugadores inscriptos en cada apuesta. Quien suma mas puntos se llevara todo el premio, en caso de empate en la primer posicion se repartira en partes iguales entre todos los ganadores. Por cada partido acertado se obtienen 5 puntos.">Premios y Puntuaciones</a>
+                <a tabindex="0" style="display: flex; justify-content: center; align-items: center;  font-size: 20px; height: 85px" class="btn btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="En TABLAS vas a poder ver las posiciones parciales y finales de todos los jugadores. Ademas tendras la posibilidad de divertirte con el chat.">Ver resultados</a>
+                <a tabindex="0" style="display: flex; justify-content: center; align-items: center;  font-size: 20px; height: 85px" class="btn btn" role="button" data-bs-toggle="modal" data-bs-target="#ModalPerfil">Editar Perfil</a>
+                <a tabindex="0" style="display: flex; justify-content: center; align-items: center;  font-size: 20px; height: 85px" class="btn btn" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-content="Por cualquir duda o sugerencia no dudes en escribirnos un mail a algundiatendremosmail@gmail.com">Contacto</a>              
             </div>
         </div>
     </div>
  
         <div data-aos="flip-left" class="col-2 h-100 d-inline-block p-4 bg-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
             <h3 class="col-12">HACER MI APUESTA ▼</h3>
-          
+            
             <div >
                 <div class="collapse bg-transparent" id="collapseExample">
                     <div class="card card-body p-0 mt-1 mb-1 bg-transparent">
@@ -240,7 +247,60 @@ $time = time();
         </div>
     </div>
     
-    <!-- Modal -->
+    <!-- Modal Perfil -->
+        <div class="modal fade" id="ModalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">EDITAR PERFIL</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+        <form class="row g-3" method="POST">
+      <div class="input-group input-group mb-3">
+        <label class="input-group-text" id="inputGroup-sizing-default" for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" name= "apellido" id="apellido" required value="<?php echo $apellidoU ?>">
+      </div>
+
+      <div class="input-group input-group mb-3">
+        <label class="input-group-text" id="inputGroup-sizing-default" for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="nombre" required value="<?php echo $nombreU ?>" > 
+      </div>
+
+      <div class="input-group input-group mb-3">
+        <label class="input-group-text" id="inputGroup-sizing-default" for="dni" class="form-label">Dni</label>
+        <input type="number" class="form-control" name= "dni" id="dni" value="<?php echo $dniU ?>" required>
+      </div>
+      
+      <div class="input-group input-group mb-3">
+        <label class="input-group-text" id="inputGroup-sizing-default" for="telefono" class="form-label">Telefono</label>
+        <input type="number" class="form-control" name= "telefono" id="telefono" required value="<?php echo $telefonoU ?>">
+      </div>
+  
+      <div class="input-group input-group mb-3">
+        <label class="input-group-text" id="inputGroup-sizing-default" for="contraseña" class="form-label">Clave</label>
+        <input type="password" class="form-control" name="contraseña" id="contraseña" required placeholder="ingrese su contraseña">          
+      </div>
+
+      <div class="input-group input-group mb-3">
+        <label class="input-group-text" id="inputGroup-sizing-default" for="Rcontraseña" class="form-label">Repetir Clave</label >
+        <input type="password" class="form-control" name="Rcontraseña" id="Rcontraseña" required placeholder="repita su contraseña">                       
+      </div>
+
+      <div class="input-group input-group d-flex justify-content-end mb-6">
+        <div class="col-12 input-group-text d-flex justify-content-between" id="inputGroup-sizing-default" class="form-check">
+          <button type="button" class="btn btn-primary" onclick="location.href='home.php'">VOLVER</button>
+          <button type="submit" class="btn btn-success" name="editarPerfil" >CONFIRMAR</button>
+        </div>
+      </div>      
+    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+<!-- Modal Saldo -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
@@ -266,11 +326,10 @@ $time = time();
                             </div>
                         </form>
                     </div>
-                    
                 </div>
             </div>
         </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -287,6 +346,9 @@ if(isset($_POST["cargarSaldo"])){
 if(isset($_POST["retirarSaldo"])){ 
     editarSaldo ($saldoU, "resta");
 };
+if(isset($_POST["editarPerfil"])){ 
+    editarPerfil ();
+};
 ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -295,3 +357,8 @@ if(isset($_POST["retirarSaldo"])){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
 
 
+<script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})</script>    

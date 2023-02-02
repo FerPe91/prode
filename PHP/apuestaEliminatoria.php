@@ -179,7 +179,7 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
     <?php  
   if (isset($_POST["apostar"])){ 
   
-  cargarApuesta("apuesta_eliminatorias", $NombreDeFecha, $ValorApuesta, "apuestaEliminatoria.php");
+  cargarApuesta("apuesta_eliminatorias", $NombreDeFecha, $ValorApuesta);
   
 }?>
 
@@ -188,3 +188,10 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 
 <script src="../js\simplyCountdown.min.js"></script>
 <script src="../js\cuentaRegresivaEliminatorias.js"></script>
+
+<script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>  

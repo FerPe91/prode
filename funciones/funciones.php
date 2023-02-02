@@ -1,7 +1,7 @@
 <?php 
 
 
-function cargarApuesta($tabla, $fecha, $Valor, $direccion){
+function cargarApuesta($tabla, $fecha, $Valor){
     require ('../configuracion/conexion.php');
     $UsuarioI = $_SESSION["usuario"];
     
@@ -16,12 +16,13 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
     icon: "error",
     title: "Usted ya realizo esta apuesta",
     showConfirmButton: false,
-    timer: 2000
+    timer: 2000 });
   });
-  });
-  setTimeout( function() { window.location.href = $direccion; }, 2000 );
-        </script>';
- 
+    function reload(){
+  window.location=document.location.href;}
+
+  </script>';
+
 
     }else{
     $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
@@ -36,10 +37,10 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
         icon: "error",
         title: "Su saldo es insuficiente",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500 });
       });
-      });
-      setTimeout( function() { window.location.href = $direccion; }, 1500 );
+      function reload(){
+        window.location=document.location.href;}
       </script>';
     
       }else{
@@ -107,11 +108,12 @@ function cargarApuesta($tabla, $fecha, $Valor, $direccion){
         icon: "success",
         title: "Apuesta aceptada",
         showConfirmButton: false,
-        timer: 1500
-      });
+        timer: 1500 });
       });
 
-      setTimeout( function() { window.location.href = $direccion; }, 1500 );
+      function reload(){
+        window.location=document.location.href;}
+        setTimeout(reload,1500);
       </script>';
      
       };
@@ -287,9 +289,12 @@ function editarSaldo ($saldoU, $cuenta){
       $cargarSaldo="UPDATE registro SET saldo='$saldoU' where usuario = '$UsuarioI'";
       mysqli_query($conexion, $cargarSaldo);
       echo '
-      <script type="text/javascript">
-      setTimeout( function() { window.location.href = "home.php"; }, 0 );
-      </script>';
+      <script type="text/javascript"> 
+        function reload(){
+            window.location=document.location.href;
+        }
+        setTimeout(reload,1);
+    </script>';
     }
 };
 
@@ -298,7 +303,7 @@ function premios ($tabla, $fecha, $valorApuesta){
   return $CantidadApostadores*$valorApuesta*70/100;
 }
 
-function enviarMensaje ($tabla, $id, $direccion){
+function enviarMensaje ($tabla, $id){
   require ('../configuracion/conexion.php');
   $UsuarioI = $_SESSION["usuario"];
   $EnviarMensaje = $_POST[$id];
@@ -312,7 +317,7 @@ function enviarMensaje ($tabla, $id, $direccion){
         window.location=document.location.href;
     }
     setTimeout(reload,1);
-</script>';
+  </script>';
 }
 
 function UsuarioMensaje($tabla, $ArrayUsuarioMensaje){
@@ -341,3 +346,140 @@ function FechaMensaje($tabla, $ArrayFechaMensaje){
   };
   return $ArrayFechaMensaje;
 }
+
+function registrarUsuario(){
+  require ('../configuracion/conexion.php');
+  $Apellido = $_POST['apellido'];
+  $Nombre = $_POST['nombre'];
+  $Dni = $_POST['dni'];
+  $Telefono = $_POST['telefono'];
+  $Usuario = $_POST['usuario'];
+  $Contraseña = $_POST['contraseña'];
+  $Rcontraseña = $_POST['Rcontraseña'];
+
+  $insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña', '0' )";
+
+  $verificar_usuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario'");
+  if (mysqli_num_rows($verificar_usuario) > 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
+      
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "El usuario ya existe",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  function reload(){
+    window.location=document.location.href;
+  }
+
+          </script>';
+  
+  exit;
+            
+  }
+
+  $verificar_dni = mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$Dni'");
+  if (mysqli_num_rows($verificar_dni) > 0){
+      
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Ya existe un usuario con ese dni",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  function reload(){
+    window.location=document.location.href;
+  }
+          </script>';
+  exit; //exit hace que corte  no ingrese los valores a la tabla
+  }
+
+  if ($Contraseña!=$Rcontraseña){
+
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Las claves no coinciden",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  function reload(){
+    window.location=document.location.href;
+  }
+
+          </script>';  
+  exit;
+  }
+
+  //si pasa todas las verificaciones ingresamos los datos
+
+  mysqli_query($conexion, $insertar);
+  echo '
+  <script type="text/javascript">
+    $(document).ready(function(){ 
+  Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Usuario registrado",
+  showConfirmButton: false,
+  timer: 1500
+  });
+  });
+  setTimeout( function() { window.location.href = "../index.php"; }, 1500 );
+      </script>';
+
+}
+
+function editarPerfil(){
+  require ('../configuracion/conexion.php');
+  $UsuarioI = $_SESSION["usuario"];
+  $Apellido = $_POST['apellido'];
+  $Nombre = $_POST['nombre'];
+  $Dni = $_POST['dni'];
+  $Telefono = $_POST['telefono'];
+  $Contraseña = $_POST['contraseña'];
+  $Rcontraseña = $_POST['Rcontraseña'];
+
+  if ($Contraseña!=$Rcontraseña){
+    echo '
+     <script type="text/javascript">
+        $(document).ready(function(){ 
+     Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Operacion fallida. Las claves no coinciden",
+      showConfirmButton: false,
+      timer: 2500
+    });
+  });
+  
+  </script>';  
+  
+
+  }else{
+      $editar="UPDATE registro SET apellido='$Apellido', nombre='$Nombre', dni='$Dni', telefono='$Telefono', clave='$Contraseña' where usuario = '$UsuarioI'";
+      mysqli_query($conexion, $editar);
+      echo '
+      <script type="text/javascript"> 
+        function reload(){
+            window.location=document.location.href;
+        }
+        setTimeout(reload,0);
+    </script>';
+    }
+}
+

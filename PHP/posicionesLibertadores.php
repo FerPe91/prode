@@ -79,7 +79,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body" style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGA']) ?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_A" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -108,7 +108,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGB'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_B" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -137,7 +137,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGC'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_C" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -166,7 +166,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="f4" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGD'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_D" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -195,7 +195,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="f5" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGE'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_E" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -224,7 +224,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="f6" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGF'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_F" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -253,7 +253,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="f7" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGG'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_G" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -282,7 +282,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="f8" data-bs-parent="#accordionExample">
                 <div class="accordion-body"style="background-color:Cornsilk">
                 <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioGH'])?></h3> </div>
-                <table id="table_id" class="display" >
+                <table id="table_H" class="display" >
                                     <thead>
                                         <tr>                          
                                         <th>Usuario</th>
@@ -366,7 +366,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
 
 <script>
 $(document).ready( function () {
-    $('#table_id' ).DataTable({
+    $('#table_A, #table_B, #table_C, #table_D, #table_E, #table_F, #table_G, #table_H' ).DataTable({
        
         "pageLength": 8,
         "searching": false,
@@ -404,6 +404,12 @@ $(document).ready( function () {
 
 <?php if (isset($_POST["cargarMensajeLibertadores"])){
 
-enviarMensaje ("chat_libertadores", "MensajeLibertadores", "posicionesLibertadores.php"); 
+enviarMensaje ("chat_libertadores", "MensajeLibertadores"); 
 
 } ?> 
+<script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>  

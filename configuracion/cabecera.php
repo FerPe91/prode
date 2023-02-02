@@ -9,6 +9,8 @@ $UsuarioI = $_SESSION["usuario"];
 
 $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
 $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario guardo toda la consulta, cuando lo imprima pondre entre corchetes que campo quiero mostrar
+
+
 ?>
 
 
@@ -19,21 +21,16 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-     
-
-
     <link rel="stylesheet" href="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.min.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>
     <script src="C:\wamp\www\prode\node_modules\sweetalert2\dist\sweetalert2.all.js"></script>
- 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="C:\wamp\www\prode\js\jquery-3.5.1.js"></script>
     <script src="js\popper.min.js"></script>
     <script src="js\bootstrap.min.js"></script>
     <script src="C:\wamp\www\prode\js\bootstrap-collapse.js"></script>
-    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
   
@@ -49,33 +46,41 @@ $SaldoUsuario = mysqli_fetch_array($Consulta) //en la variable $SaldoUsuario gua
     font-size: 280%">
     
 </h1>
-    <ul class="navbar-nav">
-            
-            <li>
-                <div class="row">
-                    <a style="color:black; font-weight: bold;">Usuario: <?php echo $UsuarioI ?></a>
-                </div>    
-                <div class="row">
-                    <a style="color:black;font-weight: bold;">Saldo: $ <?php echo $SaldoUsuario["saldo"]?></a>
-            </li>
-        
-            <li class="nav-item">
-            <img src="../img/Homee.png"  type= "button" class="nav-link" onclick="location.href='home.php'" style="height: 45px; width:45px; font-weight: bold" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom"></img>
-            </li>
-            <li class="nav-item">
-            <img src="../img/cerrar.png"  type= "button" class="nav-link" onclick="location.href='../index.php'" style="height: 45px; width:45px; font-weight: bold"></img>
-            </li>
+    <ul class="navbar-nav" style= margin-right:15px>
+         <li class="nav-item">
+            <a class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="<?php echo $UsuarioI ?>">
+            <img src="../img/usuario.png" role= "button" class="nav-link"  style="height: 45px; width:45px; font-weight: bold"></img>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="$ <?php echo $SaldoUsuario["saldo"]?>">
+            <img src="../img/dinero.png" role= "button" class="nav-link" style="height: 45px; width:45px; font-weight: bold"></img>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="HOME">
+            <img src="../img/Homee.png" role= "button" class="nav-link" onclick="location.href='home.php'" style="height: 45px; width:45px; font-weight: bold"></img>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="SALIR">
+            <img src="../img/cerrar.png"  type= "button" class="nav-link" onclick="location.href='../index.php'" style="height: 45px; width:45px; font-weight: bold;"></img>
+            </a>
+        </li>
     </ul>
+    
   </nav>
->
-         
+   
     </body>
 
 
     </html>
 
-
-
-
+    <script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>  
     
 
