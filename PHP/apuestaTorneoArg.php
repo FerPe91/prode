@@ -242,11 +242,11 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
 
     <?php  
   if (isset($_POST["apostarArg"])){ 
-    cargarApuesta("apuesta_torneoarg", $NombreDeFecha, $ValorApuesta, "apuestaTorneoArg.php");
+    cargarApuesta("apuesta_torneoarg", $NombreDeFecha, $ValorApuesta);
    
   }
   if (isset($_POST["todoArg"])){ 
-    cargarApuesta("apuesta_torneoarg","todo","2000", "apuestaTorneoArg.php");
+    cargarApuesta("apuesta_torneoarg","todo","2000");
 
 }?>
 
@@ -274,3 +274,10 @@ spans.forEach((span, idx) => {
 	}, 750 * (idx+1))
 });
 </script>    
+
+<script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>  

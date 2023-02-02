@@ -1055,38 +1055,45 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 
     <?php  
   if (isset($_POST["apostarGA"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoA", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoA", $ValorApuesta);
 
   }
   if (isset($_POST["apostarGB"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoB", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoB", $ValorApuesta);
  
   }
   if (isset($_POST["apostarGC"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoC", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoC", $ValorApuesta);
 
 }
   if (isset($_POST["apostarGD"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoD", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoD", $ValorApuesta);
    
   }
   if (isset($_POST["apostarGE"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoE", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoE", $ValorApuesta);
 
   }
   if (isset($_POST["apostarGF"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoF", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoF", $ValorApuesta);
 
   }
   if (isset($_POST["apostarGG"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoG", $ValorApuesta, "apuestaLibertadores.php");    
+    cargarApuesta("apuesta_libertadores", "GrupoG", $ValorApuesta);    
 
   }
   if (isset($_POST["apostarGH"])){ 
-    cargarApuesta("apuesta_libertadores", "GrupoH", $ValorApuesta, "apuestaLibertadores.php");
+    cargarApuesta("apuesta_libertadores", "GrupoH", $ValorApuesta);
  
   }
    ?>
 
 <script src="../js\simplyCountdown.min.js"></script>
 <script src="../js\cuentaRegresivaLibertadores.js"></script>
+
+<script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>  

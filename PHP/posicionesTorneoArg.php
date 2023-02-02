@@ -38,8 +38,7 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
 
 <div class="col-10 container-fluid">
     <div class="word">
-	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
-    </div>
+	<span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span> </div>
     </div>
 
 <div class="container px-4 text-center" >
@@ -77,36 +76,7 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
                 </div>
                 </div>
                 </div>
-                <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Tabla Torneo
-                </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
-                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioTotalArg'])?></h3> </div>
-                    <table id="table_id2" class="display">
-                                                <thead>
-                                                    <tr>
-                                                    <th>Usuario</th>
-                                                    <th>Puntaje</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
-                                                    <tr class="table-info">
-                                       
-                                                            <td><?php echo $ApostadoresTotal[$i]; ?></td>
-                                                            <td><?php echo  $PuntajesTotal[$i]; ?></td>   
-                                                    </tr>
-                                                    <?php  }   ?>            
-                                                </tbody>
-                    </table>
-                    
-                </div>
-                </div>
-            </div>
+                
             <!-- <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -204,6 +174,36 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
                 </div>
             </div>
         </div> -->
+        <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Tabla Torneo
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body"style="background-color:Cornsilk">
+                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioTotalArg'])?></h3> </div>
+                    <table id="table_id2" class="display">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Usuario</th>
+                                                    <th>Puntaje</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php for($i=0; $i<count($ApostadoresTotal); $i++) {?>
+                                                    <tr class="table-info">
+                                       
+                                                            <td><?php echo $ApostadoresTotal[$i]; ?></td>
+                                                            <td><?php echo  $PuntajesTotal[$i]; ?></td>   
+                                                    </tr>
+                                                    <?php  }   ?>            
+                                                </tbody>
+                    </table>
+                    
+                </div>
+                </div>
+            </div>
         </div>
     </div>
            
@@ -304,6 +304,12 @@ $(document).ready( function () {
 
 <?php if (isset($_POST["cargarMensajeTorneoArg"])){
 
-enviarMensaje ("chat_torneoarg", "MensajeTorneoArg", "posicionesTorneoArg.php"); 
+enviarMensaje ("chat_torneoarg", "MensajeTorneoArg"); 
 
 } ?> 
+<script>
+var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
+</script>  
