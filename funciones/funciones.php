@@ -1,6 +1,5 @@
 <?php 
 
-
 function cargarApuesta($tabla, $fecha, $Valor){
     require ('../configuracion/conexion.php');
     $UsuarioI = $_SESSION["usuario"];
@@ -267,9 +266,30 @@ function editarSaldo ($saldoU, $cuenta){
   $Saldo = $_POST['saldo'];
   $Contraseña = $_POST['contraseña'];
   
+  $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
+  $DatosUsuario = mysqli_fetch_array($Consulta);
+
+  if ($Contraseña!=$DatosUsuario["clave"]){
+
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "La contraseña es incorrecta",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  </script>';  
+  exit;
+  }
+
+
   if($cuenta=="suma"){
     $saldoU+=$Saldo;
-  }elseif($cuenta=="resta"){
+  }else{
     $saldoU-=$Saldo; }
   
   if($saldoU<0){
@@ -289,11 +309,19 @@ function editarSaldo ($saldoU, $cuenta){
       $cargarSaldo="UPDATE registro SET saldo='$saldoU' where usuario = '$UsuarioI'";
       mysqli_query($conexion, $cargarSaldo);
       echo '
-      <script type="text/javascript"> 
-        function reload(){
-            window.location=document.location.href;
-        }
-        setTimeout(reload,1);
+      <script type="text/javascript">
+      $(document).ready(function(){
+        Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Su saldo se actualizo correctamente",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      });
+      function reload(){
+        window.location=document.location.href;}
+        setTimeout(reload);
     </script>';
     }
 };
@@ -303,6 +331,7 @@ function premios ($tabla, $fecha, $valorApuesta){
   return $CantidadApostadores*$valorApuesta*70/100;
 }
 
+/////////////////CHAT/////////////////////
 function enviarMensaje ($tabla, $id){
   require ('../configuracion/conexion.php');
   $UsuarioI = $_SESSION["usuario"];
@@ -346,6 +375,7 @@ function FechaMensaje($tabla, $ArrayFechaMensaje){
   };
   return $ArrayFechaMensaje;
 }
+////////////////////////////////////////////////
 
 function registrarUsuario(){
   require ('../configuracion/conexion.php');
@@ -420,8 +450,7 @@ function registrarUsuario(){
   function reload(){
     window.location=document.location.href;
   }
-
-          </script>';  
+  </script>';  
   exit;
   }
 
@@ -483,3 +512,201 @@ function editarPerfil(){
     }
 }
 
+function mostrarMisPronosticos($tabla, $fecha, $Array){
+  require ('../configuracion/conexion.php');
+  $UsuarioI = $_SESSION["usuario"];
+  $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla WHERE usuario ='$UsuarioI' and fecha = '$fecha'");
+  $totalUsuario = mysqli_fetch_array($Usuarios);
+
+  if($tabla == "apuesta_eliminatorias"){
+    if(mysqli_num_rows($Usuarios)==0){
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+    }else{
+      array_push($Array, $totalUsuario["p1"]);
+      array_push($Array, $totalUsuario["p2"]);
+      array_push($Array, $totalUsuario["p3"]);
+      array_push($Array, $totalUsuario["p4"]);
+      array_push($Array, $totalUsuario["p5"]);
+      array_push($Array, $totalUsuario["p6"]);
+      array_push($Array, $totalUsuario["p7"]);
+      array_push($Array, $totalUsuario["p8"]);
+      array_push($Array, $totalUsuario["p9"]);
+      array_push($Array, $totalUsuario["p10"]);
+      array_push($Array, $totalUsuario["puntaje"]*5);}
+
+    }elseif($tabla == "apuesta_libertadores"){
+    if(mysqli_num_rows($Usuarios)==0){
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+    }else{
+      array_push($Array, $totalUsuario["p1"]);
+      array_push($Array, $totalUsuario["p2"]);
+      array_push($Array, $totalUsuario["p3"]);
+      array_push($Array, $totalUsuario["p4"]);
+      array_push($Array, $totalUsuario["p5"]);
+      array_push($Array, $totalUsuario["p6"]);
+      array_push($Array, $totalUsuario["p7"]);
+      array_push($Array, $totalUsuario["p8"]);
+      array_push($Array, $totalUsuario["p9"]);
+      array_push($Array, $totalUsuario["p10"]);
+      array_push($Array, $totalUsuario["p11"]);
+      array_push($Array, $totalUsuario["p12"]);
+      array_push($Array, $totalUsuario["puntaje"]*5);}
+
+    }elseif($tabla == "apuesta_torneoarg"){
+      if(mysqli_num_rows($Usuarios)==0){
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+      }else{
+        array_push($Array, $totalUsuario["p1"]);
+        array_push($Array, $totalUsuario["p2"]);
+        array_push($Array, $totalUsuario["p3"]);
+        array_push($Array, $totalUsuario["p4"]);
+        array_push($Array, $totalUsuario["p5"]);
+        array_push($Array, $totalUsuario["p6"]);
+        array_push($Array, $totalUsuario["p7"]);
+        array_push($Array, $totalUsuario["p8"]);
+        array_push($Array, $totalUsuario["p9"]);
+        array_push($Array, $totalUsuario["p10"]);
+        array_push($Array, $totalUsuario["p11"]);
+        array_push($Array, $totalUsuario["p12"]);
+        array_push($Array, $totalUsuario["p13"]);
+        array_push($Array, $totalUsuario["p14"]);
+        array_push($Array, $totalUsuario["puntaje"]*5);}
+    }
+
+  return $Array;
+}
+
+function mostrarResultados($tabla, $fecha, $Array){
+  require ('../configuracion/conexion.php');
+  $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla WHERE fecha = '$fecha'");
+  $totalUsuario = mysqli_fetch_array($Usuarios);
+
+  if($tabla == "resultado_eliminatorias"){
+    if(mysqli_num_rows($Usuarios)==0){
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      array_push($Array, "-");
+      
+    }else{
+      array_push($Array, $totalUsuario["p1"]);
+      array_push($Array, $totalUsuario["p2"]);
+      array_push($Array, $totalUsuario["p3"]);
+      array_push($Array, $totalUsuario["p4"]);
+      array_push($Array, $totalUsuario["p5"]);
+      array_push($Array, $totalUsuario["p6"]);
+      array_push($Array, $totalUsuario["p7"]);
+      array_push($Array, $totalUsuario["p8"]);
+      array_push($Array, $totalUsuario["p9"]);
+      array_push($Array, $totalUsuario["p10"]);
+      
+    }
+
+    }elseif($tabla == "resultados_libertadores"){
+      if(mysqli_num_rows($Usuarios)==0){
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+      }else{
+        array_push($Array, $totalUsuario["p1"]);
+        array_push($Array, $totalUsuario["p2"]);
+        array_push($Array, $totalUsuario["p3"]);
+        array_push($Array, $totalUsuario["p4"]);
+        array_push($Array, $totalUsuario["p5"]);
+        array_push($Array, $totalUsuario["p6"]);
+        array_push($Array, $totalUsuario["p7"]);
+        array_push($Array, $totalUsuario["p8"]);
+        array_push($Array, $totalUsuario["p9"]);
+        array_push($Array, $totalUsuario["p10"]);
+        array_push($Array, $totalUsuario["p11"]);
+        array_push($Array, $totalUsuario["p12"]);
+      }
+
+    }elseif($tabla == "resultados_torneoarg"){
+      if(mysqli_num_rows($Usuarios)==0){
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+        array_push($Array, "-");
+      }else{
+        array_push($Array, $totalUsuario["p1"]);
+        array_push($Array, $totalUsuario["p2"]);
+        array_push($Array, $totalUsuario["p3"]);
+        array_push($Array, $totalUsuario["p4"]);
+        array_push($Array, $totalUsuario["p5"]);
+        array_push($Array, $totalUsuario["p6"]);
+        array_push($Array, $totalUsuario["p7"]);
+        array_push($Array, $totalUsuario["p8"]);
+        array_push($Array, $totalUsuario["p9"]);
+        array_push($Array, $totalUsuario["p10"]);
+        array_push($Array, $totalUsuario["p11"]);
+        array_push($Array, $totalUsuario["p12"]);
+        array_push($Array, $totalUsuario["p13"]);
+        array_push($Array, $totalUsuario["p14"]);
+      }
+    }
+
+  return $Array;
+  
+}

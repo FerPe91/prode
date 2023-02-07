@@ -15,20 +15,23 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 <head>
 
     <title>pagina prueba</title>
-    <link rel="stylesheet" href="../CSS/styleTextEliminatorias.css">
+    <link rel="stylesheet" href="../CSS/styleApuestaEliminatorias.css">
+     
 </head>
+
+<div class="contenedor">
 
 <body style= "background-image: url('../img/fondo.png'); background-size: cover">  
 <h1 data-shadow='Eliminatorias'>Eliminatorias</h1>
 
-<div class="container text-center">
+<div class="container text-center" >
   <div class="row g-2">
-    <div class="col-5">
+    <div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
     <div>
     
-    <div class="p-3 mb-2 bg-success text-white" >Fecha 1</div>        
+    <div class="p-3 mb-2 bg-success text-white"  >Fecha 1</div>        
    
     <table class="table table-success table-striped">
         
@@ -89,7 +92,7 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 </div>
 </div>
 
-    <div class="col-5">
+    <div class="col-5"  id="tablas">
       <div class="p-3">
         <div class="p-3 mb-2 bg-success text-white">Fecha 2</div>        
 
@@ -148,12 +151,12 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
         </table>
         </div>
         </div> 
-        <div class="col-2">
+        <div class="col-2"  id="info">
           <div class="p-3">
-          <div class="card text-bg-primary mb-3" style="width: 200px">
+          <div class="card text-bg-primary mb-3" style="width: 150%" id="lo">
             <div class="card-header">Informacion</div>
             <div class="card-body">
-                <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $_SESSION['premioEliminatoria']?></p>
+                <p class="card-text">Valor apuesta: $ <?php  echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="1.5%" color="black"/> Apostadores: <?php echo $CantidadApostadores ?><br>Premio: $ <?php echo $_SESSION['premioEliminatoria']?></p>
             </div>
           </div>
           </div>
@@ -163,7 +166,7 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 
 <div class="container text-center">
 <div class="row g-2">
-    <div class="col-10">
+    <div class="col-10"  id="boton">
     <div class="d-grid gap-2 col-6 mx-auto">
     <button type="submit" class="btn btn-outline-success" name= "apostar" id= "apostar">Apostar Fecha 1 y 2</button>
     </div>
@@ -175,6 +178,9 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 
   </body>
   </html>
+</div> 
+
+
 
     <?php  
   if (isset($_POST["apostar"])){ 
@@ -189,9 +195,3 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 <script src="../js\simplyCountdown.min.js"></script>
 <script src="../js\cuentaRegresivaEliminatorias.js"></script>
 
-<script>
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-</script>  

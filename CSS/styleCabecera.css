@@ -1,0 +1,15 @@
+@media only screen and (min-width: 360px) and (max-width: 1000px){
+
+
+  ul li a {
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+  }
+
+
+a{
+    width: 3%;
+    height: 3%;
+}
+}

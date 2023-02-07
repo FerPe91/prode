@@ -18,20 +18,21 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="../CSS/styleTextTorneoArgen.css">
+<link rel="stylesheet" href="../CSS/styleApuestaTorneoArgen.css">
 </head>
+
 
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
 
 <div class="col-10 container-fluid">
-    <div class="word">
+    <div class="word" id="titulo">
 	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
     </div>
     </div>
 
 <div class="container text-center">
   <div class="row g-2">
-    <div class="col-5">
+    <div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -49,19 +50,19 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
     
             <tr>
                 
-                <td>ARG</td>
+                <td>Central Cba</td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
                 <td><input type="radio" value="E" name="p1" id="p1"required></td>
                 <td><input type="radio" value="V" name="p1" id="p1"required></td>
-                <td>BRA</td>
+                <td>Argentinos</td>
             </tr>
             <tr>
                 
-                <td>URU</td>
+                <td>Belgrano</td>
                 <td><input type="radio" value="L" name="p2"id="p2"required></td>
                 <td><input type="radio" value="E" name="p2"id="p2"required></td>
                 <td><input type="radio" value="V" name="p2" id="p2"required></td>
-                <td>ECU</td>
+                <td>Tigre</td>
             </tr>
             <tr>
                 
@@ -107,7 +108,7 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
             </div>
         </div>
 </div>
-    <div class="col-5">
+    <div class="col-5" id="tablas">
         <div class="p-3">
    
         <div>    
@@ -184,12 +185,12 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
         </div>
     </div>
 
-    <div class="col-2">
+    <div class="col-2" id="info">
       <div class="p-3">
-      <div class="card text-bg-primary mb-3" style="width: 200px">
+      <div class="card text-bg-primary mb-3" style="width: 150%">
         <div class="card-header">Informacion</div>
         <div class="card-body">
-            <p class="card-text">Valor apuesta: $ <?php echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="2px" color="black"/> Apostadores: <?php echo $CantidadApostadoresArg ?><br>Premio: $ <?php echo $_SESSION['premioArg']?></p>
+            <p class="card-text">Valor apuesta: $ <?php echo $ValorApuesta?><br>La apuesta finaliza en: <div id="reloj"></div><hr size="1%" color="black"/> Apostadores: <?php echo $CantidadApostadoresArg ?><br>Premio: $ <?php echo $_SESSION['premioArg']?></p>
         </div>
         </div>
       </div>
@@ -198,14 +199,14 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
 
 <div class="container text-center">
 <div class="row g-2">
-    <div class="col-10">
+    <div class="col-10" id="boton">
     <div class="d-grid gap-2 col-6 mx-auto">
         <button type="submit" class="btn btn-danger" name= "apostarArg" id= "apostarArg">Apostar</button>
     </div>
     </div>
     </form>
-    <div class="col-2">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 200px; margin-left:25px; margin-top:-10px" class="btn btn-warning btn-lg">Voy por todo el torneo</button>
+    <div class="col-2" id="boton2">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 125%; margin-left:15%; margin-top:-11%" class="btn btn-warning btn-lg">Voy por todo el torneo</button>
     </div>
     </div> 
 </div>
@@ -275,9 +276,3 @@ spans.forEach((span, idx) => {
 });
 </script>    
 
-<script>
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-</script>  

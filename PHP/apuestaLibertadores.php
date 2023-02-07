@@ -22,7 +22,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 <head>
 
     <title>pagina prueba</title>
-    <link rel="stylesheet" href="../CSS/styleText.css">
+    <link rel="stylesheet" href="../CSS/styleApuestaLibertadores.css">
 </head>
 <body style= "background-image: url('../img/fondoLiber.png'); background-size: cover">
 <div class="title">
@@ -31,7 +31,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 
 <div class="container text-center">
   <div class="row g-2">
-    <div class="col-5">
+    <div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -155,7 +155,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 </div>
 </div>
 
-<div class="col-5">
+<div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -278,30 +278,30 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
     </div>
 </div>
 </div>
-<div class="col-2" >
-      <div class="p-3"style="position:absolute">
-      <div class="card text-bg-primary mb-3" style="width: 200px">
+<div class="col-2" id="info">
+      <div class="p-3"style="position:absolute" >
+      <div class="card text-bg-primary mb-3" style="width: 80%">
         <div class="card-header">Informacion</div>
         <div class="card-body">
             <p class="card-text">
                 Cada grupo es una apuesta independiente.<br><br>
-                Valor de la apuesta por grupo: $ <?php  echo $ValorApuesta?><hr size="2px" color="black"/>
-                Todas las apuesta finalizan en: <div id="reloj"></div><hr size="2px" color="black"/>
-                Grupo A<br>Apostadores: <?php  echo $CantidadApostadoresGA?><br>Premio: $<?php  echo $_SESSION['premioGA']?><hr size="2px" color="black"/>
-                Grupo B<br>Apostadores: <?php  echo $CantidadApostadoresGB?><br>Premio: $<?php  echo $_SESSION['premioGB']?><hr size="2px" color="black"/>
-                Grupo C<br>Apostadores: <?php  echo $CantidadApostadoresGC?><br>Premio: $<?php  echo $_SESSION['premioGC']?><hr size="2px" color="black"/>
-                Grupo D<br>Apostadores: <?php  echo $CantidadApostadoresGD?><br>Premio: $<?php  echo $_SESSION['premioGD']?><hr size="2px" color="black"/>
-                Grupo E<br>Apostadores: <?php  echo $CantidadApostadoresGE?><br>Premio: $<?php  echo $_SESSION['premioGE']?><hr size="2px" color="black"/>
-                Grupo F<br>Apostadores: <?php  echo $CantidadApostadoresGF?><br>Premio: $<?php  echo $_SESSION['premioGF']?><hr size="2px" color="black"/>
-                Grupo G<br>Apostadores: <?php  echo $CantidadApostadoresGG?><br>Premio: $<?php  echo $_SESSION['premioGG']?><hr size="2px" color="black"/>
-                Grupo H<br>Apostadores: <?php  echo $CantidadApostadoresGH?><br>Premio: $<?php  echo $_SESSION['premioGH']?><hr size="2px" color="black"/>
+                Valor de la apuesta por grupo: $ <?php  echo $ValorApuesta?><hr size="1.5%" color="black"/>
+                Todas las apuesta finalizan en: <div id="reloj"></div><hr size="1.5%" color="black"/>
+                Grupo A<br>Apostadores: <?php  echo $CantidadApostadoresGA?><br>Premio: $<?php  echo $_SESSION['premioGA']?><hr size="1.5%" color="black"/>
+                Grupo B<br>Apostadores: <?php  echo $CantidadApostadoresGB?><br>Premio: $<?php  echo $_SESSION['premioGB']?><hr size="1.5%" color="black"/>
+                Grupo C<br>Apostadores: <?php  echo $CantidadApostadoresGC?><br>Premio: $<?php  echo $_SESSION['premioGC']?><hr size="1.5%" color="black"/>
+                Grupo D<br>Apostadores: <?php  echo $CantidadApostadoresGD?><br>Premio: $<?php  echo $_SESSION['premioGD']?><hr size="1.5%" color="black"/>
+                Grupo E<br>Apostadores: <?php  echo $CantidadApostadoresGE?><br>Premio: $<?php  echo $_SESSION['premioGE']?><hr size="1.5%" color="black"/>
+                Grupo F<br>Apostadores: <?php  echo $CantidadApostadoresGF?><br>Premio: $<?php  echo $_SESSION['premioGF']?><hr size="1.5%" color="black"/>
+                Grupo G<br>Apostadores: <?php  echo $CantidadApostadoresGG?><br>Premio: $<?php  echo $_SESSION['premioGG']?><hr size="1.5%" color="black"/>
+                Grupo H<br>Apostadores: <?php  echo $CantidadApostadoresGH?><br>Premio: $<?php  echo $_SESSION['premioGH']?><hr size="1.5%" color="black"/>
             </p>
         </div>
         </div>
       </div>
 </div>
 
-    <div class="col-5">
+    <div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -425,7 +425,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 </div>
 </div>
 
-<div class="col-5">
+<div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -549,7 +549,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 </div>
 </div>
 
-    <div class="col-5">
+    <div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -673,7 +673,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 </div>
 </div>
 
-<div class="col-5">
+<div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -797,7 +797,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 </div>
 </div>
 
-    <div class="col-5">
+    <div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -920,7 +920,7 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 </div>
 </div>
 
-<div class="col-5">
+<div class="col-5" id="tablas">
       <div class="p-3">
       <form method="POST">
         <div>
@@ -1091,9 +1091,3 @@ $CantidadApostadoresGH= $_SESSION['premioGH']/($ValorApuesta*70/100);
 <script src="../js\simplyCountdown.min.js"></script>
 <script src="../js\cuentaRegresivaLibertadores.js"></script>
 
-<script>
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-</script>  

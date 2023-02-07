@@ -31,7 +31,7 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="../CSS/styleTextTorneoArgen.css">
+<link rel="stylesheet" href="../CSS/styleApuestaTorneoArgen.css">
 </head>
 
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
@@ -43,7 +43,7 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
 
 <div class="container px-4 text-center" >
   <div class="row gx-5" >
-    <div class="col-6">
+    <div class="col-6" id="tablas">
     <div class="p-3">
     <div class="accordion" id="accordionExample" >
             <div class="accordion-item" >
@@ -208,13 +208,13 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
     </div>
            
     </div>
-    <div class="col-6">
+    <div class="col-6" id="tablas">
     <div class="p-3">
 
-    <div class="card" style="border-radius: 15px;">
+    <div class="card" style="border-radius: 1%;">
           <div
             class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            style="border-top-left-radius: 1%; border-top-right-radius: 1%;">
             <i class="fas fa-angle-left"></i>
             <p class="mb-0 fw-bold">CHAT  </p>
             <i class="fas fa-times"></i>
@@ -254,7 +254,7 @@ $FechaMensaje=FechaMensaje("chat_torneoarg", $FechaMensaje);
                             <input class="form-control" placeholder="escriba aqui" required id="MensajeTorneoArg" name="MensajeTorneoArg" rows="4"></input> 
                             </div>
                         
-                            <button type="submit" style="margin:10px" name="cargarMensajeTorneoArg" id="cargarMensajeTorneoArg" class="btn btn-primary">Enviar</button>
+                            <button type="submit" style="margin:1%" name="cargarMensajeTorneoArg" id="cargarMensajeTorneoArg" class="btn btn-primary">Enviar</button>
 
                         </form>
                     </div>
@@ -272,7 +272,7 @@ $(document).ready( function () {
         "searching": false,
             "lengthChange": false,
             "info": false,
-            "pagingType": "full",
+
             "order": [1, 'desc'],
                     
     }) 
@@ -288,6 +288,7 @@ $(document).ready( function () {
         "lengthChange": false,
         "info": false,
         "order": false,
+
         columnDefs: [
     {targets: 1,
     className: 'dt-body-left',
@@ -307,9 +308,3 @@ $(document).ready( function () {
 enviarMensaje ("chat_torneoarg", "MensajeTorneoArg"); 
 
 } ?> 
-<script>
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-</script>  

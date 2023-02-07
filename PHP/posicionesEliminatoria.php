@@ -28,7 +28,7 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../CSS/styleTextEliminatorias.css">
+    <link rel="stylesheet" href="../CSS/styleApuestaEliminatorias.css">
 
 </head>
 
@@ -40,7 +40,7 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
 
 <div class="container px-4 text-center" >
   <div class="row gx-5" >
-    <div class="col-6">
+    <div class="col-6" id="tablas">
     <div class="p-3">
     <div class="accordion" id="accordionExample" >
             <div class="accordion-item" >
@@ -174,13 +174,13 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
     </div>   
 
 
-    <div class="col-6">
+    <div class="col-6" id="tablas">
     <div class="p-3">
 
-    <div class="card" style="border-radius: 15px;">
+    <div class="card" style="border-radius: 1%;">
           <div
             class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            style="border-top-left-radius: 1%; border-top-right-radius: 1%;">
             <i class="fas fa-angle-left"></i>
             <p class="mb-0 fw-bold">CHAT  </p>
             <i class="fas fa-times"></i>
@@ -220,7 +220,7 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
                             <input class="form-control" placeholder="escriba aqui" required id="MensajeEliminatorias" name="MensajeEliminatorias" rows="4"></input> 
                             </div>
                         
-                            <button type="submit" style="margin:10px" name="cargarMensajeEliminatoria" id="cargarMensajeEliminatoria" class="btn btn-primary">Enviar</button>
+                            <button type="submit" style="margin:1%" name="cargarMensajeEliminatoria" id="cargarMensajeEliminatoria" class="btn btn-primary">Enviar</button>
 
                         </form>
                     </div>
@@ -238,7 +238,7 @@ $(document).ready( function () {
         "searching": false,
             "lengthChange": false,
             "info": false,
-            "pagingType": "full",
+            
             "order": [1, 'desc'],
                     
     }) 
@@ -275,9 +275,3 @@ enviarMensaje ("chat_eliminatorias", "MensajeEliminatorias");
 } ?> 
 
 
-<script>
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-</script>  

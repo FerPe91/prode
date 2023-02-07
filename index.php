@@ -55,6 +55,9 @@ if (isset($_POST["accion"])){
   
   $Usuario = $_POST['usuario'];
   $Clave = $_POST['clave'];
+
+  session_start();
+  $_SESSION["usuario"] = $Usuario;
  
 
 $verificar_cuenta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario' AND clave = '$Clave'");
@@ -72,17 +75,20 @@ if(mysqli_num_rows($verificar_cuenta) == 0){
         timer: 1500
         });
       });
-    setTimeout( function() { window.location.href = "index.php"; }, 1500 );
+      function reload(){
+        window.location=document.location.href;}
     </script>
   ';   
- exit;
+exit;
 
 }else{
- 
-  session_start();
-  $_SESSION["usuario"] = htmlentities($_POST['usuario']); //tomo el dato del usuario para usarlo en otra pagina (cabecera)
-  header("location: PHP/home.php");
-  }  
+
+echo '
+<script type="text/javascript">
+   
+  setTimeout( function() { window.location.href = "PHP/home.php"; });
+  </script>'; 
+}    
   
 }  
 ?>

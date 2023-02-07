@@ -16,7 +16,7 @@ $_SESSION['valorApuestaEliminatoria'] =$ValorApuestaEliminatoria;
 $_SESSION['premioEliminatoria'] = $PremioEliminatoria;
 
 //////////////TORNEO ARGENTINO///////////////////////
-$NombreFechaArgentina = "fecha1";
+$NombreFechaArgentina = "fecha5";
 $ValorApuestaArgentina = 500;
 ///////////////////////////////
 $PremioArg = premios ("apuesta_torneoarg", $NombreFechaArgentina, $ValorApuestaArgentina);
@@ -66,16 +66,13 @@ $telefonoU = $datosUsuario["telefono"];
 $claveU = $datosUsuario["clave"]; 
 $saldoU = $datosUsuario["saldo"]; 
 
-
-$time = time();
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-    <title>Home</title>
+    <title></title>
     <link rel="stylesheet" href="../CSS/StyleHome.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -90,17 +87,12 @@ $time = time();
     </div>
     
 
-    <!-- <div class=" container-fluid d-flex justify-content-between pb-1 mx-1 rounded-bottom-1 text-warning ">
-            <h6><?php echo date("d-m-Y");?></h6>
-            <h6><?php echo date(("H:i"));?></h6>
-    </div> -->
-    
-    <div class="col-12 row container-fluid d-flex justify-content-center" style="height:400px; margin-top:20px">
+<div  class="col-12 row container-fluid d-flex justify-content-center" style="height:400px; width:100%; margin:10px 20px 10px 10px">
 
-        <div data-aos="fade-right" class="col-1 h-100 d-inline-block bg-secondary" >    
-        <img src="../img/atras.png"   style="margin-top:160px; margin-left: 5px"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></img>
+    <div class="col-1 h-10 d-inline-block bg-secondary" style="margin-right:10px" >    
+        <img src="../img/info.png"   style="margin-top:170px; margin-left: 5px; width: 65px; height: 65px"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></img>       
 
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background-color: #FC1111; color:white">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background-color: #FC1111; color:white">
             <div class="offcanvas-header" >
                 <h3 class="offcanvas-title" id="offcanvasScrollingLabel">Bienvenido <?php echo $nombreU ?> </h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -116,136 +108,73 @@ $time = time();
         </div>
     </div>
  
-        <div data-aos="flip-left" class="col-2 h-100 d-inline-block p-4 bg-warning" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >
-            <h3 class="col-12">HACER MI APUESTA ▼</h3>
-            
-            <div >
-                <div class="collapse bg-transparent" id="collapseExample">
-                    <div class="card card-body p-0 mt-1 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaEliminatoria.php'" >Eliminatorias</button>
-                    </div>
-                    <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaLibertadores.php'">Copa Libertadores</button>
-                    </div>
-                    <div class="card card-body p-0 mb-1 bg-transparent">
-                        <button type="button" class="btn btn-outline-dark"  onclick="location.href='apuestaTorneoArg.php'">Liga Argentina</button>
-                    </div>
-                </div>
-            </div>
-
-            
+<div id="eliminatorias" class="carousel slide col-3 h-100 d-inline-block p-0 bg-success ">
+    <div class="carousel-inner">
+        <div class="carousel-item active" >
+            <img src="../img/eliminatorias.png "style="width: 100%; height: 400px">
         </div>
-
-
-        <div class="col-6 row container h-100 p-0 m-0">
-            <div data-aos="zoom-in" class="col-12 row container h-50 p-0 m-0 bg-warning">
-                <div class="misDatos col-12 w-50 container h-100 bg-secondary">
-                    <h3>MIS APUESTAS</h3>
-                </div>
-
-                
-                    <!-- Button trigger modal -->
-                <div type="button" class="col-6 row container h-100 p-0 m-0 bg-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <h3 style="color:black">SALDO</h3>
-                    <img src="../img/bolsaSaldo.png" style="height: 130px; width:130px; margin-left: 85px"></img>
-                </div>
-            </div>
-            
-            <div type= "button" data-aos="fade-up" class="tabla col-12 container h-50 flex-column bd-highlight bg-info" data-bs-toggle="collapse" href="#desplega" role="button" aria-expanded="false" aria-controls="desplega">
-                <h3>TABLAS ▼</h3>
-
-                <div >
-                <div class="collapse bg-transparent" id="desplega">
-                <div class="row align-items-center">
-                    <div class="col-4" >
-                    <div class="card bg-transparent" style="width: 12rem;">
-                        <img src="../img/eliminatoriass.png" class="card-img-top" type="button" onclick="location.href='posicionesEliminatoria.php'">   
-                    </div>
-                    </div>
-                    <div class="col-4">
-                    <div class="card bg-transparent" style="width: 12rem;">
-                        <img src="../img/libertadores.png" class="card-img-top" type="button" onclick="location.href='posicionesLibertadores.php'">   
-                    </div>
-                    </div>
-                    <div class="col-4">
-                    <div class="card bg-transparent" style="width: 12rem;">
-                        <img src="../img/ligaArg.png" class="card-img-top" type="button" onclick="location.href='posicionesTorneoArg.php'">   
-                    </div>
-                    </div>
-                </div>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <div data-aos="zoom-in-down" class="salir col-2 h-100 p-0 m-0 border-0 d-inline-block bg-secondary">
-            <div class="col-12 h-100 rounded-0 card p-0 m-0 border-0" style=";">
-                
-                <div id="carouselExampleIndicators" class="carousel slide h-100" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner h-100">
-                        <div class="carousel-item active h-100">
-                        <div class="col-12 row container h-100 p-0 m-0">
-                        
-                        <div class="h-50 w-100 px-0">
-                            <img src="https://media.ambito.com/p/b68ff1d6b8d86465c6f6edcdf9764a45/adjuntos/239/imagenes/040/126/0040126022/alexis-mac-allister.jpg" class="card-img-top h-100" alt="...">  
-                        </div>
-                    
-                        <div data-aos="zoom-in" class="col-12 row container h-50 p-0 m-0 bg-warning">
-                            <div class="col-12 w-100 container h-100 bg-warning">
-                                <div class="card-body h-100 p-2">
-                                    <h5 class="card-title text-dark">Imparable:</h5>
-                                    <p class="card-text text-dark">2 goles de Alexis Mac Allister en la victoria 4-1 del brighton vs Middlesbrough.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                        <div class="carousel-item h-100 p-0">
-                            <div class="col-12 row container h-100 p-0 m-0">
-                        
-                                <div class="h-50 w-100 px-0">
-                                    <img src="https://www.ole.com.ar/images/2022/01/24/1hWuMP5P6_340x340__1.jpg" class="card-img-top h-100 w-100" alt="...">  
-                                </div>
-                            
-                                <div data-aos="zoom-in" class="col-12 row container h-50 p-0 m-0 bg-warning">
-                                    <div class="col-12 w-100 container h-100 bg-warning">
-                                        <div class="card-body h-100 p-2">
-                                            <h6 class="card-title text-dark">BOCA: Se lesiono Fígal.</h6>
-                                            <p class="card-text text-dark">El defensor de Boca sufrió una lesion muscular que lo marginará un tiempo de las canchas.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item h-100 p-0">
-                            <div class="col-12 row container h-100 p-0 m-0">
-                        
-                                <div class="h-50 w-100 px-0">
-                                    <img src="https://www.ole.com.ar/images/2021/10/11/ozHOZ8wlz_720x0__2.jpg" class="card-img-top h-100 w-100" alt="...">  
-                                </div>
-                            
-                                <div data-aos="zoom-in" class="col-12 row container h-50 p-0 m-0 bg-warning">
-                                    <div class="col-12 w-100 container h-100 bg-warning">
-                                        <div class="card-body h-100 p-2">
-                                            <h5 class="card-title text-dark">River: Llega Enzo Diaz?</h5>
-                                            <p class="card-text text-dark">El lateral de la "T" tiene muchas chances de ser parte del plantel de Demichellis.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
+        <div class="carousel-item">
+            <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 120px 35px 70px 35px ">
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaEliminatoria.php'">Jugar</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesEliminatoria.php'">Resultados</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticosEliminatorias.php'">Mis pronosticos</button>
             </div>
         </div>
     </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#eliminatorias" data-bs-slide="next">
+        <div class="carousel-control-next-icon" aria-hidden="true"></div>
+        <div class="visually-hidden">Next</div>
+  </button>
+</div>
+
+
+<div id="libertadores" class="carousel slide col-3 h-100 d-inline-block p-0 bg-warning" style="margin: 0px 10px 0px 10px">
+    <div class="carousel-inner">
+        <div class="carousel-item active" >
+            <img src="../img/libertadoress.png "style="width: 100%; height: 400px">
+        </div>
+        <div class="carousel-item">
+            <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 120px 35px 70px 35px ">
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaLibertadores.php'">Jugar</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesLibertadores.php'">Resultados</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticosLibertadores.php'">Mis pronosticos</button>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#libertadores" data-bs-slide="next">
+        <div class="carousel-control-next-icon" aria-hidden="true"></div>
+        <div class="visually-hidden">Next</div>
+  </button>
+</div>
+
+<div id="argentina" class="carousel slide col-3 h-100 d-inline-block p-0 bg-danger ">
+    <div class="carousel-inner">
+        <div class="carousel-item active" >
+            <img src="../img/ligaArge.png "style="width: 100%; height: 400px">
+        </div>
+        <div class="carousel-item">
+            <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 120px 35px 70px 35px ">
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaTorneoArg.php'">Jugar</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesTorneoArg.php'">Resultados</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticoTorneoArg'">Mis pronosticos</button>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#argentina" data-bs-slide="next">
+        <div class="carousel-control-next-icon" aria-hidden="true"></div>
+        <div class="visually-hidden">Next</div>
+  </button>
+</div>
+
+ 
+    <div class="col-1 h-10 d-inline-block bg-secondary" style="margin-left:10px" >
+    <img src="../img/dinero.png"   type="button" style="margin-top:160px; margin-left: 5px; width: 70px; height: 70px" data-bs-toggle="modal" data-bs-target="#exampleModal"></img> 
+    </div>
+</div>        
+   
+
+
+     
     
     <!-- Modal Perfil -->
         <div class="modal fade" id="ModalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -294,10 +223,10 @@ $time = time();
         </div>
       </div>      
     </form>
-                    </div>
-                </div>
-            </div>
         </div>
+    </div>
+</div>
+</div>
     
 
 <!-- Modal Saldo -->
@@ -355,7 +284,6 @@ if(isset($_POST["editarPerfil"])){
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"></script>
-
 
 <script>
 var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
