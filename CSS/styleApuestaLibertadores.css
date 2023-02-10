@@ -24,6 +24,18 @@ h1 {
 	-webkit-background-clip: text;
 	text-transform: uppercase;
 	font-size: 50px;
-
 }
 
+@media only screen and (min-width: 360px) and (max-width: 1000px){
+  
+    #tablas{
+      width: 100%;
+    }
+    #info{
+        position: relative;
+		top:4150px;
+        width: 100%;
+    }
+    
+  
+  }

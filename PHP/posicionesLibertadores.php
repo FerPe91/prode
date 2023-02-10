@@ -1,5 +1,6 @@
 <?php
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
@@ -58,7 +59,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../CSS/styleText.css">
+    <link rel="stylesheet" href="../CSS/styleApuestaLibertadores.css">
 </head>
 <body style= "background-image: url('../img/fondoLiber.png'); background-size: cover">
 <div class="title">
@@ -67,7 +68,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
 
 <div class="container px-4 text-center" >
   <div class="row gx-5" >
-    <div class="col-6">
+    <div class="col-6" id="tablas">
     <div class="p-3">
     <div class="accordion" id="accordionExample" >
             <div class="accordion-item" >
@@ -308,13 +309,13 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
     
     </div>
     
-    <div class="col-6">
+    <div class="col-6" id="tablas">
     <div class="p-3">
 
-    <div class="card" style="border-radius: 15px;">
+    <div class="card" style="border-radius: 1%;">
           <div
             class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            style="border-top-left-radius: 1%; border-top-right-radius: 1%;">
             <i class="fas fa-angle-left"></i>
             <p class="mb-0 fw-bold">CHAT  </p>
             <i class="fas fa-times"></i>
@@ -331,18 +332,18 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 </table>         
     </div>               
     </div>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Escribir un mensaje</button>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#chat">Escribir un mensaje</button>
     </div>
   </div>
 </div>
 </body>        
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="chat" tabindex="-1" aria-labelledby="chatLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <h5 class="modal-title" id="chatLabel">Mensaje</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -354,7 +355,7 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                             <input class="form-control" placeholder="escriba aqui" required id="MensajeLibertadores" name="MensajeLibertadores" rows="4"></input> 
                             </div>
                         
-                            <button type="submit" style="margin:10px" name="cargarMensajeLibertadores" id="cargarMensajeLibertadores" class="btn btn-primary">Enviar</button>
+                            <button type="submit" style="margin:1%" name="cargarMensajeLibertadores" id="cargarMensajeLibertadores" class="btn btn-primary">Enviar</button>
 
                         </form>
                     </div>
@@ -372,7 +373,7 @@ $(document).ready( function () {
         "searching": false,
             "lengthChange": false,
             "info": false,
-            "pagingType": "full",
+            "paging": false,
             "order": [1, 'desc'],
                     
     }) 
@@ -388,6 +389,7 @@ $(document).ready( function () {
         "lengthChange": false,
         "info": false,
         "order": false,
+        "paging": false,
         columnDefs: [
     {targets: 1,
     className: 'dt-body-left',
@@ -407,9 +409,3 @@ $(document).ready( function () {
 enviarMensaje ("chat_libertadores", "MensajeLibertadores"); 
 
 } ?> 
-<script>
-var popoverTriggerList = Array.prototype.slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
-</script>  
