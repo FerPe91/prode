@@ -1,6 +1,6 @@
 <?php 
-
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
@@ -47,43 +47,43 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
     
             <tr>
                 
-                <td>ARG</td>
+                <td><?php echo $_SESSION['equipo1Elim']?></td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
                 <td><input type="radio" value="E" name="p1" id="p1"required></td>
                 <td><input type="radio" value="V" name="p1" id="p1"required></td>
-                <td>BRA</td>
+                <td><?php echo $_SESSION['equipo2Elim']?></td>
             </tr>
             <tr>
                 
-                <td>URU</td>
+                <td><?php echo $_SESSION['equipo3Elim']?></td>
                 <td><input type="radio" value="L" name="p2"id="p2"required></td>
                 <td><input type="radio" value="E" name="p2"id="p2"required></td>
                 <td><input type="radio" value="V" name="p2" id="p2"required></td>
-                <td>ECU</td>
+                <td><?php echo $_SESSION['equipo4Elim']?></td>
             </tr>
             <tr>
                 
-                <td>COL</td>
+                <td><?php echo $_SESSION['equipo5Elim']?></td>
                 <td><input type="radio" value="L" name="p3" id="p3"required></td>
                 <td><input type="radio" value="E" name="p3" id="p3"required></td>
                 <td><input type="radio" value="V" name="p3" id="p3"required></td>
-                <td>CHI</td>
+                <td><?php echo $_SESSION['equipo6Elim']?></td>
             </tr>
             <tr>
                 
-                <td>PER</td>
+                <td><?php echo $_SESSION['equipo7Elim']?></td>
                 <td><input type="radio" value="L" name="p4" id="p4"required></td>
                 <td><input type="radio" value="E" name="p4" id="p4"required></td>
                 <td><input type="radio" value="V" name="p4" id="p4"required></td>
-                <td>BOL</td>
+                <td><?php echo $_SESSION['equipo8Elim']?></td>
             </tr>
             <tr>
                 
-                <td>VEN</td>
+                <td><?php echo $_SESSION['equipo9Elim']?></td>
                 <td><input type="radio" value="L" name="p5" id="p5"required></td>
                 <td><input type="radio" value="E" name="p5" id="p5"required></td>
                 <td><input type="radio" value="V" name="p5" id="p5"required></td>
-                <td>PAR</td>
+                <td><?php echo $_SESSION['equipo10Elim']?></td>
             </tr>
     </table>
         
@@ -110,43 +110,43 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
       
                 <tr>
                   
-                    <td>ARG</td>
+                    <td><?php echo $_SESSION['equipo11Elim']?></td>
                     <td><input type="radio" value="L" name="p6" id="p6"required></td>
                     <td><input type="radio" value="E" name="p6" id="p6"required></td>
                     <td><input type="radio" value="V" name="p6" id="p6"required></td>
-                    <td>BRA</td>
+                    <td><?php echo $_SESSION['equipo12Elim']?></td>
                 </tr>
                 <tr>
                  
-                    <td>URU</td>
+                    <td><?php echo $_SESSION['equipo13Elim']?></td>
                     <td><input type="radio" value="L" name="p7"id="p7"required></td>
                     <td><input type="radio" value="E" name="p7"id="p7"required></td>
                     <td><input type="radio" value="V" name="p7" id="p7"required></td>
-                    <td>ECU</td>
+                    <td><?php echo $_SESSION['equipo14Elim']?></td>
                 </tr>
                 <tr>
                   
-                    <td>COL</td>
+                    <td><?php echo $_SESSION['equipo15Elim']?></td>
                     <td><input type="radio" value="L" name="p8" id="p8"required></td>
                     <td><input type="radio" value="E" name="p8" id="p8"required></td>
                     <td><input type="radio" value="V" name="p8" id="p8"required></td>
-                    <td>CHI</td>
+                    <td><?php echo $_SESSION['equipo16Elim']?></td>
                 </tr>
                 <tr>
                     
-                    <td>PER</td>
+                    <td><?php echo $_SESSION['equipo17Elim']?></td>
                     <td><input type="radio" value="L" name="p9" id="p9"required></td>
                     <td><input type="radio" value="E" name="p9" id="p9"required></td>
                     <td><input type="radio" value="V" name="p9" id="p9"required></td>
-                    <td>BOL</td>
+                    <td><?php echo $_SESSION['equipo18Elim']?></td>
                 </tr>
                 <tr>
                     
-                    <td>VEN</td>
+                    <td><?php echo $_SESSION['equipo19Elim']?></td>
                     <td><input type="radio" value="L" name="p10" id="p10"required></td>
                     <td><input type="radio" value="E" name="p10" id="p10"required></td>
                     <td><input type="radio" value="V" name="p10" id="p10"required></td>
-                    <td>PAR</td>
+                    <td><?php echo $_SESSION['equipo20Elim']?></td>
                 </tr>
         </table>
         </div>

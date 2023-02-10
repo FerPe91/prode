@@ -3,15 +3,46 @@
 
 @media only screen and (min-width: 360px) and (max-width: 1000px){
   
-	#libertadores{
-        background-color: blueviolet
-    }
+  #contenedor {
+    overflow-y: scroll;
 }
+	#eliminatorias{
+    
+    width: 70%;
+    margin: 10px 0px 10px 0px;
+    height: 10%;
+    }
 
+  #libertadores{
+    width: 70%;
+    margin: 10px 0px 10px 0px;
+    height: 10%;
+      }
 
+  #argentina{
+    width: 70%;
+    margin: 10px 0px 10px 0px;
+    height: 10%;
+        }
+  
+  #champions{
+    width: 70%;
+    margin: 10px 0px 10px 0px;
+    height: 10%;
+      }
 
+  #sudamericana{
+        width: 70%;
+        margin: 10px 0px 10px 0px;
+        height: 10%;
+          }
 
-
+  #premier{
+    width: 70%;
+    margin: 10px 0px 10px 0px;
+    height: 10%;
+      }
+}
 
 @import "compass/css3";
 

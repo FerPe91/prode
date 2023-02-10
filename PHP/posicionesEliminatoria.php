@@ -1,27 +1,16 @@
 <?php
-include ("../configuracion/cabecera.php");
+include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
-
-$Apostadores1= [];
-$Puntajes1 = [];
-$Apostadores2= [];
-$Puntajes2 = [];
-
-$Apostadores1=cargarApostadores("apuesta_eliminatorias", "fecha1y2", $Apostadores1);
-$Puntajes1=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha1y2", $Puntajes1, $Apostadores1);
-
-$Apostadores2=cargarApostadores("apuesta_eliminatorias", "fecha3y4", $Apostadores2);
-$Puntajes2=cargarPuntajesPorFecha("apuesta_eliminatorias", "resultado_eliminatorias", "fecha3y4", $Puntajes2, $Apostadores2);
-
 //////////CHAT/////////////////
-$UsuarioMensaje= [];
-$Mensaje = [];
-$FechaMensaje = [];
-$UsuarioMensaje=UsuarioMensaje("chat_eliminatorias", $UsuarioMensaje);
-$Mensaje=Mensaje("chat_eliminatorias", $Mensaje);
-$FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
+    $UsuarioMensaje= [];
+    $Mensaje = [];
+    $FechaMensaje = [];
+    $UsuarioMensaje=UsuarioMensaje("chat_eliminatorias", $UsuarioMensaje);
+    $Mensaje=Mensaje("chat_eliminatorias", $Mensaje);
+    $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
 /////////////////////////
 
 ?>
@@ -43,37 +32,35 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
     <div class="col-6" id="tablas">
     <div class="p-3">
     <div class="accordion" id="accordionExample" >
-            <div class="accordion-item" >
-                <h2 class="accordion-header" id="headingOne" >
-                <button class="accordion-button collapsed" style="background-color:#FFE4B5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                   Fecha 1 y 2 
-                </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body" style="background-color:Cornsilk">
-                <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioEliminatoria'])?></h3> </div>
+        <div class="accordion-item" > <!-- FECHA1Y2 -->
+            <h2 class="accordion-header" id="headingOne" >
+            <button class="accordion-button collapsed" style="background-color:#FFE4B5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Fecha 1 y 2 
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body" style="background-color:Cornsilk">
+            <div style="background-color:silver"><h3>Premio acumulado: $ <?php echo($_SESSION['premioEliminatoria'])?></h3> </div>
                 <table id="table_id" class="display" >
-                                    <thead>
-                                        <tr>
-                                      
-                                        <th>Usuario</th>
-                                        <th>Puntaje</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php for($i=0; $i<count($Apostadores1); $i++) {?>
-                                        <tr class="table-info">
-                      
-                                                <td><?php echo $Apostadores1[$i]; ?></td>
-                                                <td><?php echo  $Puntajes1[$i]; ?></td>   
-                                        </tr>
-                                        <?php  }   ?>            
-                                    </tbody>
+                    <thead>
+                        <tr>
+                        <th>Usuario</th>
+                        <th>Puntaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php for($i=0; $i<count($_SESSION['Apos1ELI']); $i++) {?>
+                        <tr class="table-info">
+                                <td><?php echo $_SESSION['Apos1ELI'][$i]; ?></td>
+                                <td><?php echo $_SESSION['PUN1ELI'][$i]; ?></td>   
+                        </tr>
+                        <?php  }   ?>            
+                    </tbody>
                 </table> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
+            </div>
+         </div>
+        <div class="accordion-item">  <!-- FECHA3Y4 -->
                 <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" style="background-color: #ffe7bc" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Fecha 3 y 4
@@ -85,93 +72,93 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
                 </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" style="background-color: #ffe9c4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                   Fecha 5 y 6
-                </button>
-                </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
+        <div class="accordion-item"> <!-- FECHA5Y6 -->
+            <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" style="background-color: #ffe9c4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Fecha 5 y 6
+            </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
+            <strong>La fecha aun no ha comenzado</strong> 
+            </div>
+            </div>
+         </div>
+        <div class="accordion-item"> <!-- FECHA7Y8 -->
+            <h2 class="accordion-header" id="f4">
+            <button class="accordion-button collapsed" style="background-color: #ffeccb" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+            Fecha 7 y 8
+            </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="f4" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
                 <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="f4">
-                <button class="accordion-button collapsed" style="background-color: #ffeccb" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                Fecha 7 y 8
-                </button>
-                </h2>
-                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="f4" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
-                    <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="f5">
-                <button class="accordion-button collapsed" style="background-color: #ffefd3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                   Fecha 9 y 10
-                </button>
-                </h2>
-                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="f5" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
+         </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="f5">
+            <button class="accordion-button collapsed" style="background-color: #ffefd3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                Fecha 9 y 10
+            </button>
+            </h2>
+            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="f5" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
+            <strong>La fecha aun no ha comenzado</strong> 
+            </div>
+            </div>
+         </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="f6">
+            <button class="accordion-button collapsed" style="background-color:#fff2da" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+            Fecha 11 y 12
+            </button>
+            </h2>
+            <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="f6" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
                 <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="f6">
-                <button class="accordion-button collapsed" style="background-color:#fff2da" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                Fecha 11 y 12
-                </button>
-                </h2>
-                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="f6" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
-                    <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="f7">
-                <button class="accordion-button collapsed" style="background-color: #fff4e1" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                   Fecha 13 y 14
-                </button>
-                </h2>
-                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="f7" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
+         </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="f7">
+            <button class="accordion-button collapsed" style="background-color: #fff4e1" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                Fecha 13 y 14
+            </button>
+            </h2>
+            <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="f7" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
+            <strong>La fecha aun no ha comenzado</strong> 
+            </div>
+            </div>
+         </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="f8">
+            <button class="accordion-button collapsed" style="background-color: #fff7e9" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+            Fecha 15 y 16
+            </button>
+            </h2>
+            <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="f8" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
                 <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="f8">
-                <button class="accordion-button collapsed" style="background-color: #fff7e9" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                Fecha 15 y 16
-                </button>
-                </h2>
-                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="f8" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
-                    <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="f9">
-                <button class="accordion-button collapsed" style="background-color: #fffaf0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
-                   Fecha 17 y 18
-                </button>
-                </h2>
-                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="f9" data-bs-parent="#accordionExample">
-                <div class="accordion-body"style="background-color:Cornsilk">
-                <strong>La fecha aun no ha comenzado</strong> 
-                </div>
-                </div>
+         </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="f9">
+            <button class="accordion-button collapsed" style="background-color: #fffaf0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                Fecha 17 y 18
+            </button>
+            </h2>
+            <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="f9" data-bs-parent="#accordionExample">
+            <div class="accordion-body"style="background-color:Cornsilk">
+            <strong>La fecha aun no ha comenzado</strong> 
             </div>
-        </div>
-        </div>
-    </div>   
+            </div>
+         </div>
+    </div>
+    </div>
+</div>   
 
 
     <div class="col-6" id="tablas">
@@ -197,18 +184,18 @@ $FechaMensaje=FechaMensaje("chat_eliminatorias", $FechaMensaje);
                 </table>         
     </div>               
     </div>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Escribir un mensaje</button>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#chat">Escribir un mensaje</button>
     </div>
   </div>
 </div>
 </body>        
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="chat" tabindex="-1" aria-labelledby="chatLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <h5 class="modal-title" id="chatLabel">Mensaje</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -238,7 +225,7 @@ $(document).ready( function () {
         "searching": false,
             "lengthChange": false,
             "info": false,
-            
+            "paging": false,
             "order": [1, 'desc'],
                     
     }) 
@@ -254,6 +241,7 @@ $(document).ready( function () {
         "lengthChange": false,
         "info": false,
         "order": false,
+        "paging": false,
         columnDefs: [
     {targets: 1,
     className: 'dt-body-left',

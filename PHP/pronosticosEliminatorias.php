@@ -1,18 +1,8 @@
 <?php
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
-
-$PronosticoFecha1y2= [];
-
-
-$ResultadosFecha1y2= [];
-
-
-$PronosticoFecha1y2 = mostrarMisPronosticos("apuesta_eliminatorias", "fecha1y2", $PronosticoFecha1y2);
-
-
-$ResultadosFecha1y2 = mostrarResultados("resultado_eliminatorias", "fecha1y2", $ResultadosFecha1y2);
 
 ?>
 
@@ -61,13 +51,16 @@ $ResultadosFecha1y2 = mostrarResultados("resultado_eliminatorias", "fecha1y2", $
                         <td><button class="btn btn-light"  style="width:100%; padding:0px" data-bs-toggle="offcanvas" data-bs-target="#f1y2" aria-controls="f1y2">
                         Fecha 1 y 2
                         </button></td>
-                        <?php for($i=0; $i<count($ResultadosFecha1y2); $i++) {
-                            if ( $PronosticoFecha1y2[$i] == $ResultadosFecha1y2[$i] ){?>
-                            <td style="background-color:yellow; border-radius: 200px; "><?php echo $PronosticoFecha1y2[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoFecha1y2[$i]; ?></td>
-                        <?php  } }  ?>
-                        <td><?php echo $PronosticoFecha1y2[10] ?></td>
+                        <?php for($i=0; $i<count($_SESSION['Resultados1ELI']); $i++) {
+                            if ( $_SESSION['Resultados1ELI'][$i] == "-" ){  ?>
+                                <td style="background-color:while"><?php echo $_SESSION['Pronostico1ELI'][$i] ?></td>
+                            <?php  }elseif( $_SESSION['Pronostico1ELI'][$i] == $_SESSION['Resultados1ELI'][$i] ){?>
+                            <td style="background-color:yellow; border-radius: 20px"><?php echo $_SESSION['Pronostico1ELI'][$i]; ?></td>
+                            <?php  }else{?>
+                                <td style="background-color:red; border-radius: 200px; "><?php echo $_SESSION['Pronostico1ELI'][$i] ?></td>
+                            <?php  }  ?>
+                        <?php  }  ?>   
+                            <td><?php echo $_SESSION['Pronostico1ELI'][10] ?></td>
                 </tr>
             </tbody>
         </table> 
@@ -92,52 +85,52 @@ $ResultadosFecha1y2 = mostrarResultados("resultado_eliminatorias", "fecha1y2", $
                     <tr class="table-info">
                         <td>p1</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[0]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][0]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p2</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[1]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][1]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p3</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[2]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][2]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p4</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[3]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][3]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p5</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[4]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][4]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p6</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[5]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][5]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p7</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[6]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][6]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p8</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[7]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][7]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p9</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[8]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][8]; ?></td>
                     </tr>
                     <tr class="table-info">
                         <td>p10</td>
                         <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha1y2[9]; ?></td>
+                        <td><?php echo  $_SESSION['Resultados1ELI'][9]; ?></td>
                     </tr>
                 </tbody>
             </table>                

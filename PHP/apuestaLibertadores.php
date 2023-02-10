@@ -1,6 +1,6 @@
 <?php 
-
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 

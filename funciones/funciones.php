@@ -260,71 +260,7 @@ function cargarPuntajesTotal ($tabla, $ArrayPuntajes, $ArrayApostadores){
   return $ArrayPuntajes;
 };
 
-function editarSaldo ($saldoU, $cuenta){
-  require ('../configuracion/conexion.php');
-  $UsuarioI = $_SESSION["usuario"];
-  $Saldo = $_POST['saldo'];
-  $Contraseña = $_POST['contraseña'];
-  
-  $Consulta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$UsuarioI'");
-  $DatosUsuario = mysqli_fetch_array($Consulta);
 
-  if ($Contraseña!=$DatosUsuario["clave"]){
-
-    echo '
-    <script type="text/javascript">
-        $(document).ready(function(){ 
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "La contraseña es incorrecta",
-      showConfirmButton: false,
-      timer: 1500
-    });
-  });
-  </script>';  
-  exit;
-  }
-
-
-  if($cuenta=="suma"){
-    $saldoU+=$Saldo;
-  }else{
-    $saldoU-=$Saldo; }
-  
-  if($saldoU<0){
-      echo '
-      <script type="text/javascript">
-          $(document).ready(function(){
-      Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "Saldo insuficiente",
-      showConfirmButton: false,
-      timer: 1500
-    });
-    });
-    </script>';
-    }else{
-      $cargarSaldo="UPDATE registro SET saldo='$saldoU' where usuario = '$UsuarioI'";
-      mysqli_query($conexion, $cargarSaldo);
-      echo '
-      <script type="text/javascript">
-      $(document).ready(function(){
-        Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Su saldo se actualizo correctamente",
-        showConfirmButton: false,
-        timer: 1500
-      });
-      });
-      function reload(){
-        window.location=document.location.href;}
-        setTimeout(reload);
-    </script>';
-    }
-};
 
 function premios ($tabla, $fecha, $valorApuesta){
   $CantidadApostadores=saberCantApostadores($tabla,$fecha);
@@ -434,7 +370,7 @@ function registrarUsuario(){
   exit; //exit hace que corte  no ingrese los valores a la tabla
   }
 
-  if ($Contraseña!=$Rcontraseña){
+  elseif ($Contraseña!=$Rcontraseña){
 
     echo '
     <script type="text/javascript">
@@ -456,7 +392,7 @@ function registrarUsuario(){
 
   //si pasa todas las verificaciones ingresamos los datos
 
-  mysqli_query($conexion, $insertar);
+  else{mysqli_query($conexion, $insertar);
   echo '
   <script type="text/javascript">
     $(document).ready(function(){ 
@@ -470,45 +406,6 @@ function registrarUsuario(){
   });
   setTimeout( function() { window.location.href = "../index.php"; }, 1500 );
       </script>';
-
-}
-
-function editarPerfil(){
-  require ('../configuracion/conexion.php');
-  $UsuarioI = $_SESSION["usuario"];
-  $Apellido = $_POST['apellido'];
-  $Nombre = $_POST['nombre'];
-  $Dni = $_POST['dni'];
-  $Telefono = $_POST['telefono'];
-  $Contraseña = $_POST['contraseña'];
-  $Rcontraseña = $_POST['Rcontraseña'];
-
-  if ($Contraseña!=$Rcontraseña){
-    echo '
-     <script type="text/javascript">
-        $(document).ready(function(){ 
-     Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "Operacion fallida. Las claves no coinciden",
-      showConfirmButton: false,
-      timer: 2500
-    });
-  });
-  
-  </script>';  
-  
-
-  }else{
-      $editar="UPDATE registro SET apellido='$Apellido', nombre='$Nombre', dni='$Dni', telefono='$Telefono', clave='$Contraseña' where usuario = '$UsuarioI'";
-      mysqli_query($conexion, $editar);
-      echo '
-      <script type="text/javascript"> 
-        function reload(){
-            window.location=document.location.href;
-        }
-        setTimeout(reload,0);
-    </script>';
     }
 }
 
@@ -618,19 +515,6 @@ function mostrarResultados($tabla, $fecha, $Array){
   $totalUsuario = mysqli_fetch_array($Usuarios);
 
   if($tabla == "resultado_eliminatorias"){
-    if(mysqli_num_rows($Usuarios)==0){
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      array_push($Array, "-");
-      
-    }else{
       array_push($Array, $totalUsuario["p1"]);
       array_push($Array, $totalUsuario["p2"]);
       array_push($Array, $totalUsuario["p3"]);
@@ -642,23 +526,9 @@ function mostrarResultados($tabla, $fecha, $Array){
       array_push($Array, $totalUsuario["p9"]);
       array_push($Array, $totalUsuario["p10"]);
       
-    }
+    
 
-    }elseif($tabla == "resultados_libertadores"){
-      if(mysqli_num_rows($Usuarios)==0){
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-      }else{
+  }elseif($tabla == "resultados_libertadores"){
         array_push($Array, $totalUsuario["p1"]);
         array_push($Array, $totalUsuario["p2"]);
         array_push($Array, $totalUsuario["p3"]);
@@ -671,25 +541,9 @@ function mostrarResultados($tabla, $fecha, $Array){
         array_push($Array, $totalUsuario["p10"]);
         array_push($Array, $totalUsuario["p11"]);
         array_push($Array, $totalUsuario["p12"]);
-      }
+      
 
-    }elseif($tabla == "resultados_torneoarg"){
-      if(mysqli_num_rows($Usuarios)==0){
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-        array_push($Array, "-");
-      }else{
+  }elseif($tabla == "resultados_torneoarg"){
         array_push($Array, $totalUsuario["p1"]);
         array_push($Array, $totalUsuario["p2"]);
         array_push($Array, $totalUsuario["p3"]);
@@ -704,9 +558,7 @@ function mostrarResultados($tabla, $fecha, $Array){
         array_push($Array, $totalUsuario["p12"]);
         array_push($Array, $totalUsuario["p13"]);
         array_push($Array, $totalUsuario["p14"]);
-      }
-    }
+  }
 
-  return $Array;
-  
+  return $Array;  
 }

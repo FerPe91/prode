@@ -1,5 +1,9 @@
 @media only screen and (min-width: 360px) and (max-width: 1000px){
   
+	body{
+		background-size:auto;
+	}
+
 	#tablas{
 	  width: 100%;
 	}
@@ -26,6 +30,9 @@
 		font-size: 27px;
 	  }
 	  
+	  #tablaPronostico{
+		width: 100%;
+	  }
   }
 
 

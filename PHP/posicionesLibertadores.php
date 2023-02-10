@@ -1,5 +1,6 @@
 <?php
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
@@ -331,18 +332,18 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
                 </table>         
     </div>               
     </div>
-    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Escribir un mensaje</button>
+    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#chat">Escribir un mensaje</button>
     </div>
   </div>
 </div>
 </body>        
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="chat" tabindex="-1" aria-labelledby="chatLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <h5 class="modal-title" id="chatLabel">Mensaje</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -372,7 +373,7 @@ $(document).ready( function () {
         "searching": false,
             "lengthChange": false,
             "info": false,
-       
+            "paging": false,
             "order": [1, 'desc'],
                     
     }) 
@@ -388,6 +389,7 @@ $(document).ready( function () {
         "lengthChange": false,
         "info": false,
         "order": false,
+        "paging": false,
         columnDefs: [
     {targets: 1,
     className: 'dt-body-left',

@@ -1,5 +1,6 @@
 <?php
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
@@ -82,15 +83,19 @@ $ResultadosGrupoH = mostrarResultados("resultados_libertadores", "GrupoH", $Resu
             <tbody>
             
                 <tr>
+                
                         <td><button class="btn btn-light"  style="width:100%; padding:0px" data-bs-toggle="offcanvas" data-bs-target="#g1" aria-controls="g1">
                         Grupo A
                         </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoA); $i++) {
-                            if ( $PronosticoGrupoA[$i] == $ResultadosGrupoA[$i] ){?>
+                            if ( $ResultadosGrupoA[$i] == "-" ){  ?>
+                                <td style="background-color:while"><?php echo $PronosticoGrupoA[$i] ?></td>
+                            <?php  }elseif( $PronosticoGrupoA[$i] == $ResultadosGrupoA[$i] ){?>
                             <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoA[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoA[$i]; ?></td>
-                        <?php  } }  ?>
+                            <?php  }else{?>
+                                <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoA[$i] ?></td>
+                            <?php  }  ?>
+                        <?php  }  ?>
                         <td><?php echo $PronosticoGrupoA[12] ?></td>
                 </tr>
                 <tr> 
@@ -98,33 +103,44 @@ $ResultadosGrupoH = mostrarResultados("resultados_libertadores", "GrupoH", $Resu
                         Grupo B
                         </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoB); $i++) {
-                            if ( $PronosticoGrupoB[$i] == $ResultadosGrupoB[$i] ){?>
+                            if ( $ResultadosGrupoB[$i] == "-" ){  ?>
+                                <td style="background-color:while"><?php echo $PronosticoGrupoB[$i] ?></td>
+                            <?php  }elseif( $PronosticoGrupoB[$i] == $ResultadosGrupoB[$i] ){?>
                             <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoB[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoB[$i]; ?></td>
-                        <?php  } }  ?>
+                            <?php  }else{?>
+                                <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoB[$i] ?></td>
+                            <?php  }  ?>
+                        <?php  }  ?>
                         <td><?php echo $PronosticoGrupoB[12] ?></td>
                 </tr>
                 <tr>  
                         <td><button class="btn btn-light"  style="width:100%; padding:0px" data-bs-toggle="offcanvas" data-bs-target="#g3" aria-controls="g3">
                         Grupo C
+                        </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoC); $i++) {
-                            if ( $PronosticoGrupoC[$i] == $ResultadosGrupoC[$i] ){?>
-                            <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoC[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoC[$i]; ?></td>
-                        <?php  } }  ?>
+                           if ( $ResultadosGrupoC[$i] == "-" ){  ?>
+                            <td style="background-color:while"><?php echo $PronosticoGrupoC[$i] ?></td>
+                        <?php  }elseif( $PronosticoGrupoC[$i] == $ResultadosGrupoC[$i] ){?>
+                        <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoC[$i]; ?></td>
+                        <?php  }else{?>
+                            <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoC[$i] ?></td>
+                        <?php  }  ?>
+                    <?php  }  ?>
                         <td><?php echo $PronosticoGrupoC[12] ?></td>
                 </tr>
                 <tr> 
                         <td><button class="btn btn-light"  style="width:100%; padding:0px" data-bs-toggle="offcanvas" data-bs-target="#g4" aria-controls="g1">
                         Grupo D
+                        </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoD); $i++) {
-                            if ( $PronosticoGrupoD[$i] == $ResultadosGrupoD[$i] ){?>
-                            <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoD[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoD[$i]; ?></td>
-                        <?php  } }  ?>
+                           if ( $ResultadosGrupoD[$i] == "-" ){  ?>
+                            <td style="background-color:while"><?php echo $PronosticoGrupoD[$i] ?></td>
+                        <?php  }elseif( $PronosticoGrupoD[$i] == $ResultadosGrupoD[$i] ){?>
+                        <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoD[$i]; ?></td>
+                        <?php  }else{?>
+                            <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoD[$i] ?></td>
+                        <?php  }  ?>
+                    <?php  }  ?>
                         <td><?php echo $PronosticoGrupoD[12] ?></td>
                 </tr>
                 <tr>  
@@ -132,11 +148,14 @@ $ResultadosGrupoH = mostrarResultados("resultados_libertadores", "GrupoH", $Resu
                         Grupo E
                         </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoE); $i++) {
-                            if ( $PronosticoGrupoE[$i] == $ResultadosGrupoE[$i] ){?>
+                            if ( $ResultadosGrupoE[$i] == "-" ){  ?>
+                                <td style="background-color:while"><?php echo $PronosticoGrupoE[$i] ?></td>
+                            <?php  }elseif( $PronosticoGrupoE[$i] == $ResultadosGrupoE[$i] ){?>
                             <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoE[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoE[$i]; ?></td>
-                        <?php  } }  ?>
+                            <?php  }else{?>
+                                <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoE[$i] ?></td>
+                            <?php  }  ?>
+                        <?php  }  ?>
                         <td><?php echo $PronosticoGrupoE[12] ?></td>
                 </tr>
                 <tr>  
@@ -144,11 +163,14 @@ $ResultadosGrupoH = mostrarResultados("resultados_libertadores", "GrupoH", $Resu
                         Grupo F
                         </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoF); $i++) {
-                            if ( $PronosticoGrupoF[$i] == $ResultadosGrupoF[$i] ){?>
-                            <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoF[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoF[$i]; ?></td>
-                        <?php  } }  ?>
+                           if ( $ResultadosGrupoG[$i] == "-" ){  ?>
+                            <td style="background-color:while"><?php echo $PronosticoGrupoG[$i] ?></td>
+                        <?php  }elseif( $PronosticoGrupoG[$i] == $ResultadosGrupoG[$i] ){?>
+                        <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoG[$i]; ?></td>
+                        <?php  }else{?>
+                            <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoG[$i] ?></td>
+                        <?php  }  ?>
+                    <?php  }  ?>
                         <td><?php echo $PronosticoGrupoF[12] ?></td>
                 </tr>
                 <tr>  
@@ -156,11 +178,14 @@ $ResultadosGrupoH = mostrarResultados("resultados_libertadores", "GrupoH", $Resu
                         Grupo G
                         </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoG); $i++) {
-                            if ( $PronosticoGrupoG[$i] == $ResultadosGrupoG[$i] ){?>
-                            <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoG[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoG[$i]; ?></td>
-                        <?php  } }  ?>
+                           if ( $ResultadosGrupoA[$i] == "-" ){  ?>
+                            <td style="background-color:while"><?php echo $PronosticoGrupoA[$i] ?></td>
+                        <?php  }elseif( $PronosticoGrupoA[$i] == $ResultadosGrupoA[$i] ){?>
+                        <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoA[$i]; ?></td>
+                        <?php  }else{?>
+                            <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoA[$i] ?></td>
+                        <?php  }  ?>
+                    <?php  }  ?>
                         <td><?php echo $PronosticoGrupoG[12] ?></td>
                 </tr>
                 <tr>  
@@ -168,12 +193,15 @@ $ResultadosGrupoH = mostrarResultados("resultados_libertadores", "GrupoH", $Resu
                         Grupo H
                         </button></td>
                         <?php for($i=0; $i<count($ResultadosGrupoH); $i++) {
-                            if ( $PronosticoGrupoH[$i] == $ResultadosGrupoH[$i] ){?>
+                            if ( $ResultadosGrupoH[$i] == "-" ){  ?>
+                                <td style="background-color:while"><?php echo $PronosticoGrupoH[$i] ?></td>
+                            <?php  }elseif( $PronosticoGrupoH[$i] == $ResultadosGrupoH[$i] ){?>
                             <td style="background-color:yellow; border-radius: 20px"><?php echo $PronosticoGrupoH[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoGrupoH[$i]; ?></td>
-                        <?php  } }  ?>
-                        <td><?php echo $PronosticoGrupoH[12] ?></td>                    
+                            <?php  }else{?>
+                                <td style="background-color:red; border-radius: 200px; "><?php echo $PronosticoGrupoH[$i] ?></td>
+                            <?php  }  ?>
+                        <?php  }  ?>
+                        <td><?php echo $PronosticoGrupoH[12] ?></td>      
                 </tr>           
             </tbody>
         </table> 

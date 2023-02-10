@@ -1,18 +1,9 @@
 <?php
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
-$PronosticoFecha5= [];
-
-
-$ResultadosFecha5= [];
-
-
-$PronosticoFecha5 = mostrarMisPronosticos("apuesta_torneoarg", "fecha5", $PronosticoFecha5);
-
-
-$ResultadosFecha5 = mostrarResultados("resultados_torneoarg", "fecha5", $ResultadosFecha5);
 
 ?>
 <!DOCTYPE html>
@@ -25,23 +16,24 @@ $ResultadosFecha5 = mostrarResultados("resultados_torneoarg", "fecha5", $Resulta
 <body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
 
 <div class="col-10 container-fluid">
-    <div class="word" style="margin-bottom:20px">
+    <div class="word" style="margin-bottom:20px" id="titulo">
 	<span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span> </div>
     </div>
+ 
 
-
-<div style="width:90%; margin:auto; border-radius: 15px" >
+<div style="width:90%; margin:auto; border-radius: 15px">
     <div class="card">
-          <div
+          <div  
             class="card-header d-flex justify-content-between align-items-center p-3 bg-primary text-white border-bottom-0"
             style="border-top-left-radius: 1%; border-top-radius: 15px">
             <i class="fas fa-angle-left"></i>
             <p class="mb-0 fw-bold">Mis pronosticos realizados</p>
             <i class="fas fa-times"></i>
           </div>
+          
           <table id="table" class="display">
-            <thead>
-                <tr>                          
+            <thead >
+                <tr >                          
                 <th>FECHAS</th>
                 <th>P1</th>
                 <th>P2</th>
@@ -61,113 +53,119 @@ $ResultadosFecha5 = mostrarResultados("resultados_torneoarg", "fecha5", $Resulta
                 </tr>
             </thead>
             <tbody>
-            
-                <tr>
+                <tr> <!-- FECHA 5 -->
                         <td><button class="btn btn-light"  style="width:100%; padding:0px" data-bs-toggle="offcanvas" data-bs-target="#f5" aria-controls="f5">
                         Fecha 5
                         </button></td>
-                        <?php for($i=0; $i<count($ResultadosFecha5); $i++) {
-                            if ( $PronosticoFecha5[$i] == $ResultadosFecha5[$i] ){?>
-                            <td style="background-color:yellow; border-radius: 200px; "><?php echo $PronosticoFecha5[$i]; ?></td>
-                            <?php  }else{   ?>
-                            <td><?php echo $PronosticoFecha5[$i]; ?></td>
-                        <?php  } }  ?>
-                        <td><?php echo $PronosticoFecha5[14] ?></td>
-                </tr>
+                        <?php for($i=0; $i<count($_SESSION['Resultados5TA']); $i++) {
+                            if ( $_SESSION['Resultados5TA'][$i] == "-" ){  ?>
+                                <td style="background-color:while"><?php echo $_SESSION['Pronostico5TA'][$i] ?></td>
+                            <?php  }elseif( $_SESSION['Pronostico5TA'][$i] == $_SESSION['Resultados5TA'][$i] ){?>
+                            <td style="background-color:yellow; border-radius: 20px"><?php echo $_SESSION['Pronostico5TA'][$i]; ?></td>
+                            <?php  }else{?>
+                                <td style="background-color:red; border-radius: 200px; "><?php echo $_SESSION['Pronostico5TA'][$i] ?></td>
+                            <?php  }  ?>
+                        <?php  }  ?>                
+                        <td><?php echo $_SESSION['Pronostico5TA'][14] ?></td>
+                 </tr>
+                
             </tbody>
         </table> 
     </div>
 </div>
 
     <div class="offcanvas offcanvas-start" data-bs-scroll="false" data-bs-backdrop="false" tabindex="-1" id="f5" aria-labelledby="f5Label" style="background-color: DarkGray">
-            <div class="offcanvas-header" >
-                <h3 class="offcanvas-title" style="margin:auto" id="offcanvasScrollingLabel">Fecha 5</h3>
-                <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="offcanvas"></button>
-            </div>
-            <div class="offcanvas-body">
-            <table id="tableA" class="display" >
-                <thead>
-                    <tr>
-                    <th></th>
-                    <th>Partido</th>
-                    <th>Resultado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="table-info">
-                        <td>p1</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[0]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p2</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[1]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p3</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[2]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p4</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[3]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p5</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[4]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p6</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[5]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p7</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[6]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p8</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[7]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p9</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[8]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p10</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[9]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p11</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[10]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p12</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[11]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p13</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[12]; ?></td>
-                    </tr>
-                    <tr class="table-info">
-                        <td>p14</td>
-                        <td>Boca - River</td>
-                        <td><?php echo  $ResultadosFecha5[13]; ?></td>
-                    </tr>
-                </tbody>
-            </table>                
-            </div>
-    </div>
+        <div class="offcanvas-header" >
+            <h3 class="offcanvas-title" style="margin:auto" id="offcanvasScrollingLabel">Fecha 5</h3>
+            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+        <table id="table5" class="display" >
+            <thead>
+                <tr>
+                <th></th>
+                <th>Partido</th>
+                <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-info">
+                    <td>p1</td>
+                    <td>Central Córdoba-Argentinos Jrs</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][0]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p2</td>
+                    <td>Belgrano-Tigre</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][1]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p3</td>
+                    <td>River-Arsenal</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][2]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p4</td>
+                    <td>Racing-Lanús</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][3]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p5</td>
+                    <td>Rosario Central-Godoy Cruz</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][4]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p6</td>
+                    <td>Estudiantes LP-Sarmiento</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][5]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p7</td>
+                    <td>San Lorenzo-Unión</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][6]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p8</td>
+                    <td>Colón-Huracán</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][7]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p9</td>
+                    <td>Barracas Central-Gimnasia</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][8]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p10</td>
+                    <td>Instituto- Newells</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][9]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p11</td>
+                    <td>Banfield-Independiente</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][10]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p12</td>
+                    <td>Defensa y Justicia-Atlético Tucumán</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][11]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p13</td>
+                    <td>Vélez-Boca</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][12]; ?></td>
+                </tr>
+                <tr class="table-info">
+                    <td>p14</td>
+                    <td>Platense-Talleres</td>
+                    <td><?php echo  $_SESSION['Resultados5TA'][13]; ?></td>
+                </tr>
+            </tbody>
+        </table>                
+        </div>
+     </div>
+
+
+
 </div>
 </body>        
 
@@ -210,7 +208,7 @@ $(document).ready( function () {
 } );
 
 $(document).ready( function () {
-    $('#tableA, #tableB, #tableC, #tableD, #tableE, #tableF, #tableG, #tableH' ).DataTable({
+    $('#table5').DataTable({
         "pageLength": 12,
         "searching": false,
         "lengthChange": false,
@@ -219,9 +217,9 @@ $(document).ready( function () {
         "order": false,
         
         columnDefs:[
-            { "className": "text-center", "sortable": false, "width": "5%", "targets": 0 }, //sortable saca las fechas de ordenamiento de las columnas
-            { "className": "text-center", "sortable": false, "width": "80%", "targets": 1},
-            { "className": "text-center", "sortable": false, "width": "15%", "targets": 2 },
+            { "className": "text-center", "sortable": false, "width": "3%", "targets": 0 }, //sortable saca las fechas de ordenamiento de las columnas
+            { "className": "text-center", "sortable": false, "width": "90%", "targets": 1},
+            { "className": "text-center", "sortable": false, "width": "7%", "targets": 2 },
         ]
         
     }) 

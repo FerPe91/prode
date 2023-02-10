@@ -1,6 +1,6 @@
 <?php 
-
 include("../configuracion/cabecera.php");
+include("menuDesplegable.php");
 require ('../configuracion/conexion.php');
 require ('../funciones/funciones.php');
 
@@ -26,7 +26,7 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
 
 <div class="col-10 container-fluid">
     <div class="word" id="titulo">
-	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>1</span>
+	<span>T</span><span>o</span><span>r</span><span>n</span><span>e</span><span>o</span><span>&nbsp;</span><span>A</span><span>r</span><span>g</span><span>e</span><span>n</span><span>t</span><span>i</span><span>n</span><span>o</span><span>&nbsp;</span><span>F</span><span>e</span><span>c</span><span>h</span><span>a</span><span>&nbsp;</span><span>5</span>
     </div>
     </div>
 
@@ -50,59 +50,59 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
     
             <tr>
                 
-                <td>Central Cba</td>
+                <td><?php echo $_SESSION['equipo1TA']?></td>
                 <td><input type="radio" value="L" name="p1" id="p1"required></td>
                 <td><input type="radio" value="E" name="p1" id="p1"required></td>
                 <td><input type="radio" value="V" name="p1" id="p1"required></td>
-                <td>Argentinos</td>
+                <td><?php echo $_SESSION['equipo2TA']?></td>
             </tr>
             <tr>
                 
-                <td>Belgrano</td>
+                <td><?php echo $_SESSION['equipo3TA']?></td>
                 <td><input type="radio" value="L" name="p2"id="p2"required></td>
                 <td><input type="radio" value="E" name="p2"id="p2"required></td>
                 <td><input type="radio" value="V" name="p2" id="p2"required></td>
-                <td>Tigre</td>
+                <td><?php echo $_SESSION['equipo4TA']?></td>
             </tr>
             <tr>
                 
-                <td>COL</td>
+                <td><?php echo $_SESSION['equipo5TA']?></td>
                 <td><input type="radio" value="L" name="p3" id="p3"required></td>
                 <td><input type="radio" value="E" name="p3" id="p3"required></td>
                 <td><input type="radio" value="V" name="p3" id="p3"required></td>
-                <td>CHI</td>
+                <td><?php echo $_SESSION['equipo6TA']?></td>
             </tr>
             <tr>
                 
-                <td>PER</td>
+                <td><?php echo $_SESSION['equipo7TA']?></td>
                 <td><input type="radio" value="L" name="p4" id="p4"required></td>
                 <td><input type="radio" value="E" name="p4" id="p4"required></td>
                 <td><input type="radio" value="V" name="p4" id="p4"required></td>
-                <td>BOL</td>
+                <td><?php echo $_SESSION['equipo8TA']?></td>
             </tr>
             <tr>
                 
-                <td>VEN</td>
+                <td><?php echo $_SESSION['equipo9TA']?></td>
                 <td><input type="radio" value="L" name="p5" id="p5"required></td>
                 <td><input type="radio" value="E" name="p5" id="p5"required></td>
                 <td><input type="radio" value="V" name="p5" id="p5"required></td>
-                <td>PAR</td>
+                <td><?php echo $_SESSION['equipo10TA']?></td>
             </tr>
             <tr>
                 
-                <td>ARG</td>
+                <td><?php echo $_SESSION['equipo11TA']?></td>
                 <td><input type="radio" value="L" name="p6" id="p6"required></td>
                 <td><input type="radio" value="E" name="p6" id="p6"required></td>
                 <td><input type="radio" value="V" name="p6" id="p6"required></td>
-                <td>BRA</td>
+                <td><?php echo $_SESSION['equipo12TA']?></td>
             </tr>
             <tr>
                 
-                <td>ARG</td>
+                <td><?php echo $_SESSION['equipo13TA']?></td>
                 <td><input type="radio" value="L" name="p7" id="p7"required></td>
                 <td><input type="radio" value="E" name="p7" id="p7"required></td>
                 <td><input type="radio" value="V" name="p7" id="p7"required></td>
-                <td>BRA</td>
+                <td><?php echo $_SESSION['equipo14TA']?></td>
             </tr>
            </table>
             </div>
@@ -125,59 +125,59 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
     
             <tr>
                 
-                <td>ARG</td>
+                <td><?php echo $_SESSION['equipo15TA']?></td>
                 <td><input type="radio" value="L" name="p8" id="p8"required></td>
                 <td><input type="radio" value="E" name="p8" id="p8"required></td>
                 <td><input type="radio" value="V" name="p8" id="p8"required></td>
-                <td>BRA</td>
+                <td><?php echo $_SESSION['equipo16TA']?></td>
             </tr>
             <tr>
                 
-                <td>URU</td>
+                <td><?php echo $_SESSION['equipo17TA']?></td>
                 <td><input type="radio" value="L" name="p9"id="p9"required></td>
                 <td><input type="radio" value="E" name="p9"id="p9"required></td>
                 <td><input type="radio" value="V" name="p9" id="p9"required></td>
-                <td>ECU</td>
+                <td><?php echo $_SESSION['equipo18TA']?></td>
             </tr>
             <tr>
                 
-                <td>COL</td>
+                <td><?php echo $_SESSION['equipo19TA']?></td>
                 <td><input type="radio" value="L" name="p10" id="p10"required></td>
                 <td><input type="radio" value="E" name="p10" id="p10"required></td>
                 <td><input type="radio" value="V" name="p10" id="p10"required></td>
-                <td>CHI</td>
+                <td><?php echo $_SESSION['equipo20TA']?></td>
             </tr>
             <tr>
                 
-                <td>PER</td>
+                <td><?php echo $_SESSION['equipo21TA']?></td>
                 <td><input type="radio" value="L" name="p11" id="p11"required></td>
                 <td><input type="radio" value="E" name="p11" id="p11"required></td>
                 <td><input type="radio" value="V" name="p11" id="p11"required></td>
-                <td>BOL</td>
+                <td><?php echo $_SESSION['equipo22TA']?></td>
             </tr>
             <tr>
                 
-                <td>VEN</td>
+                <td><?php echo $_SESSION['equipo23TA']?></td>
                 <td><input type="radio" value="L" name="p12" id="p12"required></td>
                 <td><input type="radio" value="E" name="p12" id="p12"required></td>
                 <td><input type="radio" value="V" name="p12" id="p12"required></td>
-                <td>PAR</td>
+                <td><?php echo $_SESSION['equipo24TA']?></td>
             </tr>
             <tr>
                 
-                <td>ARG</td>
+                <td><?php echo $_SESSION['equipo25TA']?></td>
                 <td><input type="radio" value="L" name="p13" id="p13"required></td>
                 <td><input type="radio" value="E" name="p13" id="p13"required></td>
                 <td><input type="radio" value="V" name="p13" id="p13"required></td>
-                <td>BRA</td>
+                <td><?php echo $_SESSION['equipo26TA']?></td>
             </tr>
             <tr>
                 
-                <td>ARG</td>
+                <td><?php echo $_SESSION['equipo27TA']?></td>
                 <td><input type="radio" value="L" name="p14" id="p14"required></td>
                 <td><input type="radio" value="E" name="p14" id="p14"required></td>
                 <td><input type="radio" value="V" name="p14" id="p14"required></td>
-                <td>BRA</td>
+                <td><?php echo $_SESSION['equipo28TA']?></td>
             </tr>
            
         </table>
