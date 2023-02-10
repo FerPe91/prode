@@ -5,7 +5,8 @@ require('../configuracion/conexion.php');
 $nombreU=$_SESSION['nombreU'];
 ?>
 
-<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background-color: #FC1111; color:white">
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background: rgb(75,47,47);
+background: linear-gradient(180deg, rgba(75,47,47,1) 0%, rgba(57,50,147,1) 12%, rgba(26,142,201,1) 48%); color:white">
             <div class="offcanvas-header" >
                 <h3 class="offcanvas-title" id="offcanvasScrollingLabel">Bienvenido <?php echo $nombreU ?> </h3>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
