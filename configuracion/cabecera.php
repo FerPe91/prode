@@ -78,16 +78,20 @@ $_SESSION['nombreU'] = $nombreU ;
 
 <!-- Modal usuario -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content rounded-0">
+            <div class="modal-dialog ">
+                <div class="modal-content w-75 rounded-4 p-2 mx-auto ">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">TU SALDO ES $ <?php echo $saldoU ?></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <h5 class="modal-title" id="exampleModalLabel"><?php echo strtoupper($nombreU) ?>, <?php echo strtoupper($apellidoU) ?></h5>                      
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <button type="button" name="editar perfil" id="editar perfil" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#ModalPerfil">Editar Perfil</button>                      
+                    <div class="mx-auto py-2 d-flex flex-column justify-content-center align-items-center">
+                      <img src="../img/usuario.png" role= "button" class="mx-0"  style="height: 70px; width:70px; font-weight: bold; margin-left:7px background-color:blue;""></img>
+                      <button type="button" name="editar perfil" id="editar perfil" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#ModalPerfil">Editar Perfil</button>                      
+                    </div>
                     <div class="modal-body">
                         <form method="POST">
-                            <div class="mb-3">
+                            <h5 class="modal-title py-2" id="exampleModalLabel">TU SALDO ES $ <?php echo $saldoU ?></h5>
+                            <div class="mb-3"> 
                                 <label for="saldo" class="form-label">INGRESA CANTIDAD</label>
                                 <input type="number" class="form-control" name="saldo" id="saldo" aria-describedby="emailHelp">
                             </div>
@@ -107,7 +111,7 @@ $_SESSION['nombreU'] = $nombreU ;
         </div>
 
         <!-- Modal Perfil dentro del modal saldo -->
-<div class="modal fade" id="ModalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade p-4" id="ModalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
