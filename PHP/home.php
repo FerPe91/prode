@@ -340,7 +340,7 @@ require ('../funciones/funciones.php');
 <div id="argentina" class="carousel slide col-3 h-50 d-inline-block p-0 bg-danger ">
     <div class="carousel-inner">
         <div class="carousel-item active" >
-            <img src="../img/ligaArge.png "style="width: 100%; height: 200px">
+            <img src="../img/ligaArg.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 8% 10% 5% 10%  ">

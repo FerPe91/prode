@@ -58,7 +58,7 @@ body {
 span {
   display: inline-block;
   text-shadow: 0 0 0 rgb(212, 201, 201);
-  animation: smoky 6s 6s both;
+  animation: smoky 12s 12s both;
 }
 
 #titulo{
