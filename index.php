@@ -34,9 +34,20 @@
                 </div>
                 <button type="submit" class="btn btn-primary" name="accion" >Entrar</button>
                 <button type="button" class="btn btn-primary" onclick="location.href='PHP/registrar.php'">Registrar</button>
-            </form>     
+            </form> 
+            
+            <button class="btn btn-warning mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Olvidaste tu contraseña?
+            </button>
+          <div class="collapse" id="collapseExample">
+            <h6>Pregunta de seguridad</h6>
+            <div class="d-flex flex-row justify-content-evenly align-items-center">
+              <p class="my-auto">¿Que dia naciste?</p> 
+              <input type="date" class="form-control w-50" name="PreguntaSeg" id="PreguntaSeg" required placeholder="Ingrese su fecha" required>
+            </div>
+          </div>
         </div>
-
+        
         <footer>
             
     

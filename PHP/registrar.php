@@ -66,6 +66,12 @@
         <label class="input-group-text" id="inputGroup-sizing-default" for="Rcontraseña" class="form-label">Repetir Clave</label >
         <input type="password" class="form-control" name="Rcontraseña" id="Rcontraseña" required placeholder="repita su contraseña">                       
       </div>
+      <div class="input-group input-group mb-3">
+        <h5 class='card-tittle'>Pregunta de seguridad</h5>
+        <label class="input-group-text" id="inputGroup-sizing-default" for="PreguntaSeg" class="form-label">¿Cuando es tu cumpleaños?</label >
+        <input type="date" class="form-control" name="PreguntaSeg" id="PreguntaSeg" required placeholder="Ingrese su fecha" required>
+        <p>*en caso de olvidarse la contraseña, contara con esta posibilidad para poder recuperarla</p>                       
+      </div>
 
       <div class="input-group input-group d-flex justify-content-end mb-6">
         <div class="col-12 input-group-text d-flex justify-content-between" id="inputGroup-sizing-default" class="form-check">

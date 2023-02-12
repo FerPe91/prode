@@ -322,8 +322,9 @@ function registrarUsuario(){
   $Usuario = $_POST['usuario'];
   $Contraseña = $_POST['contraseña'];
   $Rcontraseña = $_POST['Rcontraseña'];
+  $PreguntaSeg = $_POST['PreguntaSeg'];
 
-  $insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña', '0' )";
+  $insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña','$PreguntaSeg', '0' )";
 
   $verificar_usuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario'");
   if (mysqli_num_rows($verificar_usuario) > 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
@@ -389,7 +390,7 @@ function registrarUsuario(){
   </script>';  
   exit;
   }
-
+  
   //si pasa todas las verificaciones ingresamos los datos
 
   else{mysqli_query($conexion, $insertar);
