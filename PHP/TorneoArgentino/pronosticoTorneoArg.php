@@ -1,8 +1,8 @@
 <?php
-include("../configuracion/cabecera.php");
-include("menuDesplegable.php");
-require ('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+include("../../configuracion/cabecera.php");
+include("../../configuracion/menuDesplegable.php");
+require ('../../configuracion/conexion.php');
+require ('../../funciones/funciones.php');
 
 
 ?>
@@ -10,10 +10,10 @@ require ('../funciones/funciones.php');
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="../CSS/styleApuestaTorneoArgen.css">
+<link rel="stylesheet" href="../../CSS/styleApuestaTorneoArgen.css">
 </head>
 
-<body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
+<body style= "background-image: url('../../img/fondoArg.png'); background-size: cover">
 
 <div class="col-10 container-fluid">
     <div class="word" style="margin-bottom:20px" id="titulo">

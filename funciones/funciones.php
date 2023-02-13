@@ -1,7 +1,7 @@
 <?php 
 
 function cargarApuesta($tabla, $fecha, $Valor){
-    require ('../configuracion/conexion.php');
+    require ('../../configuracion/conexion.php');
     $UsuarioI = $_SESSION["usuario"];
     
     $cantApuestas= mysqli_query($conexion, "SELECT * FROM $tabla WHERE usuario ='$UsuarioI' and fecha = '$fecha'");
@@ -121,7 +121,7 @@ function cargarApuesta($tabla, $fecha, $Valor){
 
     
   function saberCantApostadores($tabla, $fecha){
-    require ('../configuracion/conexion.php');
+   require ('../../configuracion/conexion.php');
     $cantApostadores= mysqli_query($conexion, "SELECT * FROM $tabla WHERE fecha ='$fecha'");
     $cantidad=mysqli_num_rows($cantApostadores);
 
@@ -129,7 +129,7 @@ function cargarApuesta($tabla, $fecha, $Valor){
 }
 
   function cargarApostadores($tabla, $fechas, $ArrayApostadores){
-    require ('../configuracion/conexion.php');
+   require ('../../configuracion/conexion.php');
     $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla WHERE fecha = '$fechas'");
     while($totalUsuario = mysqli_fetch_array($Usuarios)){
         array_push($ArrayApostadores, $totalUsuario["usuario"]);
@@ -138,7 +138,7 @@ function cargarApuesta($tabla, $fecha, $Valor){
 }
 
 function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $ArrayApostadores){
-    require ('../configuracion/conexion.php');
+   require ('../../configuracion/conexion.php');
 
     if($tabla1 == "apuesta_eliminatorias"){
       for($i=0; $i<count($ArrayApostadores); $i++) {
@@ -247,7 +247,7 @@ function cargarPuntajesPorFecha ($tabla1,$tabla2, $fechas, $ArrayPuntajes, $Arra
 };
 
 function cargarPuntajesTotal ($tabla, $ArrayPuntajes, $ArrayApostadores){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   for($i=0; $i<count($ArrayApostadores); $i++) {
       
       $PuntajesTotal=mysqli_query($conexion,"SELECT SUM(puntaje) as Total FROM $tabla WHERE usuario = '$ArrayApostadores[$i]' and fecha != 'todo'");
@@ -269,7 +269,7 @@ function premios ($tabla, $fecha, $valorApuesta){
 
 /////////////////CHAT/////////////////////
 function enviarMensaje ($tabla, $id){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $UsuarioI = $_SESSION["usuario"];
   $EnviarMensaje = $_POST[$id];
   date_default_timezone_set('America/Buenos_Aires');
@@ -286,7 +286,7 @@ function enviarMensaje ($tabla, $id){
 }
 
 function UsuarioMensaje($tabla, $ArrayUsuarioMensaje){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla");
   while($totalUsuario = mysqli_fetch_array($Usuarios)){
       array_push($ArrayUsuarioMensaje, $totalUsuario["usuario"]);
@@ -295,7 +295,7 @@ function UsuarioMensaje($tabla, $ArrayUsuarioMensaje){
 }
 
 function Mensaje($tabla, $ArrayMensaje){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla");
   while($totalUsuario = mysqli_fetch_array($Usuarios)){
       array_push($ArrayMensaje, $totalUsuario["mensaje"]);
@@ -304,7 +304,7 @@ function Mensaje($tabla, $ArrayMensaje){
 }
 
 function FechaMensaje($tabla, $ArrayFechaMensaje){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla");
   while($totalUsuario = mysqli_fetch_array($Usuarios)){
       array_push($ArrayFechaMensaje, $totalUsuario["fecha"]);
@@ -314,7 +314,7 @@ function FechaMensaje($tabla, $ArrayFechaMensaje){
 ////////////////////////////////////////////////
 
 function registrarUsuario(){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $Apellido = $_POST['apellido'];
   $Nombre = $_POST['nombre'];
   $Dni = $_POST['dni'];
@@ -405,13 +405,13 @@ function registrarUsuario(){
   timer: 1500
   });
   });
-  setTimeout( function() { window.location.href = "../index.php"; }, 1500 );
+  setTimeout( function() { window.location.href = "../../index.php"; }, 1500 );
       </script>';
     }
 }
 
 function mostrarMisPronosticos($tabla, $fecha, $Array){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $UsuarioI = $_SESSION["usuario"];
   $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla WHERE usuario ='$UsuarioI' and fecha = '$fecha'");
   $totalUsuario = mysqli_fetch_array($Usuarios);
@@ -511,7 +511,7 @@ function mostrarMisPronosticos($tabla, $fecha, $Array){
 }
 
 function mostrarResultados($tabla, $fecha, $Array){
-  require ('../configuracion/conexion.php');
+ require ('../../configuracion/conexion.php');
   $Usuarios = mysqli_query($conexion,"SELECT * FROM $tabla WHERE fecha = '$fecha'");
   $totalUsuario = mysqli_fetch_array($Usuarios);
 

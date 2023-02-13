@@ -1,8 +1,8 @@
 <?php 
-include("../configuracion/cabecera.php");
-include("menuDesplegable.php");
-require ('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+include("../../configuracion/cabecera.php");
+require ('../../configuracion/conexion.php');
+include("../../configuracion/menuDesplegable.php");
+require ('../../funciones/funciones.php');
 
 $ValorApuesta= $_SESSION['valorApuestaEliminatoria'];
 $NombreDeFecha= $_SESSION['nombreFechaEliminatoria'];
@@ -15,13 +15,13 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 <head>
 
     <title>pagina prueba</title>
-    <link rel="stylesheet" href="../CSS/styleApuestaEliminatorias.css">
+    <link rel="stylesheet" href="../../CSS/styleApuestaEliminatorias.css">
      
 </head>
 
 <div class="contenedor">
 
-<body style= "background-image: url('../img/fondo.png'); background-size: cover">  
+<body style= "background-image: url('../../img/fondo.png'); background-size: cover">  
 <h1 data-shadow='Eliminatorias'>Eliminatorias</h1>
 
 <div class="container text-center" >
@@ -192,6 +192,6 @@ $CantidadApostadores= $_SESSION['premioEliminatoria']/($ValorApuesta*70/100);
 
 
 
-<script src="../js\simplyCountdown.min.js"></script>
-<script src="../js\cuentaRegresivaEliminatorias.js"></script>
+<script src="../../js\simplyCountdown.min.js"></script>
+<script src="../../js\cuentaRegresivaEliminatorias.js"></script>
 

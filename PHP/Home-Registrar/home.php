@@ -1,8 +1,8 @@
 <?php 
-include("../configuracion/cabecera.php");
-include("menuDesplegable.php");
-require('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+include("../../configuracion/cabecera.php");
+include("../../configuracion/menuDesplegable.php");
+require('../../configuracion/conexion.php');
+require ('../../funciones/funciones.php');
 
 //desde aqui cambiamos los parametros de fechas y valor de apuesta
 //El tiempo para la cuenta regresiva se modifica desde el archivo cuentaRegresiva.js que esta en la carpeta JS 
@@ -39,6 +39,7 @@ require ('../funciones/funciones.php');
     $Equipo27TA = "Platence";
     $Equipo28TA = "Talleres";
 
+    //Los siguientes arreglos no hay que borrarlos ni editarlos, solo hay que ir agregando los proximos fecha a fecha//
     $Apostadores5= [];
     $Puntajes5 = [];
     $PronosticoFecha5= [];
@@ -280,11 +281,11 @@ require ('../funciones/funciones.php');
 <head>
 
     <title></title>
-    <link rel="stylesheet" href="../CSS/styleHome.css">
+    <link rel="stylesheet" href="../../CSS/styleHome.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
-<body style= "background-image: url('../img/fondoHomee.png'); background-size: cover">  
+<body style= "background-image: url('../../img/fondoHomee.png'); background-size: cover">  
 
     <div id="titulo">
 	<span>H</span>
@@ -299,14 +300,14 @@ require ('../funciones/funciones.php');
 <div id="eliminatorias" class="carousel slide col-3 h-50 d-inline-block p-0 bg-success ">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../img/eliminatorias.png "style="width: 100%; height: 200px">
+            <img src="../../img/eliminatorias.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 8% 10% 5% 10% ">
           
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaEliminatoria.php'">Jugar</button>
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesEliminatoria.php'">Resultados</button>
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticosEliminatorias.php'">Mis pronosticos</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../Eliminatorias/apuestaEliminatoria.php'">Jugar</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../Eliminatorias/posicionesEliminatoria.php'">Resultados</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../Eliminatorias/pronosticosEliminatorias.php'">Mis pronosticos</button>
             </div>
         </div>
     </div>
@@ -320,14 +321,14 @@ require ('../funciones/funciones.php');
 <div id="libertadores" class="carousel slide col-3 h-50 d-inline-block p-0 bg-warning" style="margin: 0px 10px 10px 10px">
     <div class="carousel-inner">
         <div class="carousel-item active" >
-            <img src="../img/libertadoress.png "style="width: 100%; height: 200px">
+            <img src="../../img/libertadoress.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 50%; margin: 8% 10% 5% 10%  ">
             
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaLibertadores.php'">Jugar</button>
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesLibertadores.php'">Resultados</button>
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticosLibertadores.php'">Mis pronosticos</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../Libertadores/apuestaLibertadores.php'">Jugar</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../Libertadores/posicionesLibertadores.php'">Resultados</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../Libertadores/pronosticosLibertadores.php'">Mis pronosticos</button>
             </div>
         </div>
     </div>
@@ -340,13 +341,13 @@ require ('../funciones/funciones.php');
 <div id="argentina" class="carousel slide col-3 h-50 d-inline-block p-0 bg-danger ">
     <div class="carousel-inner">
         <div class="carousel-item active" >
-            <img src="../img/ligaArg.png "style="width: 100%; height: 200px">
+            <img src="../../img/ligaArg.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 8% 10% 5% 10%  ">
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaTorneoArg.php'">Jugar</button>
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesTorneoArg.php'">Resultados</button>
-                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticoTorneoArg'">Mis pronosticos</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../TorneoArgentino/apuestaTorneoArg.php'">Jugar</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../TorneoArgentino/posicionesTorneoArg.php'">Resultados</button>
+                <button type="button" class="btn btn-outline-dark btn-lg"  onclick="location.href='../TorneoArgentino/pronosticoTorneoArg'">Mis pronosticos</button>
             </div>
         </div>
     </div>
@@ -359,14 +360,14 @@ require ('../funciones/funciones.php');
 <div id="champions" class="carousel slide col-3 h-50 d-inline-block p-0 bg-primary ">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../img/champions.png "style="width: 100%; height: 200px">
+            <img src="../../img/champions.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 8% 10% 5% 10% ">
           
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaEliminatoria.php'">Jugar</button>
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesEliminatoria.php'">Resultados</button>
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticosEliminatorias.php'">Mis pronosticos</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../apuestaEliminatoria.php'">Jugar</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../posicionesEliminatoria.php'">Resultados</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../pronosticosEliminatorias.php'">Mis pronosticos</button>
             </div>
         </div>
     </div>
@@ -380,14 +381,14 @@ require ('../funciones/funciones.php');
 <div id="sudamericana" class="carousel slide col-3 h-50 d-inline-block p-0 bg-light" style="margin: 0px 10px 10px 10px">
     <div class="carousel-inner">
         <div class="carousel-item active" >
-            <img src="../img/sudamericana.png "style="width: 100%; height: 200px">
+            <img src="../../img/sudamericana.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 50%; margin: 8% 10% 5% 10%  ">
             
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaLibertadores.php'">Jugar</button>
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesLibertadores.php'">Resultados</button>
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticosLibertadores.php'">Mis pronosticos</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../apuestaLibertadores.php'">Jugar</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../posicionesLibertadores.php'">Resultados</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../pronosticosLibertadores.php'">Mis pronosticos</button>
             </div>
         </div>
     </div>
@@ -400,13 +401,13 @@ require ('../funciones/funciones.php');
 <div id="premier" class="carousel slide col-3 h-50 d-inline-block p-0 bg-info ">
     <div class="carousel-inner">
         <div class="carousel-item active" >
-            <img src="../img/premier.png "style="width: 100%; height: 200px">
+            <img src="../../img/premier.png "style="width: 100%; height: 200px">
         </div>
         <div class="carousel-item">
             <div class="d-grid gap-2" style="width: 80%; height: 100%; margin: 8% 10% 5% 10%  ">
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='apuestaTorneoArg.php'">Jugar</button>
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='posicionesTorneoArg.php'">Resultados</button>
-                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='pronosticoTorneoArg'">Mis pronosticos</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../apuestaTorneoArg.php'">Jugar</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../icionesTorneoArg.php'">Resultados</button>
+                <button type="button" disabled class="btn btn-outline-dark btn-lg"  onclick="location.href='../nosticoTorneoArg'">Mis pronosticos</button>
             </div>
         </div>
     </div>

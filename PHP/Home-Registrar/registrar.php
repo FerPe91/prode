@@ -11,7 +11,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>
     <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.js"></script>
-    <link rel="stylesheet" href="../CSS/styleRegistro.css">
+    <link rel="stylesheet" href="../../CSS/styleRegistro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    
     <title>Document</title>
@@ -75,7 +75,7 @@
 
       <div class="input-group input-group d-flex justify-content-end mb-6">
         <div class="col-12 input-group-text d-flex justify-content-between" id="inputGroup-sizing-default" class="form-check">
-          <button type="button" class="btn btn-primary" onclick="location.href='../index.php'">VOLVER</button>
+          <button type="button" class="btn btn-primary" onclick="location.href='../../index.php'">VOLVER</button>
           <button type="submit" class="btn btn-success" name="accion" >CONFIRMAR</button>
         </div>
       </div>      
@@ -84,8 +84,8 @@
 </div>
 <?php
 
-require ('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+require ('../../configuracion/conexion.php');
+require ('../../funciones/funciones.php');
 if (isset($_POST["accion"])){
   registrarUsuario();
 };

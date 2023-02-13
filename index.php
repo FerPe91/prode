@@ -33,7 +33,7 @@
                     <input type="password" class="form-control" name="clave" id="clave" required>
                 </div>
                 <button type="submit" class="btn btn-primary" name="accion" >Entrar</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='PHP/registrar.php'">Registrar</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='PHP/Home-Registrar/registrar.php'">Registrar</button>
             </form> 
             
             <button class="btn btn-warning mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -97,7 +97,7 @@ exit;
 echo '
 <script type="text/javascript">
    
-  setTimeout( function() { window.location.href = "PHP/home.php"; });
+  setTimeout( function() { window.location.href = "PHP/Home-Registrar/home.php"; });
   </script>'; 
 }    
   

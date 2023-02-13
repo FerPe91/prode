@@ -1,8 +1,8 @@
 <?php
-include("../configuracion/cabecera.php");
-include("menuDesplegable.php");
-require ('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+include("../../configuracion/cabecera.php");
+include("../../configuracion/menuDesplegable.php");
+require ('../../configuracion/conexion.php');
+require ('../../funciones/funciones.php');
 
 //////////CHAT/////////////////
     $UsuarioMensaje= [];
@@ -17,14 +17,14 @@ require ('../funciones/funciones.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../CSS/styleApuestaEliminatorias.css">
+    <link rel="stylesheet" href="../../CSS/styleApuestaEliminatorias.css">
 
 </head>
 
-<body style= "background-image: url('../img/fondo.png'); background-size: cover">  
+<body style= "background-image: url('../../img/fondo.png'); background-size: cover">  
 <h1 data-shadow='Eliminatorias'>Eliminatorias</h1>
 
-<body style= "background-image: url('../img/fondo.png'); background-size: cover">
+<body style= "background-image: url('../../img/fondo.png'); background-size: cover">
 
 
 <div class="container px-4 text-center" >
@@ -52,7 +52,7 @@ require ('../funciones/funciones.php');
                     <?php for($i=0; $i<count($_SESSION['Apos1ELI']); $i++) {?>
                         <tr class="table-info">
                                 <td><?php echo $_SESSION['Apos1ELI'][$i]; ?></td>
-                                <td><?php echo $_SESSION['PUN1ELI'][$i]; ?></td>   
+                                <td><?php echo $_SESSION['Pun1ELI'][$i]; ?></td>   
                         </tr>
                         <?php  }   ?>            
                     </tbody>

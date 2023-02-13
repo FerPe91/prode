@@ -1,8 +1,8 @@
 <?php 
-include("../configuracion/cabecera.php");
-include("menuDesplegable.php");
-require ('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+include("../../configuracion/cabecera.php");
+include("../../configuracion/menuDesplegable.php");
+require ('../../configuracion/conexion.php');
+require ('../../funciones/funciones.php');
 
 
 $ValorApuesta= $_SESSION['valorApuestaArgentina'];
@@ -18,11 +18,11 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
 <html lang="en">
 <head>
 
-<link rel="stylesheet" href="../CSS/styleApuestaTorneoArgen.css">
+<link rel="stylesheet" href="../../CSS/styleApuestaTorneoArgen.css">
 </head>
 
 
-<body style= "background-image: url('../img/fondoArg.png'); background-size: cover">
+<body style= "background-image: url('../../img/fondoArg.png'); background-size: cover">
 
 <div class="col-10 container-fluid">
     <div class="word" id="titulo">
@@ -206,7 +206,7 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
     </div>
     </form>
     <div class="col-2" id="boton2">
-    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 125%; margin-left:15%; margin-top:-11%" class="btn btn-warning btn-lg">Voy por todo el torneo</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#Todo" style="width: 125%; margin-left:15%; margin-top:-11%" class="btn btn-warning btn-lg">Voy por todo el torneo</button>
     </div>
     </div> 
 </div>
@@ -215,11 +215,11 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
     </html>
 
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Todo" tabindex="-1" aria-labelledby="TodoLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content rounded-0">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">¡¡Participa por el premio mayor!!</h5>
+                        <h5 class="modal-title" id="TodoLabel">¡¡Participa por el premio mayor!!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -254,8 +254,8 @@ $CantidadApostadoresTotalArg= $_SESSION['premioTotalArg']/(2000*70/100);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script src="../js\simplyCountdown.min.js"></script>
-    <script src="../js\cuentaRegresivaTorneo.js"></script>
+    <script src="../../js\simplyCountdown.min.js"></script>
+    <script src="../../js\cuentaRegresivaTorneo.js"></script>
 
 
     <script>

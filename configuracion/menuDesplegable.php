@@ -1,6 +1,6 @@
 
 <?php
-require('../configuracion/conexion.php');
+require('conexion.php');
 
 $nombreU=$_SESSION['nombreU'];
 ?>

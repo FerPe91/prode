@@ -52,22 +52,22 @@ $_SESSION['nombreU'] = $nombreU ;
 
     <div style="display: flex; height: auto; width:220px" >
                 <div style="height: auto; width:50px">
-                  <img src="../img/usuario.png" role= "button" class="nav-link"  style="height: 30px; width:30px; font-weight: bold; margin-left:7px" data-bs-toggle="modal" data-bs-target="#exampleModal"></img>
+                  <img src="../../img/usuario.png" role= "button" class="nav-link"  style="height: 30px; width:30px; font-weight: bold; margin-left:7px" data-bs-toggle="modal" data-bs-target="#exampleModal"></img>
                   <p>$<?php echo $datosUsuario["saldo"]?></p>
                 </div>
 
                 <div style="text-align: center; height: auto; width:50px; margin: 0px 0px 0px 0px">
-                  <img src="../img/info.png" type= "button" class="nav-link" style="height: 30px; width:30px; margin:0px 15px 0px 10px" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></img>
+                  <img src="../../img/info.png" type= "button" class="nav-link" style="height: 30px; width:30px; margin:0px 15px 0px 10px" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"></img>
                   <p>  Info</p>
                 </div>
                 
                 <div style="text-align: center; height: auto; width:50px; margin: 0px 15px 0px 0px">
-                  <img src="../img/Homee.png" role= "button" id="liveToastBtn" class="nav-link" onclick="location.href='home.php'" style="height: 30px; width:30px; margin:0px 15px 0px 15px"></img>
+                  <img src="../../img/Homee.png" role= "button" id="liveToastBtn" class="nav-link" onclick="location.href='../Home-Registrar/home.php'" style="height: 30px; width:30px; margin:0px 15px 0px 15px"></img>
                   <p>  Home</p>
                 </div>
 
                 <div>            
-                  <img src="../img/cerrar.png"  type= "button" class="nav-link" onclick="location.href='../index.php'" style="height: 30px; width:30px"></img>
+                  <img src="../../img/cerrar.png"  type= "button" class="nav-link" onclick="location.href='../../index.php'" style="height: 30px; width:30px"></img>
                   <p>Salir</p>
               </div>  
                 
@@ -85,7 +85,7 @@ $_SESSION['nombreU'] = $nombreU ;
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="mx-auto py-2 d-flex flex-column justify-content-center align-items-center">
-                      <img src="../img/usuario.png" role= "button" class="mx-0"  style="height: 70px; width:70px; font-weight: bold; margin-left:7px background-color:blue;""></img>
+                      <img src="../../img/usuario.png" role= "button" class="mx-0"  style="height: 70px; width:70px; font-weight: bold; margin-left:7px background-color:blue;""></img>
                       <button type="button" name="editar perfil" id="editar perfil" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#ModalPerfil">Editar Perfil</button>                      
                     </div>
                     <div class="modal-body">
@@ -164,7 +164,7 @@ $_SESSION['nombreU'] = $nombreU ;
 
 <?php 
 function editarSaldo ($saldoU, $cuenta){
-  require ('../configuracion/conexion.php');
+  require ('../../configuracion/conexion.php');
   $UsuarioI = $_SESSION["usuario"];
   $Saldo = $_POST['saldo'];
   $Contraseña = $_POST['contraseña'];
@@ -226,7 +226,7 @@ function editarSaldo ($saldoU, $cuenta){
   }
 };
 function editarPerfil(){
-  require ('../configuracion/conexion.php');
+  require ('../../configuracion/conexion.php');
   $UsuarioI = $_SESSION["usuario"];
   $Apellido = $_POST['apellido'];
   $Nombre = $_POST['nombre'];

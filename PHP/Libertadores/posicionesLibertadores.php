@@ -1,8 +1,8 @@
 <?php
-include("../configuracion/cabecera.php");
-include("menuDesplegable.php");
-require ('../configuracion/conexion.php');
-require ('../funciones/funciones.php');
+include("../../configuracion/cabecera.php");
+include("../../configuracion/menuDesplegable.php");
+require ('../../configuracion/conexion.php');
+require ('../../funciones/funciones.php');
 
 
 $ApostadoresGA= [];
@@ -59,9 +59,9 @@ $FechaMensaje=FechaMensaje("chat_libertadores", $FechaMensaje);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../CSS/styleApuestaLibertadores.css">
+    <link rel="stylesheet" href="../../CSS/styleApuestaLibertadores.css">
 </head>
-<body style= "background-image: url('../img/fondoLiber.png'); background-size: cover">
+<body style= "background-image: url('../../img/fondoLiber.png'); background-size: cover">
 <div class="title">
  <h1>Copa Libertadores - Fase de grupo</h1>
 </div>
