@@ -97,56 +97,7 @@ function registrarUsuario(){
     }
 }
 
-function recuperarClave(){
-  require ('../../configuracion/conexion.php');
-  $dni=$_SESSION["dni"];
-  $fecha=$_SESSION["fechaN"];
 
-  $consulta=mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$dni'");
-  $datoFecha=mysqli_fetch_array($consulta);
-  echo 'mysqli_num_rows($consulta)';
-  if (mysqli_num_rows($consulta) === 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
-    echo '
-    <script type="text/javascript">
-      $(document).ready(function(){ 
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "El DNI no se encuentra registrado",
-      showConfirmButton: false,
-      timer: 1500
-      });
-    });
-    function reload(){
-      window.location=document.location.href;
-    }
-    </script>';
-
-  }else{
-    if($datoFecha["pregunta_seg"] =! $fecha){
-      <script type="text/javascript">
-        $(document).ready(function(){ 
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Fecha incorrecta. No coincide.",
-        showConfirmButton: false,
-        timer: 1500
-        });
-      });
-      function reload(){
-        window.location=document.location.href;
-      }</script>';
-    }else{
-      <script type="text/javascript">
-      setTimeout( function() { window.location.href = "./recuperarUsuario.php"; }, 1500 );
-      </script>;
-
-    }
-  }
-
-
-}
 
 
 function cargarApuesta($tabla, $fecha, $Valor){

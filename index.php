@@ -33,7 +33,7 @@
                     <input type="password" class="form-control" name="clave" id="clave" required>
                 </div>
                 <button type="submit" class="btn btn-primary" name="accion" >Entrar</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='PHP/registrar.php'">Registrar</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='PHP/Home-Registrar/registrar.php'">Registrar</button>
             </form> 
             
             <button class="btn btn-warning mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalPregunta" aria-expanded="false" aria-controls="collapseExample">
@@ -90,13 +90,14 @@ require ('configuracion/conexion.php');
 
 if (isset($_POST["aceptar"])){
 
-  $dni=$_SESSION["dni"];
-  $fecha=$_SESSION["fechaN"];
+  $dni=$_POST["dni"];
+  $fecha=$_POST["fechaN"];
+
 
   $consulta=mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$dni'");
   $datoFecha=mysqli_fetch_array($consulta);
-  echo 'mysqli_num_rows($consulta)';
-  if (mysqli_num_rows($consulta) === 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
+ 
+  if (mysqli_num_rows($consulta) == 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
     echo '
     <script type="text/javascript">
       $(document).ready(function(){ 
@@ -113,9 +114,10 @@ if (isset($_POST["aceptar"])){
     }
     </script>';
 
-  }else{
-    if($datoFecha["pregunta_seg"] =! $fecha){
-      echo'<script type="text/javascript">
+  }elseif($datoFecha["pregunta_seg"] != $fecha){
+    
+      echo'
+      <script type="text/javascript">
         $(document).ready(function(){ 
       Swal.fire({
         position: "center",
@@ -130,19 +132,12 @@ if (isset($_POST["aceptar"])){
       }</script>';
     }else{
       echo '<script type="text/javascript">
-      setTimeout( function() { window.location.href = "./recuperarUsuario.php"; }, 1500 );
+      setTimeout( function() { window.location.href = "./recuperarUsuario.php"; });
       </script>';
 
     }
   }
 
-
-
-
-
-
-
-};
 
 
 if (isset($_POST["accion"])){ 
@@ -182,7 +177,7 @@ exit;
 echo '
 <script type="text/javascript">
    
-  setTimeout( function() { window.location.href = "PHP/home.php"; });
+  setTimeout( function() { window.location.href = "PHP/Home-Registrar/home.php"; });
   </script>'; 
 }    
   

@@ -3,7 +3,6 @@ include("../../configuracion/cabecera.php");
 include("../../configuracion/menuDesplegable.php");
 require ('../../configuracion/conexion.php');
 require ('../../funciones/funciones.php');
-
 //////////CHAT/////////////////
     $UsuarioMensaje= [];
     $Mensaje = [];
