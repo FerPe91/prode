@@ -1,5 +1,154 @@
 <?php 
 
+function registrarUsuario(){
+ require ('../../configuracion/conexion.php');
+  $Apellido = $_POST['apellido'];
+  $Nombre = $_POST['nombre'];
+  $Dni = $_POST['dni'];
+  $Telefono = $_POST['telefono'];
+  $Usuario = $_POST['usuario'];
+  $Contraseña = $_POST['contraseña'];
+  $Rcontraseña = $_POST['Rcontraseña'];
+  $PreguntaSeg = $_POST['PreguntaSeg'];
+
+  $insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña','$PreguntaSeg', '0' )";
+
+  $verificar_usuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario'");
+  if (mysqli_num_rows($verificar_usuario) > 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
+      
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "El usuario ya existe",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  function reload(){
+    window.location=document.location.href;
+  }
+
+          </script>';
+  
+  exit;
+            
+  }
+
+  $verificar_dni = mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$Dni'");
+  if (mysqli_num_rows($verificar_dni) > 0){
+      
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Ya existe un usuario con ese dni",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  function reload(){
+    window.location=document.location.href;
+  }
+          </script>';
+  exit; //exit hace que corte  no ingrese los valores a la tabla
+  }
+
+  elseif ($Contraseña!=$Rcontraseña){
+
+    echo '
+    <script type="text/javascript">
+        $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Las claves no coinciden",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  });
+  function reload(){
+    window.location=document.location.href;
+  }
+  </script>';  
+  exit;
+  }
+  
+  //si pasa todas las verificaciones ingresamos los datos
+
+  else{mysqli_query($conexion, $insertar);
+  echo '
+  <script type="text/javascript">
+    $(document).ready(function(){ 
+  Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Usuario registrado",
+  showConfirmButton: false,
+  timer: 1500
+  });
+  });
+  setTimeout( function() { window.location.href = "../../index.php"; }, 1500 );
+      </script>';
+    }
+}
+
+function recuperarClave(){
+  require ('../../configuracion/conexion.php');
+  $dni=$_SESSION["dni"];
+  $fecha=$_SESSION["fechaN"];
+
+  $consulta=mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$dni'");
+  $datoFecha=mysqli_fetch_array($consulta);
+  echo 'mysqli_num_rows($consulta)';
+  if (mysqli_num_rows($consulta) === 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
+    echo '
+    <script type="text/javascript">
+      $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "El DNI no se encuentra registrado",
+      showConfirmButton: false,
+      timer: 1500
+      });
+    });
+    function reload(){
+      window.location=document.location.href;
+    }
+    </script>';
+
+  }else{
+    if($datoFecha["pregunta_seg"] =! $fecha){
+      <script type="text/javascript">
+        $(document).ready(function(){ 
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Fecha incorrecta. No coincide.",
+        showConfirmButton: false,
+        timer: 1500
+        });
+      });
+      function reload(){
+        window.location=document.location.href;
+      }</script>';
+    }else{
+      <script type="text/javascript">
+      setTimeout( function() { window.location.href = "./recuperarUsuario.php"; }, 1500 );
+      </script>;
+
+    }
+  }
+
+
+}
+
+
 function cargarApuesta($tabla, $fecha, $Valor){
     require ('../../configuracion/conexion.php');
     $UsuarioI = $_SESSION["usuario"];
@@ -313,102 +462,6 @@ function FechaMensaje($tabla, $ArrayFechaMensaje){
 }
 ////////////////////////////////////////////////
 
-function registrarUsuario(){
- require ('../../configuracion/conexion.php');
-  $Apellido = $_POST['apellido'];
-  $Nombre = $_POST['nombre'];
-  $Dni = $_POST['dni'];
-  $Telefono = $_POST['telefono'];
-  $Usuario = $_POST['usuario'];
-  $Contraseña = $_POST['contraseña'];
-  $Rcontraseña = $_POST['Rcontraseña'];
-  $PreguntaSeg = $_POST['PreguntaSeg'];
-
-  $insertar = "INSERT INTO registro VALUES ('$Apellido', '$Nombre', '$Dni', '$Telefono', '$Usuario', '$Contraseña','$PreguntaSeg', '0' )";
-
-  $verificar_usuario = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario'");
-  if (mysqli_num_rows($verificar_usuario) > 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
-      
-    echo '
-    <script type="text/javascript">
-        $(document).ready(function(){ 
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "El usuario ya existe",
-      showConfirmButton: false,
-      timer: 1500
-    });
-  });
-  function reload(){
-    window.location=document.location.href;
-  }
-
-          </script>';
-  
-  exit;
-            
-  }
-
-  $verificar_dni = mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$Dni'");
-  if (mysqli_num_rows($verificar_dni) > 0){
-      
-    echo '
-    <script type="text/javascript">
-        $(document).ready(function(){ 
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "Ya existe un usuario con ese dni",
-      showConfirmButton: false,
-      timer: 1500
-    });
-  });
-  function reload(){
-    window.location=document.location.href;
-  }
-          </script>';
-  exit; //exit hace que corte  no ingrese los valores a la tabla
-  }
-
-  elseif ($Contraseña!=$Rcontraseña){
-
-    echo '
-    <script type="text/javascript">
-        $(document).ready(function(){ 
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "Las claves no coinciden",
-      showConfirmButton: false,
-      timer: 1500
-    });
-  });
-  function reload(){
-    window.location=document.location.href;
-  }
-  </script>';  
-  exit;
-  }
-  
-  //si pasa todas las verificaciones ingresamos los datos
-
-  else{mysqli_query($conexion, $insertar);
-  echo '
-  <script type="text/javascript">
-    $(document).ready(function(){ 
-  Swal.fire({
-  position: "center",
-  icon: "success",
-  title: "Usuario registrado",
-  showConfirmButton: false,
-  timer: 1500
-  });
-  });
-  setTimeout( function() { window.location.href = "../../index.php"; }, 1500 );
-      </script>';
-    }
-}
 
 function mostrarMisPronosticos($tabla, $fecha, $Array){
  require ('../../configuracion/conexion.php');
