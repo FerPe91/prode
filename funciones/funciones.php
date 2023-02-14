@@ -95,8 +95,68 @@ function registrarUsuario(){
   setTimeout( function() { window.location.href = "../../index.php"; }, 1500 );
       </script>';
     }
-}
+};
 
+function recuperarUsuario(){
+  require ('../../configuracion/conexion.php');
+  $dni=$_POST["dni"];
+  $fecha=$_POST["fechaN"];
+
+  $consulta=mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$dni'");
+  $datoFecha=mysqli_fetch_array($consulta);
+ 
+  if (mysqli_num_rows($consulta) == 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
+    echo '
+    <script type="text/javascript">
+      $(document).ready(function(){ 
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "El DNI no se encuentra registrado",
+      showConfirmButton: false,
+      timer: 1500
+      });
+    });
+    function reload(){
+      window.location=document.location.href;
+    }
+    </script>';
+
+  }elseif($datoFecha["pregunta_seg"] != $fecha){
+    
+      echo'
+      <script type="text/javascript">
+        $(document).ready(function(){ 
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Fecha incorrecta. No coincide.",
+        showConfirmButton: false,
+        timer: 1500
+        });
+      });
+      function reload(){
+        window.location=document.location.href;
+      }</script>';
+    }else{
+      echo'
+      <script type="text/javascript">
+        $(document).ready(function(){ 
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Todo ok.",
+        showConfirmButton: false,
+        timer: 1500
+        });
+      });
+      function reload(){
+        window.location=document.location.href;
+      }</script>';
+    
+    }
+  
+ }
 
 
 
@@ -567,3 +627,4 @@ function mostrarResultados($tabla, $fecha, $Array){
 
   return $Array;  
 }
+?>

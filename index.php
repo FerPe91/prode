@@ -33,118 +33,26 @@
                     <input type="password" class="form-control" name="clave" id="clave" required>
                 </div>
                 <button type="submit" class="btn btn-primary" name="accion" >Entrar</button>
-                <button type="button" class="btn btn-primary" onclick="location.href='PHP/Home-Registrar/registrar.php'">Registrar</button>
-            </form> 
-            
-            <button class="btn btn-warning mt-2" type="button" data-bs-toggle="modal" data-bs-target="#modalPregunta" aria-expanded="false" aria-controls="collapseExample">
+                <button type="button" class="btn btn-primary" onclick="location.href='PHP/registrar.php'">Registrar</button>
+            </form>  
+            <button class="btn btn-warning mt-2" type="button" onclick="location.href='PHP/Home-Registrar/recuperarUsuario.php'">
               Olvidaste tu contraseña?
-            </button>
+            </button>   
         </div>
-        
-        <footer>
-            
-    
-        </footer>
 
     </div>
 
 </body>
+
 </html>
-
-
-<div class="modal fade" id="modalPregunta" tabindex="-1" aria-labelledby="modalPreguntaLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content w-75 rounded-4 p-2 mx-auto ">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="modalPreguntaLabel">Recuperacion de contraseña</h5>                      
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST">
-                            <div class="mb-3"> 
-                                <label for="dni" class="form-label">Ingrese su numero de Documento</label>
-                                <input type="number" class="form-control" name="dni" id="dni" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="fechaN" class="form-label">¿Cual es tu fecha de nacimiento?</label>
-                                <input type="date" class="form-control" name="fechaN" id="fechaN" required>
-                            </div>
-                            
-                            <div class="modal-footer">
-                                <button type="submit" name="aceptar" id="aceptar" class="btn btn-primary">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
 
 <?php
 require ('configuracion/conexion.php');
-
-if (isset($_POST["aceptar"])){
-
-  $dni=$_POST["dni"];
-  $fecha=$_POST["fechaN"];
-
-
-  $consulta=mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$dni'");
-  $datoFecha=mysqli_fetch_array($consulta);
- 
-  if (mysqli_num_rows($consulta) == 0){ //verifica que la cantidad de usuario con ese numero no sea mayor a 0
-    echo '
-    <script type="text/javascript">
-      $(document).ready(function(){ 
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "El DNI no se encuentra registrado",
-      showConfirmButton: false,
-      timer: 1500
-      });
-    });
-    function reload(){
-      window.location=document.location.href;
-    }
-    </script>';
-
-  }elseif($datoFecha["pregunta_seg"] != $fecha){
-    
-      echo'
-      <script type="text/javascript">
-        $(document).ready(function(){ 
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Fecha incorrecta. No coincide.",
-        showConfirmButton: false,
-        timer: 1500
-        });
-      });
-      function reload(){
-        window.location=document.location.href;
-      }</script>';
-    }else{
-      echo '<script type="text/javascript">
-      setTimeout( function() { window.location.href = "./recuperarUsuario.php"; });
-      </script>';
-
-    }
-  }
-
-
 
 if (isset($_POST["accion"])){ 
   
   $Usuario = $_POST['usuario'];
   $Clave = $_POST['clave'];
-
 
   session_start();
   $_SESSION["usuario"] = $Usuario;
@@ -152,12 +60,10 @@ if (isset($_POST["accion"])){
 
 $verificar_cuenta = mysqli_query($conexion, "SELECT * FROM registro WHERE usuario ='$Usuario' AND clave = '$Clave'");
 
-
 if(mysqli_num_rows($verificar_cuenta) == 0){
     echo '
     <script type="text/javascript">
       $(document).ready(function(){
-
         Swal.fire({
         position: "center",
         icon: "error",
