@@ -101,7 +101,7 @@ function recuperarUsuario(){
   require ('../../configuracion/conexion.php');
   $dni=$_POST["dni"];
   $fecha=$_POST["fechaN"];
-
+  $claveNueva=$_POST["clave"];
   $consulta=mysqli_query($conexion, "SELECT * FROM registro WHERE dni ='$dni'");
   $datoFecha=mysqli_fetch_array($consulta);
  
@@ -139,28 +139,29 @@ function recuperarUsuario(){
         window.location=document.location.href;
       }</script>';
     }else{
+      $editar="UPDATE registro SET clave='$claveNueva' where dni = '$dni'";
+      mysqli_query($conexion, $editar);
       echo'
       <script type="text/javascript">
         $(document).ready(function(){ 
       Swal.fire({
         position: "center",
-        icon: "error",
-        title: "Todo ok.",
+        icon: "success",
+        title: "Tu cambio fue realizado con exito",
         showConfirmButton: false,
-        timer: 1500
+      
         });
       });
-      function reload(){
-        window.location=document.location.href;
-      }</script>';
-    
+      setTimeout( function() { window.location.href = "../../index.php"; }, 2500 );
+     </script>';
     }
-  
+   
  }
 
 
 
-function cargarApuesta($tabla, $fecha, $Valor){
+
+ function cargarApuesta($tabla, $fecha, $Valor){
     require ('../../configuracion/conexion.php');
     $UsuarioI = $_SESSION["usuario"];
     

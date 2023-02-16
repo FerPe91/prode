@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="C:\wamp\www\apuestasDeportivas\js\jquery-3.5.1.js"></script>
-    <link rel="stylesheet" href="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.min.css">
+    <script src="js\jquery-3.5.1.js"></script>
+    
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.min.js"></script>
-    <script src="C:\wamp\www\apuestaDeportiva\node_modules\sweetalert2\dist\sweetalert2.all.js"></script>
+    <script src="js\sweetalert2.all.min.js"></script>
+    <script src="js\sweetalert2.all.js"></script>
     <link rel="stylesheet" href="../../CSS/styleRegistro.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
    
@@ -67,7 +67,7 @@
         <input type="password" class="form-control" name="Rcontraseña" id="Rcontraseña" required placeholder="repita su contraseña">                       
       </div>
       <div class="input-group input-group mb-3">
-        <h5 class='card-tittle'>Pregunta de seguridad</h5>
+        <h3 class='card-tittle'>Pregunta de seguridad</h3>
         <label class="input-group-text" id="inputGroup-sizing-default" for="PreguntaSeg" class="form-label">¿Cuando Naciste?</label >
         <input type="date" class="form-control" name="PreguntaSeg" id="PreguntaSeg" required placeholder="Ingrese su fecha" required>
         <p>*en caso de olvidarse la contraseña, contara con esta posibilidad para poder recuperarla</p>                       
