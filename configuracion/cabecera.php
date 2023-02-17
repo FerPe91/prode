@@ -46,7 +46,7 @@ $_SESSION['nombreU'] = $nombreU ;
 
 <nav class="navbar navbar-expand-lg sticky-top d-flex justify-content-between" style="background-color: #e3f2fdc2; height:100px; width:100%" >
     <a class="navbar-brand" style="height: 100%">
-        <img src="https://1.bp.blogspot.com/-s-PWMumERn8/XsRRBilg2eI/AAAAAAABa8I/pQT1CnbA-sgfOvQvhxAeGx2n8RW3y3HLgCK4BGAsYHg/d/LPF.png" alt="Bootstrap" width="70" height="64">DINERO FICTICIO</img>
+        <img src="../../img/logo2.png" alt="Bootstrap" width="100" height="64">DINERO FICTICIO</img>
     </a>
 
     <div style="display: flex; height: auto; width:220px" >
@@ -87,12 +87,17 @@ $_SESSION['nombreU'] = $nombreU ;
                       <img src="../../img/usuario.png" role= "button" class="mx-0"  style="height: 70px; width:70px; font-weight: bold; margin-left:7px background-color:blue;""></img>
                       <button type="button" name="editar perfil" id="editar perfil" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#ModalPerfil">Editar Perfil</button>                      
                     </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <h5 class="modal-title py-2" id="exampleModalLabel">Mis ProdePoints: </h5>
+                      <img src="../../img/credito.png" width="80" height="80"  alt="">
+                      <h3><?php echo $saldoU ?></h3>  
+                    </div>
                     <div class="modal-body">
                         <form method="POST">
-                            <h5 class="modal-title py-2" id="exampleModalLabel">TU SALDO ES $ <?php echo $saldoU ?></h5>
+                            
                             <div class="mb-3"> 
                                 <label for="saldo" class="form-label">INGRESA CANTIDAD</label>
-                                <input type="number" class="form-control" name="saldo" id="saldo" aria-describedby="emailHelp">
+                                <input type="number" class="form-control" name="saldo" id="saldo" aria-describedby="emailHelp" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">INGRESA TU CLAVE</label>

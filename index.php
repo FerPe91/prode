@@ -14,15 +14,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Index</title>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd00;">
-        <a class="navbar-brand" href="#">
-            <img src="https://1.bp.blogspot.com/-s-PWMumERn8/XsRRBilg2eI/AAAAAAABa8I/pQT1CnbA-sgfOvQvhxAeGx2n8RW3y3HLgCK4BGAsYHg/d/LPF.png" alt="Bootstrap" width="70" height="64">PRODE DINERO FICTICIO
-        </a>
-    </nav>
-    
+<body class="bodyIndex">    
     <div class="container">
         <div class="formulario ">
+            <div class="align-self-center width=100">
+              <img src="./img/logo2.png" class="mx-auto d-block" alt="logo" width="150" height="90">
+            </div>
             <form method="POST">
                 <div class="mb-3">
                     <label  class="form-label">Usuario</label>

@@ -6,6 +6,19 @@ body{
     width: 100%;
 }
 
+.bodyIndex{
+    background:
+    linear-gradient(
+        to right,rgba(34, 33, 33, 0.157),
+        rgba(103, 74, 160, 1)
+    ),
+    url(../img/fondo.jpg)no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 .navbar,a{
     height:100px;
     color:white !important;
